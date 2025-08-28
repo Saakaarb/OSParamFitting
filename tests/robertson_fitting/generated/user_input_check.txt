@@ -1,0 +1,17 @@
+Issues
+
+1. The fixed parameter 'unused_constant' is defined in the XML file, but it is not used anywhere in the user_defined_system, _compute_loss_problem, or writeout_description functions. While not an error, all defined fixed parameters should ideally be used.
+2. The loss function in _compute_loss_problem returns a value that is scaled by dividing by the max of the dataset per column. While this is a reasonable scaling, it may still result in loss values that are greater than 1 if the RMS error in the solution is comparable to or exceeds the max of the dataset. For highly skewed datasets, this might not properly scale the loss to always be in [0,1].
+3. The functions return a numpy array; you should ensure that during JAX code conversion, the correct array type (jax.numpy) is used for device compatibility and just-in-time compilation.
+4. Parameter names and variable names are pythonic and consistent. The trainable parameters k1, k2, k3 are all present in the pseudocode, in proper logscale where required. The integrable variables y1, y2, y3 are all used and returned.
+5. No duplicate names are present across trainable parameters, fixed parameters, and integrated variables.
+6. The writeout_description function returns an array as required by the plotting configuration in the XML.
+
+Checked
+
+- All trainable parameters, fixed parameters and integrated variables from the XML are accounted for in the pseudocode.
+- The search ranges for k1, k2, k3 are reasonable and logscale is correctly specified, particularly for k2 and k3, which span several orders of magnitude.
+- The population and gradient optimization settings are realistic and consistent.
+- Derivatives for each integrated variable are defined and returned in the correct order in user_defined_system.
+- All functions should be convertible to JAX code without major changes, avoiding obvious logical errors.
+- WRITE_RESULTS is Y, and the writeout_description function aligns with this instruction.

@@ -1,0 +1,11 @@
+Issues
+
+1. No code was found for the required functions user_provided_system, _compute_loss_problem, or writeout_description in the uploaded .py file. Please ensure you have provided the correct pseudocode file containing these functions for analysis.
+
+Checked
+
+- XML context parsed correctly, and all parameter/logical ranges/settings make sense.
+- No duplicate variable names across trainable, fixed, or integrable variables in the XML context.
+- The trainable variable "mu" is appropriately set to search in logscale due to its wide range (1E-1 to 1E3).
+- All provided initial values for state variables are reasonable.
+- Optimization and gradient settings look typical and should not cause computational issues.

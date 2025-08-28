@@ -1,0 +1,16 @@
+tests:
+
+- name: "run_driver_robertson"
+  function: run_driver_wrapper
+  input: ["tests/robertson_fitting"]
+  expected:   # or leave blank if just checking for no error
+
+- name: "run_driver_vanderpol"
+  function: run_driver_wrapper
+  input: ["tests/vanderpol_fitting"]
+  expected:   # or leave blank if just checking for no error
+
+- name: "run_driver_sliding_basepoint"
+  function: run_driver_wrapper
+  input: ["tests/sliding_basepoint"]
+  expected:   # or leave blank if just checking for no error
