@@ -11,6 +11,7 @@ from lib.utils.xmlread import XMLReader
 from pathlib import Path
 import importlib.util
 import sys
+
 jax.config.update("jax_enable_x64", True)
 
 def get_input_reader(path_to_input):
@@ -23,7 +24,7 @@ def get_input_reader(path_to_input):
     return input_reader
 
 
-def fit_generic_system(path_to_input, path_to_output_dir, generated_dir):
+def fit_generic_system(path_to_input, path_to_output_dir, generated_dir,session_path):
     """Fit a generic system using a two-phase optimization approach.
 
     This function performs parameter fitting using a combination of:
@@ -73,11 +74,8 @@ def fit_generic_system(path_to_input, path_to_output_dir, generated_dir):
         sys.modules["generated_script"] = generated_script
         spec.loader.exec_module(generated_script)
 
-        tree = ET.parse(path_to_input)
-        root = tree.getroot()
+        input_reader=get_input_reader(path_to_input)
 
-        input_reader=XMLReader()
-        input_reader.read_XML(root)
         # variable and parameter name uniqueness 
         input_reader.check_name_uniqueness()
 
@@ -87,7 +85,7 @@ def fit_generic_system(path_to_input, path_to_output_dir, generated_dir):
         y0=jnp.array(input_reader.integrated_variable_init_values)
 
         # load dataset
-        dataset_path = Path("sessions") / Path(input_reader.input_dirname) / Path(input_reader.filename_data)
+        dataset_path = session_path / Path(input_reader.user_input_dirname) / Path(input_reader.filename_data)
         with open(dataset_path, 'r', encoding='utf-8-sig') as f:
             all_data=np.genfromtxt(f, dtype=float, delimiter=',')
         # split into time and data

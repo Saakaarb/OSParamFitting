@@ -12,7 +12,7 @@ def run_driver(session_dir,input_reader):
 
     # Use session-specific paths
     session_path = Path(session_dir)
-    path_to_input = session_path / input_reader.generated_dirname / "user_input.xml"
+    path_to_input = session_path / input_reader.user_input_dirname / "user_input.xml"
     path_to_output_dir = session_path / input_reader.output_dirname
     path_to_eq_system = session_path / input_reader.generated_dirname / "user_model.py"
 
@@ -39,7 +39,7 @@ def run_driver(session_dir,input_reader):
     # Run the fitting process
     print("Launching fitting process...")
     generated_dir = session_path / "generated"
-    fit_generic_system(path_to_input, path_to_output_dir, generated_dir)
+    fit_generic_system(path_to_input, path_to_output_dir, generated_dir,session_path)
 
 if __name__ == "__main__":
     

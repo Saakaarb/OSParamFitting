@@ -100,6 +100,8 @@ class FitParamsNODE:
 
         self.input_reader = input_reader
 
+        self.optimizer_name = 'adam'
+
         self.n_iters_grad = self.input_reader.n_iters_grad 
         self.constants = {}
         self.problem_obj = problem_object
@@ -258,15 +260,21 @@ class FitParamsNODE:
         print("TODO: Add gradient clipping")
         print("Note: L.R parameters and choice is currently hardcoded")
 
-        #self.learning_rate = optax.exponential_decay(
-        #    init_value=self.input_reader.init_value_lr,
-        #     transition_steps=self.input_reader.transition_steps_lr,
-        #    decay_rate=self.input_reader.decay_rate_lr,
-        #    end_value=self.input_reader.end_value_lr,
-        #)
+        
 
         #self.optimizer = optax.adam(self.learning_rate)
-        self.optimizer = optax.lbfgs()
+        if self.optimizer_name == 'lbfgs':
+            self.optimizer = optax.lbfgs()
+        elif self.optimizer_name == 'adam':
+            self.learning_rate = optax.exponential_decay(
+            init_value=self.input_reader.init_value_lr,
+            transition_steps=self.input_reader.transition_steps_lr,
+            decay_rate=self.input_reader.decay_rate_lr,
+            end_value=self.input_reader.end_value_lr,
+            )
+            self.optimizer = optax.adam(self.learning_rate)
+        else:
+            raise ValueError(f"Optimizer {self.optimizer_name} not supported")
 
         self.opt_state = self.optimizer.init(self.trainable_params)
 
@@ -316,7 +324,11 @@ class FitParamsNODE:
                         f.flush()
                     t1=t2
 
-            updates, self.opt_state = self.optimizer.update(grad_loss, self.opt_state,self.trainable_params,value=value,grad=grad_loss,value_fn=self.compute_loss) #self.optimizer.update(grad_loss, self.opt_state)
+            if self.optimizer_name == 'adam':
+                updates, self.opt_state =self.optimizer.update(grad_loss, self.opt_state)
+            elif self.optimizer_name == 'lbfgs':
+                #updates, self.opt_state = self.optimizer.update(grad_loss, self.opt_state)
+                updates, self.opt_state = self.optimizer.update(grad_loss, self.opt_state,self.trainable_params,value=value,grad=grad_loss,value_fn=self.compute_loss) #self.optimizer.update(grad_loss, self.opt_state)
             results = optax.apply_updates(self.trainable_params, updates)
             self.trainable_params = results
             self.constrain_search_vars()

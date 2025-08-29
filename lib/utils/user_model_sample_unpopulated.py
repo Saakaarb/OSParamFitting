@@ -15,7 +15,7 @@ def user_defined_system(t: float, y: np.ndarray, trainable_parameters: dict, fix
         # dataset: dataset (np.ndarray of size [Nts,N_col-1]) (first dimension in dataset is time)
         # t_eval: evaluation times (np.ndarray of size [Nts])
 
-        derivatives = np.zeros(y.shape[0])
+        
 
         # this part is to be populated by the model
         #--------------------------------
@@ -28,14 +28,15 @@ def user_defined_system(t: float, y: np.ndarray, trainable_parameters: dict, fix
         y2 = y[1]
         y3 = y[2]
 
+
         #--------------------------------
 
         # this part is to be populated by the user
         #--------------------------------
 
         #--------------------------------
-
-        return derivatives
+        derivatives = np.array([dy1dt, dy2dt, dy3dt]) # 
+        return derivatives # of shape [Ny]. Each derivative term must be user defined
 
 def _compute_loss_problem(solution_time: np.ndarray, solution: np.ndarray, dataset: np.ndarray, trainable_parameters: dict, fixed_parameters: dict):
 
@@ -62,7 +63,7 @@ def _compute_loss_problem(solution_time: np.ndarray, solution: np.ndarray, datas
 
         #--------------------------------
 
-        return loss
+        return loss # scalar
         
 
 def writeout_description(solution_time: np.ndarray, solution: np.ndarray, dataset: np.ndarray, trainable_parameters: dict, fixed_parameters: dict):
@@ -83,6 +84,7 @@ def writeout_description(solution_time: np.ndarray, solution: np.ndarray, datase
         unused_constant = fixed_parameters['unused_constant']
         #--------------------------------
 
+        writeout_array = np.zeros([solution_time.shape[0],5]) # DEFINE THIS as required!
 
         # this part is to be populated by the user
         #--------------------------------
@@ -90,4 +92,4 @@ def writeout_description(solution_time: np.ndarray, solution: np.ndarray, datase
 
         #--------------------------------
 
-        return writeout_array
+        return writeout_array # of custom shape

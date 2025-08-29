@@ -8,6 +8,17 @@ def create_user_model(session_dir,input_reader):
     """Check user input with session-specific paths"""
     print("Launching script to create user model")
 
+    # check if necessary dirs exist in session_dir
+    if not os.path.isdir(session_dir / input_reader.user_input_dirname):
+        print(f"User input directory {session_dir / input_reader.user_input_dirname} does not exist, making it...")
+        os.makedirs(session_dir / input_reader.user_input_dirname)
+    if not os.path.isdir(session_dir / input_reader.generated_dirname):
+        print(f"Generated directory {session_dir / input_reader.generated_dirname} does not exist, making it...")
+        os.makedirs(session_dir / input_reader.generated_dirname)
+    if not os.path.isdir(session_dir / input_reader.output_dirname / "inputs"):
+        print(f"Output directory {session_dir / input_reader.output_dirname / 'inputs'} does not exist, making it...")
+        os.makedirs(session_dir / input_reader.output_dirname / "inputs")
+
     session_path = Path(session_dir)
     path_to_input = session_path / input_reader.user_input_dirname / "user_input.xml"
     path_to_user_model = session_path / input_reader.generated_dirname / "user_model.py"
