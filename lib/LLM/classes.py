@@ -35,6 +35,9 @@ class LLMBase():
 
         return self._init_client()
 
+    def generate_user_model(self,input_file_path,input_sample_path,user_model_sample_path,user_model_path):
+        return self._generate_user_model(input_file_path,input_sample_path,user_model_sample_path,user_model_path)
+
     # Provide path to created file and generate system
     def generate_system(self,system_path,output_file_path=None):
 
@@ -194,3 +197,41 @@ class OpenAI_model(LLMBase):
             f.write(response.output_text)
             f.close()
 
+    def _generate_user_model(self,input_file_path,input_sample_path,user_model_sample_path,user_model_path):
+
+        print("Generating user model....")
+
+        self._set_developer_instructions()
+
+        with open(input_file_path, "r") as f:
+            xml_content = f.read()
+
+        with open(user_model_sample_path,"r") as f:
+            user_model_sample_content=f.read()
+
+        with open(input_sample_path,"r") as f:
+            input_sample_content=f.read()
+
+        print("Checking user uploads")
+        response= self.client.responses.create(
+                    model="gpt-4.1",
+                    instructions=self.dev_instr,
+                    input= [{
+                            "role":"user",
+                            "content":[
+                                {"type": "input_text",
+                                  "text":f"Analyze the given XML context: {xml_content}, and generate a user model skeleton based on the context. Here is a sample user model skeleton generated for the robertson equation system: {user_model_sample_content}. Here is the corresponding sample input file: {input_sample_content}"},
+                    ],
+                    }],
+                    )
+        
+        if os.path.exists(user_model_path):
+            print(f"Overwriting existing user model at {user_model_path}")
+            os.remove(user_model_path)
+
+        with open(user_model_path,"w") as f:
+
+            f.write(response.output_text)
+            f.close()
+
+        print("Finished generating user model skeleton")

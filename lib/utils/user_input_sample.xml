@@ -1,0 +1,77 @@
+<?xml version="1.0" ?>
+<FIT>
+    <EXPERIMENT>
+        <FILENAME>
+            <E> FILENAME_DATA = robertson_data.csv </E>
+        </FILENAME>
+    </EXPERIMENT>
+
+    <MODEL>
+        <TRAINABLE_PARAMETERS>
+            <P> N_TRAINABLE_PARAMETERS = 3 </P>
+        </TRAINABLE_PARAMETERS>
+        <TRAINABLE_PARAMETER_DESCRIPTION>
+            <PARAM>
+                <P> PARAMETER_NAME= k1 </P>
+                <P> MIN_VAL=0.001 </P>
+                <P> MAX_VAL=10.0 </P>
+                <P> LOGSCALE= Y </P>
+            </PARAM>
+            <PARAM>
+                <P> PARAMETER_NAME= k2 </P>
+                <P> MIN_VAL=5E3 </P>
+                <P> MAX_VAL=5E10 </P>
+                <P> LOGSCALE= Y </P>
+            </PARAM>
+            <PARAM>
+                <P> PARAMETER_NAME= k3 </P>
+                <P> MIN_VAL=1E0 </P>
+                <P> MAX_VAL=1E8 </P>
+                <P> LOGSCALE= Y </P>
+            </PARAM>
+        </TRAINABLE_PARAMETER_DESCRIPTION>
+        <FIXED_PARAM_DESCRIPTION>
+            <PARAM>
+                <P> NAME = unused_constant </P>
+                <P> VALUE= 1 </P>
+            </PARAM>
+        </FIXED_PARAM_DESCRIPTION>
+        <INTEGRATED_SYSTEM_DESCRIPTION>
+            <VAR>
+                <P> NAME = y1 </P>
+                <P> INIT_VAL = 1 </P>
+            </VAR>
+            <VAR>
+                <P> NAME = y2 </P>
+                <P> INIT_VAL = 0 </P>
+            </VAR>
+            <VAR>
+                <P> NAME = y3 </P>
+                <P> INIT_VAL = 0 </P>
+            </VAR>
+        </INTEGRATED_SYSTEM_DESCRIPTION>
+    </MODEL>
+    <POPULATION_OPT>
+        <SETTINGS>
+            <P> NUM_PARTICLES = 100 </P>
+            <P> NUM_ITERS = 20 </P>
+            <P> PROCESSORS = 8 </P>
+        </SETTINGS>
+    </POPULATION_OPT>
+    <GRADIENT_OPT>
+        <SETTINGS>
+            <P> NUM_ITERS = 10 </P>
+            <P> STEPSIZE_RTOL = 1e-7,1e-7,1e-7 </P>
+            <P> STEPSIZE_ATOL = 1e-9,1e-9,1e-9 </P>
+            <P> INITIAL_TIMESTEP = 1e-6 </P>
+            <P> MAX_STEPS = 10000 </P>
+            <P> INIT_VALUE_LR = 1e-4 </P>
+            <P> END_VALUE_LR = 1e-5 </P>
+            <P> TRANSITION_STEPS_LR = 2000 </P>
+            <P> DECAY_RATE_LR = 0.9 </P>
+        </SETTINGS>
+    </GRADIENT_OPT>
+    <PLOTTING_INFO>
+        <P> WRITE_RESULTS = Y </P>
+    </PLOTTING_INFO>
+</FIT>

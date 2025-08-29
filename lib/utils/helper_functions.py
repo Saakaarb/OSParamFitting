@@ -13,6 +13,16 @@ import importlib.util
 import sys
 jax.config.update("jax_enable_x64", True)
 
+def get_input_reader(path_to_input):
+    tree = ET.parse(path_to_input)
+    root = tree.getroot()
+
+    input_reader=XMLReader()
+    input_reader.read_XML(root)
+
+    return input_reader
+
+
 def fit_generic_system(path_to_input, path_to_output_dir, generated_dir):
     """Fit a generic system using a two-phase optimization approach.
 
@@ -76,8 +86,11 @@ def fit_generic_system(path_to_input, path_to_output_dir, generated_dir):
 
         y0=jnp.array(input_reader.integrated_variable_init_values)
 
-        with open(str(input_reader.filename_data), 'r', encoding='utf-8-sig') as f:
+        # load dataset
+        dataset_path = Path("sessions") / Path(input_reader.input_dirname) / Path(input_reader.filename_data)
+        with open(dataset_path, 'r', encoding='utf-8-sig') as f:
             all_data=np.genfromtxt(f, dtype=float, delimiter=',')
+        # split into time and data
         t_eval=all_data[:,0]
         dataset=all_data[:,1:]
         # Run a test fitting

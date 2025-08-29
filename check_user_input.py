@@ -2,21 +2,20 @@ from pathlib import Path
 from lib.LLM.classes import OpenAI_model
 import os
 import sys
+from lib.utils.helper_functions import get_input_reader
 
-def check_input(session_dir):
+def check_input(session_dir,input_reader):
     """Check user input with session-specific paths"""
     print("Launching script to check user input")
 
-    user_input_dirname = "generated"
-
     session_path = Path(session_dir)
-    path_to_input = session_path / user_input_dirname / "user_input.xml"
-    path_to_user_code = session_path / user_input_dirname / "user_model.py"
-    path_to_output = session_path / user_input_dirname / "raw_user_input_check.txt"
+    path_to_input = session_path / input_reader.user_input_dirname / "user_input.xml"
+    path_to_user_code = session_path / input_reader.generated_dirname / "user_model.py"
+    path_to_output = session_path / input_reader.generated_dirname / "raw_user_input_check.txt"
 
-    path_to_input_check_model_output = session_path / user_input_dirname / "raw_user_input_check.txt"
+    path_to_input_check_model_output = session_path / input_reader.generated_dirname / "raw_user_input_check.txt"
     reference_file_paths_check_model_output = []
-    path_to_output_check_model_output = session_path / user_input_dirname / "user_input_check.txt"
+    path_to_output_check_model_output = session_path / input_reader.generated_dirname / "user_input_check.txt"
     
     # First check of user input
     if path_to_output.exists():
@@ -75,12 +74,17 @@ if __name__ == "__main__":
     if not os.path.isdir("sessions"):
         raise ValueError("No sessions directory found. Please create a sessions directory and make a subdir structure as shown in the README.md file")
 
+    sessions_root = Path("sessions")
+
     if len(sys.argv) == 2:
-        session_dir = sys.argv[1]
+        session_dir = sessions_root / Path(sys.argv[1])
+        
+        if not os.path.isdir(session_dir):
+            raise ValueError(f"Session directory {session_dir} does not exist")
     else:
-        # Find the most recently modified session directory in ./sessions
-        sessions_root = Path(__file__).parent / "sessions"
+
         session_dirs = [d for d in sessions_root.iterdir() if d.is_dir()]
+        
         if not session_dirs:
             print("No session directories found in ./sessions.")
             sys.exit(1)
@@ -89,6 +93,8 @@ if __name__ == "__main__":
         session_dir = str(session_dirs[0])
         print(f"No session_dir provided. Using most recent session: {session_dir}")
     # Pass the API key to check_input via environment or directly if needed
-    check_input(session_dir)
+    input_file_path = session_dir / Path("inputs") / Path("user_input.xml")
+    input_reader = get_input_reader(input_file_path)
+    check_input(session_dir,input_reader)
 
         

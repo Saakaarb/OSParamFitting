@@ -7,6 +7,13 @@ class XMLReader():
     
     def __init__(self):
 
+        # path information
+        # populated with defaults
+        self.user_input_dirname="inputs"
+        self.generated_dirname="generated"
+        self.output_dirname="outputs"
+
+
         # model information
         self.n_search_axes=None
         self.min_axis_values=[]
@@ -80,6 +87,18 @@ class XMLReader():
                             elif name=="COLUMN_INDEX":
 
                                 self.data_column_index.append(int(value))
+
+            elif child.tag=="PATH":
+                for child2 in child:
+                    name=child2.text.split('=')[0].strip()
+                    value=child2.text.split('=')[1].strip()
+                    if name=="USER_INPUT_DIR":
+                        self.user_input_dirname=value
+                    elif name=="GENERATED_DIR":
+                        self.generated_dirname=value
+                    elif name=="OUTPUT_DIR":
+                        self.output_dirname=value
+
 
             elif child.tag=="MODEL":
 
