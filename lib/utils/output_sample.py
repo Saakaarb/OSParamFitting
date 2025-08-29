@@ -47,6 +47,8 @@ def user_defined_system(t, y, other_args):
     min_val = constants["min_limits"]
     max_val = constants["max_limits"]
     is_logscale = constants["is_logscale"]
+
+
     # ----------------------
 
     k1, k2, k3 = unscale_value(trainable_variables, min_val, max_val, is_logscale)
@@ -106,7 +108,9 @@ def _compute_loss_problem(constants, trainable_variables):
 
     
     # this part is user entered
+    #---------------------------------------------------
     
+    #---------------------------------------------------
 
     #fixed
     #--------------------------------------
@@ -130,6 +134,9 @@ def _write_problem_result(constants,trainable_variables):
     #---------------------------------------------------
 
     # the rest is user entered
+    #---------------------------------------------------
+
+    #---------------------------------------------------
    
 
 

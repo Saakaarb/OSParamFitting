@@ -41,8 +41,15 @@ def run_driver(session_dir):
     fit_generic_system(path_to_input, path_to_output_dir, generated_dir)
 
 if __name__ == "__main__":
+    
+    if not os.path.isdir("sessions"):
+        raise ValueError("No sessions directory found. Please create a sessions directory and make a subdir structure as shown in the README.md file")
+
+
     if len(sys.argv) == 2:
         session_dir = sys.argv[1]
+        if not os.path.isdir(session_dir):
+            raise ValueError(f"Session directory {session_dir} does not exist")
     else:
         # Find the most recently created session directory
         sessions_root = Path("sessions")

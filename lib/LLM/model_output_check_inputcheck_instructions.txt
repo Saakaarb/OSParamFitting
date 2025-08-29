@@ -18,7 +18,7 @@ Do NOT return any boilerplate text around this report. The report is the only th
 
 ALSO consider the following points when making a decision on each point:
 
-1. The code provided by the user is python pseudocode. 
+1. The code provided by the user is python pseudocode, which will be translated into JAX.
 
 2. DO NOT point out indentation or whitespace errors in user provided code. If the point is about this, remove it.
 

@@ -7,14 +7,16 @@ def check_input(session_dir):
     """Check user input with session-specific paths"""
     print("Launching script to check user input")
 
-    session_path = Path(session_dir)
-    path_to_input = session_path / "generated" / "user_input.xml"
-    path_to_user_code = session_path / "generated" / "user_model.py"
-    path_to_output = session_path / "generated" / "raw_user_input_check.txt"
+    user_input_dirname = "generated"
 
-    path_to_input_check_model_output = session_path / "generated" / "raw_user_input_check.txt"
+    session_path = Path(session_dir)
+    path_to_input = session_path / user_input_dirname / "user_input.xml"
+    path_to_user_code = session_path / user_input_dirname / "user_model.py"
+    path_to_output = session_path / user_input_dirname / "raw_user_input_check.txt"
+
+    path_to_input_check_model_output = session_path / user_input_dirname / "raw_user_input_check.txt"
     reference_file_paths_check_model_output = []
-    path_to_output_check_model_output = session_path / "generated" / "user_input_check.txt"
+    path_to_output_check_model_output = session_path / user_input_dirname / "user_input_check.txt"
     
     # First check of user input
     if path_to_output.exists():
@@ -61,9 +63,18 @@ def check_input(session_dir):
     output_check_model.check_model_output_inputcheck(path_to_output_check_model_output)
     print("Finished checking model report")
 
+    # print resulting file to terminal
+    with open(path_to_output_check_model_output, "r") as file:
+        print(file.read())
+    
+
 
 if __name__ == "__main__":
     api_key = os.environ.get("OPENAI_ENV_KEY")
+
+    if not os.path.isdir("sessions"):
+        raise ValueError("No sessions directory found. Please create a sessions directory and make a subdir structure as shown in the README.md file")
+
     if len(sys.argv) == 2:
         session_dir = sys.argv[1]
     else:
