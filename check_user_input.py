@@ -3,9 +3,33 @@ from lib.LLM.classes import OpenAI_model
 import os
 import sys
 from lib.utils.helper_functions import get_input_reader
+from lib.utils.xmlread import XMLReader
 
-def check_input(session_dir,input_reader):
-    """Check user input with session-specific paths"""
+def check_input(session_dir: Path,input_reader: XMLReader):
+    """"
+    Check user input with session-specific paths and validate the setup.
+
+    This function performs a comprehensive validation of the user's input configuration
+    by checking directory structures, XML files, and user-defined Python code. It uses
+    an LLM-based agent to analyze the inputs and generate a detailed report of any
+    errors or warnings that need to be addressed before proceeding to parameter fitting.
+
+    Args:
+        session_dir (Path): Path to the session directory containing the user's
+                        input files and generated code
+        input_reader (XMLReader): XMLReader instance that contains configuration
+                                information about directory names and file paths
+
+    The function performs the following operations:
+    1. Creates necessary directories if they don't exist
+    2. Validates the user_input.xml file against the user_model.py code
+    3. Generates a detailed report of critical errors and warnings
+    4. Refines the validation report for better readability
+    5. Displays the final validation results to the terminal
+
+    Returns:
+        None: Results are written to output files and displayed in terminal
+    """
     print("Launching script to check user input")
 
     # check if necessary dirs exist in session_dir

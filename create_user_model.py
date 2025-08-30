@@ -3,9 +3,33 @@ from lib.LLM.classes import OpenAI_model
 import os
 import sys
 from lib.utils.helper_functions import get_input_reader
+from lib.utils.xmlread import XMLReader
 
-def create_user_model(session_dir,input_reader):
-    """Check user input with session-specific paths"""
+def create_user_model(session_dir: Path,input_reader: XMLReader):
+    """
+    Generate a user model skeleton from XML input configuration.
+
+    This function creates a Python code skeleton (user_model.py) that the user
+    can populate with their specific ODE system definitions. It uses an LLM-based
+    agent to analyze the XML configuration and generate appropriate Python code
+    templates that follow the framework's requirements.
+
+    Args:
+        session_dir (Path): Path to the session directory where the user model
+                        will be generated
+        input_reader (XMLReader): XMLReader instance containing configuration
+                                information about directory names and file paths
+
+    The function performs the following operations:
+    1. Creates necessary directories if they don't exist
+    2. Reads the user_input.xml configuration file
+    3. Uses an LLM agent to generate a Python code skeleton based on the XML
+    4. Writes the generated user_model.py to the session's generated directory
+    5. Provides instructions for the user to populate the generated functions
+
+    Returns:
+        None: The user model skeleton is written to the generated directory
+    """
     print("Launching script to create user model")
 
     # check if necessary dirs exist in session_dir
@@ -16,8 +40,8 @@ def create_user_model(session_dir,input_reader):
         print(f"Generated directory {session_dir / input_reader.generated_dirname} does not exist, making it...")
         os.makedirs(session_dir / input_reader.generated_dirname)
     if not os.path.isdir(session_dir / input_reader.output_dirname / "inputs"):
-        print(f"Output directory {session_dir / input_reader.output_dirname / 'inputs'} does not exist, making it...")
-        os.makedirs(session_dir / input_reader.output_dirname / "inputs")
+        print(f"Output directory {session_dir / input_reader.output_dirname } does not exist, making it...")
+        os.makedirs(session_dir / input_reader.output_dirname)
 
     session_path = Path(session_dir)
     path_to_input = session_path / input_reader.user_input_dirname / "user_input.xml"

@@ -14,7 +14,164 @@ import sys
 
 jax.config.update("jax_enable_x64", True)
 
-def get_input_reader(path_to_input):
+class CreatedClass(ProblemObjectBase):
+    def __init__(self, dataset: np.ndarray, t_eval: np.ndarray, y0: jnp.ndarray, input_reader: XMLReader, compute_loss_problem, write_problem_result):
+        """
+        Initialize the CreatedClass instance with problem configuration.
+
+        Args:
+            dataset (numpy.ndarray): Experimental data array with shape (time_steps, variables)
+            t_eval (numpy.ndarray): Time points for solution evaluation
+            y0 (jax.numpy.ndarray): Initial conditions for the ODE system
+            input_reader (XMLReader): Configuration reader containing all problem parameters
+            compute_loss_problem (callable): Function to compute loss for given parameters
+            write_problem_result (callable): Function to write problem results
+
+        The constructor sets up the complete problem environment including:
+        - Parameter management (trainable vs fixed)
+        - Integration settings (tolerance, step size, max steps)
+        - Time domain configuration
+        - Loss computation and result writing functions
+        """
+        super().__init__()
+        self.y0 = y0
+        self.input_reader = input_reader
+        self.t_eval = t_eval
+        self.dataset = np.array(dataset)
+        self.num_columns_to_fit = self.dataset.shape[1]
+        self.params_to_fit_names = self.input_reader.trainable_parameter_names
+        self.fixed_param_names = self.input_reader.fixed_parameter_names
+        self.fixed_param_values = self.input_reader.fixed_parameter_values
+        self.fixed_val_dict = {}
+        for i in range(len(self.input_reader.fixed_parameter_names)):
+            self.fixed_val_dict[self.fixed_param_names[i]] = self.fixed_param_values[i]
+        self.constants = {
+            "dataset": jnp.array(self.dataset),
+            "t_eval": t_eval,
+            "init_cond": y0,
+        }
+        print("NOTE: currently, only simulations till the same final time are supported")
+        self.constants["num_steps"] = self.dataset.shape[0]
+        if self.input_reader.init_time is None:
+            self.constants["init_time"] = self.t_eval[0]
+        else:
+            self.constants["init_time"] = self.input_reader.init_time
+        self.constants["final_time"] = self.t_eval[-1]
+        self.constants['stepsize_rtol'] = np.array(self.input_reader.stepsize_rtol)
+        self.constants['stepsize_atol'] = np.array(self.input_reader.stepsize_atol)
+        self.constants['init_timestep'] = self.input_reader.init_timestep
+        self.constants['max_steps'] = self.input_reader.max_steps
+        self.constants['fixed_parameters'] = self.fixed_val_dict
+        self.constants['error_loss'] = self.input_reader.error_loss
+        self._compute_loss_problem = compute_loss_problem
+        self._write_problem_result = write_problem_result
+
+    def _compute_all_losses(self, population: np.ndarray):
+        """
+        Compute losses for an entire population of parameter sets.
+
+        Args:
+            population (numpy.ndarray): Array of parameter sets, shape (n_individuals, n_parameters)
+
+        Returns:
+            numpy.ndarray: Array of loss values for each parameter set, with NaN/Inf values
+                        replaced by 1e10 to prevent optimization issues
+
+        This method iterates through each parameter set in the population and computes
+        the corresponding loss using the JIT-compiled _compute_loss method.
+        """
+        losses = []
+        for i in range(population.shape[0]):
+            loss = self._compute_loss(population[i])
+            
+            if np.isnan(loss) or np.isinf(loss):
+                loss=1e10
+            losses.append(loss)
+        return np.array(losses)
+
+    @partial(jax.jit, static_argnums=(0,))
+    def _compute_loss(self, design_pt: np.ndarray):
+        """
+        Compute loss for a single parameter set using JIT compilation.
+
+        Args:
+            design_pt (jax.numpy.ndarray): Single parameter set to evaluate
+
+        Returns:
+            float: Computed loss value for the given parameters
+
+        This method is JIT-compiled for performance and calls the user-defined
+        loss computation function with the problem constants and parameters.
+        """
+        return self._compute_loss_problem(self.constants, jnp.array(design_pt))
+
+    def set_min_limit(self, min_lim: list[float]):
+        """
+        Set minimum bounds for parameter search space.
+
+        Args:
+            min_lim (numpy.ndarray): Array of minimum values for each parameter
+
+        The limits are stored in the constants dictionary and used by the
+        optimization algorithms to constrain the search space.
+        """
+        self.constants["min_limits"] = jnp.array(min_lim)
+
+    def set_max_limit(self, max_lim: list[float]):
+        """
+        Set maximum bounds for parameter search space.
+
+        Args:
+            max_lim (numpy.ndarray): Array of maximum values for each parameter
+
+        The limits are stored in the constants dictionary and used by the
+        optimization algorithms to constrain the search space.
+        """
+        self.constants["max_limits"] = jnp.array(max_lim)
+
+    def set_is_logscale(self, is_logscale: list[bool]):
+        """
+        Set log-scale flag for parameter axes.
+
+        Args:
+            is_logscale (numpy.ndarray): Boolean array indicating which parameters
+                                        should use log-scale transformation
+
+        This affects how the optimization algorithms handle parameter scaling
+        and search space exploration.
+        """
+        self.constants["is_logscale"] = jnp.array(is_logscale)
+
+    def write_problem_result(self, design_point: np.ndarray, input_reader: XMLReader, label:str="default"):
+        """
+        Write problem solution results to CSV files.
+
+        Args:
+            design_point (numpy.ndarray): Parameter set that produced the solution
+            input_reader (XMLReader): Configuration reader containing output directory info
+            label (str, optional): Label for the output file. Defaults to "default"
+
+        The method calls the user-defined result writing function and saves the
+        output to a CSV file in the format "{label}_solution.csv".
+        """
+        writeout_array = self._write_problem_result(self.constants, jnp.array(design_point))
+        np.savetxt(input_reader.output_dir/Path(f"{label}_solution.csv"), writeout_array, delimiter=",")
+      
+
+
+def get_input_reader(path_to_input: Path):
+    """
+    Parse XML input file and create an XMLReader instance.
+
+    Args:
+        path_to_input (Path): Path to the XML configuration file
+
+    Returns:
+        XMLReader: Configured reader instance containing all problem parameters
+
+    This function parses the XML file using ElementTree and initializes
+    an XMLReader object with the parsed configuration data.
+    """
     tree = ET.parse(path_to_input)
     root = tree.getroot()
 
@@ -24,7 +181,7 @@ def get_input_reader(path_to_input):
     return input_reader
 
 
-def fit_generic_system(path_to_input, path_to_output_dir, generated_dir,session_path):
+def fit_generic_system(path_to_input: Path, path_to_output_dir: Path, generated_dir: Path,session_path: Path):
     """Fit a generic system using a two-phase optimization approach.
 
     This function performs parameter fitting using a combination of:
@@ -114,8 +271,9 @@ def fit_generic_system(path_to_input, path_to_output_dir, generated_dir,session_
 
 
 # fixed
-def fit_equation_system(input_reader, y0, t_eval, dataset, problem_obj):
-    """Fit a system of equations using a two-phase optimization approach.
+def fit_equation_system(input_reader: XMLReader, y0: jnp.ndarray, t_eval: np.ndarray, dataset: np.ndarray, problem_obj: CreatedClass):
+    """
+    Fit a system of equations using a two-phase optimization approach.
 
     This function performs parameter fitting for a system of equations using:
     1. Population-based optimization (PSO) for global search
@@ -127,36 +285,22 @@ def fit_equation_system(input_reader, y0, t_eval, dataset, problem_obj):
     3. Running NODE to refine the parameters
     4. Writing results to output directory
 
-    Parameters
-    ----------
-    input_reader : XMLReader
-        Reader object containing optimization parameters from XML
-    y0 : jax.numpy.ndarray
-        Initial conditions for the system of equations
-    t_eval : numpy.ndarray
-        Time points at which to evaluate the solution
-    dataset : numpy.ndarray
-        Experimental data to fit against
-    problem_obj : CreatedClass
-        Problem object containing loss computation and result writing methods
+    Args:
+        input_reader (XMLReader): Reader object containing optimization parameters from XML
+        y0 (jax.numpy.ndarray): Initial conditions for the system of equations
+        t_eval (numpy.ndarray): Time points at which to evaluate the solution
+        dataset (numpy.ndarray): Experimental data to fit against
+        problem_obj (CreatedClass): Problem object containing loss computation and result writing methods
 
-    Notes
-    -----
-    - PSO is used first to explore the parameter space globally
-    - NODE uses the best PSO result as its initial guess
-    - Results are written to the output directory specified in input_reader
-    - Progress is logged to the output directory
+    Returns:
+        numpy.ndarray: Best parameter set found during optimization
 
-    Returns
-    -------
-    best_position: numpy.ndarray
-        Best position found during optimization
-    
-
-    See Also
-    --------
-    FitParamsPSO : Class for PSO optimization parameters
-    FitParamsNODE : Class for NODE optimization parameters
+    Notes:
+        - PSO is used first to explore the parameter space globally
+        - NODE uses the best PSO result as its initial guess
+        - Results are written to the output directory specified in input_reader
+        - Progress is logged to the output directory
+        - Final parameters are saved to final_design_point.csv
     """
     ## create fit object code
     # make sure this can be any algorithm
@@ -217,8 +361,31 @@ def fit_equation_system(input_reader, y0, t_eval, dataset, problem_obj):
 
     return unscaled_best_position_tuned
 
-def optimize_function(fit_obj, input_reader, file_obj):
-    
+def optimize_function(fit_obj: FitParamsPSO, input_reader: XMLReader, file_obj: Path):
+    """
+    Execute PSO optimization iterations with logging and error handling.
+
+    This function runs the PSO optimization algorithm for the specified number
+    of iterations, logging progress and handling any errors that occur during
+    the optimization process.
+
+    Args:
+        fit_obj (FitParamsPSO): PSO optimization object configured with problem parameters
+        input_reader (XMLReader): Configuration reader containing iteration count and output directory
+        file_obj (Path): Path to the log file for writing optimization progress
+
+    Returns:
+        tuple: (best_position, best_cost) - Best parameter set found and its corresponding cost
+
+    Raises:
+        Exception: If optimization fails, with error details written to fitting_error.txt
+
+    Notes:
+        - The function checks for a stop_fitting.flag file to allow early termination
+        - Progress is logged to the specified log file
+        - Errors are captured and written to fitting_error.txt in the output directory
+        - If optimization fails, the current best position is returned if available
+    """  
     print("Starting Search Iterations")
     # Iterations
     try:
@@ -249,66 +416,66 @@ def optimize_function(fit_obj, input_reader, file_obj):
     return fit_obj.best_pos,fit_obj.swarm_obj.best_cost
 
 
-class CreatedClass(ProblemObjectBase):
-    def __init__(self, dataset, t_eval, y0, input_reader, compute_loss_problem, write_problem_result):
-        super().__init__()
-        self.y0 = y0
-        self.input_reader = input_reader
-        self.t_eval = t_eval
-        self.dataset = np.array(dataset)
-        self.num_columns_to_fit = self.dataset.shape[1]
-        self.params_to_fit_names = self.input_reader.trainable_parameter_names
-        self.fixed_param_names = self.input_reader.fixed_parameter_names
-        self.fixed_param_values = self.input_reader.fixed_parameter_values
-        self.fixed_val_dict = {}
-        for i in range(len(self.input_reader.fixed_parameter_names)):
-            self.fixed_val_dict[self.fixed_param_names[i]] = self.fixed_param_values[i]
-        self.constants = {
-            "dataset": jnp.array(self.dataset),
-            "t_eval": t_eval,
-            "init_cond": y0,
-        }
-        print("NOTE: currently, only simulations till the same final time are supported")
-        self.constants["num_steps"] = self.dataset.shape[0]
-        if self.input_reader.init_time is None:
-            self.constants["init_time"] = self.t_eval[0]
-        else:
-            self.constants["init_time"] = self.input_reader.init_time
-        self.constants["final_time"] = self.t_eval[-1]
-        self.constants['stepsize_rtol'] = np.array(self.input_reader.stepsize_rtol)
-        self.constants['stepsize_atol'] = np.array(self.input_reader.stepsize_atol)
-        self.constants['init_timestep'] = self.input_reader.init_timestep
-        self.constants['max_steps'] = self.input_reader.max_steps
-        self.constants['fixed_parameters'] = self.fixed_val_dict
-        self.constants['error_loss'] = self.input_reader.error_loss
-        self._compute_loss_problem = compute_loss_problem
-        self._write_problem_result = write_problem_result
+# class CreatedClass(ProblemObjectBase):
+#     def __init__(self, dataset, t_eval, y0, input_reader, compute_loss_problem, write_problem_result):
+#         super().__init__()
+#         self.y0 = y0
+#         self.input_reader = input_reader
+#         self.t_eval = t_eval
+#         self.dataset = np.array(dataset)
+#         self.num_columns_to_fit = self.dataset.shape[1]
+#         self.params_to_fit_names = self.input_reader.trainable_parameter_names
+#         self.fixed_param_names = self.input_reader.fixed_parameter_names
+#         self.fixed_param_values = self.input_reader.fixed_parameter_values
+#         self.fixed_val_dict = {}
+#         for i in range(len(self.input_reader.fixed_parameter_names)):
+#             self.fixed_val_dict[self.fixed_param_names[i]] = self.fixed_param_values[i]
+#         self.constants = {
+#             "dataset": jnp.array(self.dataset),
+#             "t_eval": t_eval,
+#             "init_cond": y0,
+#         }
+#         print("NOTE: currently, only simulations till the same final time are supported")
+#         self.constants["num_steps"] = self.dataset.shape[0]
+#         if self.input_reader.init_time is None:
+#             self.constants["init_time"] = self.t_eval[0]
+#         else:
+#             self.constants["init_time"] = self.input_reader.init_time
+#         self.constants["final_time"] = self.t_eval[-1]
+#         self.constants['stepsize_rtol'] = np.array(self.input_reader.stepsize_rtol)
+#         self.constants['stepsize_atol'] = np.array(self.input_reader.stepsize_atol)
+#         self.constants['init_timestep'] = self.input_reader.init_timestep
+#         self.constants['max_steps'] = self.input_reader.max_steps
+#         self.constants['fixed_parameters'] = self.fixed_val_dict
+#         self.constants['error_loss'] = self.input_reader.error_loss
+#         self._compute_loss_problem = compute_loss_problem
+#         self._write_problem_result = write_problem_result
 
-    def _compute_all_losses(self, population):
-        losses = []
-        for i in range(population.shape[0]):
-            loss = self._compute_loss(population[i])
+#     def _compute_all_losses(self, population):
+#         losses = []
+#         for i in range(population.shape[0]):
+#             loss = self._compute_loss(population[i])
             
-            if np.isnan(loss) or np.isinf(loss):
-                loss=1e10
-            losses.append(loss)
-        return np.array(losses)
+#             if np.isnan(loss) or np.isinf(loss):
+#                 loss=1e10
+#             losses.append(loss)
+#         return np.array(losses)
 
-    @partial(jax.jit, static_argnums=(0,))
-    def _compute_loss(self, design_pt):
-        return self._compute_loss_problem(self.constants, jnp.array(design_pt))
+#     @partial(jax.jit, static_argnums=(0,))
+#     def _compute_loss(self, design_pt):
+#         return self._compute_loss_problem(self.constants, jnp.array(design_pt))
 
-    def set_min_limit(self, min_lim):
-        self.constants["min_limits"] = jnp.array(min_lim)
+#     def set_min_limit(self, min_lim):
+#         self.constants["min_limits"] = jnp.array(min_lim)
 
-    def set_max_limit(self, max_lim):
-        self.constants["max_limits"] = jnp.array(max_lim)
+#     def set_max_limit(self, max_lim):
+#         self.constants["max_limits"] = jnp.array(max_lim)
 
-    def set_is_logscale(self, is_logscale):
-        self.constants["is_logscale"] = jnp.array(is_logscale)
+#     def set_is_logscale(self, is_logscale):
+#         self.constants["is_logscale"] = jnp.array(is_logscale)
 
-    def write_problem_result(self, design_point, input_reader, label="default"):
-        writeout_array = self._write_problem_result(self.constants, jnp.array(design_point))
-        np.savetxt(input_reader.output_dir/Path(f"{label}_solution.csv"), writeout_array, delimiter=",")
+#     def write_problem_result(self, design_point, input_reader, label="default"):
+#         writeout_array = self._write_problem_result(self.constants, jnp.array(design_point))
+#         np.savetxt(input_reader.output_dir/Path(f"{label}_solution.csv"), writeout_array, delimiter=",")
         
         

@@ -5,9 +5,34 @@ import shutil
 import sys
 from lib.utils.helper_functions import fit_generic_system
 from lib.utils.helper_functions import get_input_reader
+from lib.utils.xmlread import XMLReader
 
-def run_driver(session_dir,input_reader):
-    """Run the driver script with session-specific paths"""
+def run_driver(session_dir: Path,input_reader: XMLReader):
+    """
+    Execute the complete parameter fitting workflow for the user's ODE system.
+
+    This function orchestrates the entire parameter estimation process by generating
+    the necessary optimization scripts and executing the fitting algorithm. It uses
+    an LLM-based agent to create optimized code for the specific ODE system defined
+    in the user's configuration, then runs the parameter fitting using a two-layer
+    optimization strategy.
+
+    Args:
+        session_dir (Path): Path to the session directory containing the user's
+                        input files, generated code, and where outputs will be stored
+        input_reader (XMLReader): XMLReader instance containing configuration
+                                information about directory names and file paths
+
+    The function performs the following operations:
+    1. Cleans and recreates the output directory for fresh results
+    2. Uses an LLM agent to generate optimized fitting scripts based on the user's model
+    3. Executes the parameter fitting process using the generated scripts
+    4. Applies a two-layer optimization strategy (population-based followed by gradient-based)
+    5. Stores the fitted parameters and optimization results in the output directory
+
+    Returns:
+        None: Results are written to the output directory and displayed in terminal
+    """
     print("Launching driver script")
 
     # Use session-specific paths
