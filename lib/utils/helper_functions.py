@@ -66,7 +66,7 @@ class CreatedClass(ProblemObjectBase):
         self._compute_loss_problem = compute_loss_problem
         self._write_problem_result = write_problem_result
 
-    def _compute_all_losses(self, population: np.ndarray):
+    def _compute_all_losses(self, population: np.ndarray)-> np.ndarray:
         """
         Compute losses for an entire population of parameter sets.
 
@@ -90,7 +90,7 @@ class CreatedClass(ProblemObjectBase):
         return np.array(losses)
 
     @partial(jax.jit, static_argnums=(0,))
-    def _compute_loss(self, design_pt: np.ndarray):
+    def _compute_loss(self, design_pt: np.ndarray)-> float:
         """
         Compute loss for a single parameter set using JIT compilation.
 
@@ -105,7 +105,7 @@ class CreatedClass(ProblemObjectBase):
         """
         return self._compute_loss_problem(self.constants, jnp.array(design_pt))
 
-    def set_min_limit(self, min_lim: list[float]):
+    def set_min_limit(self, min_lim: list[float])-> None:
         """
         Set minimum bounds for parameter search space.
 
@@ -117,7 +117,7 @@ class CreatedClass(ProblemObjectBase):
         """
         self.constants["min_limits"] = jnp.array(min_lim)
 
-    def set_max_limit(self, max_lim: list[float]):
+    def set_max_limit(self, max_lim: list[float])-> None:
         """
         Set maximum bounds for parameter search space.
 
@@ -129,7 +129,7 @@ class CreatedClass(ProblemObjectBase):
         """
         self.constants["max_limits"] = jnp.array(max_lim)
 
-    def set_is_logscale(self, is_logscale: list[bool]):
+    def set_is_logscale(self, is_logscale: list[bool])-> None:
         """
         Set log-scale flag for parameter axes.
 
@@ -142,7 +142,7 @@ class CreatedClass(ProblemObjectBase):
         """
         self.constants["is_logscale"] = jnp.array(is_logscale)
 
-    def write_problem_result(self, design_point: np.ndarray, input_reader: XMLReader, label:str="default"):
+    def write_problem_result(self, design_point: np.ndarray, input_reader: XMLReader, label:str="default")-> None:
         """
         Write problem solution results to CSV files.
 
@@ -159,7 +159,7 @@ class CreatedClass(ProblemObjectBase):
       
 
 
-def get_input_reader(path_to_input: Path):
+def get_input_reader(path_to_input: Path)-> XMLReader:
     """
     Parse XML input file and create an XMLReader instance.
 
@@ -181,7 +181,7 @@ def get_input_reader(path_to_input: Path):
     return input_reader
 
 
-def fit_generic_system(path_to_input: Path, path_to_output_dir: Path, generated_dir: Path,session_path: Path):
+def fit_generic_system(path_to_input: Path, path_to_output_dir: Path, generated_dir: Path,session_path: Path)-> np.ndarray:
     """Fit a generic system using a two-phase optimization approach.
 
     This function performs parameter fitting using a combination of:
@@ -216,7 +216,7 @@ def fit_generic_system(path_to_input: Path, path_to_output_dir: Path, generated_
 
     Returns
     -------
-    None
+    numpy.ndarray: Best parameter set found during optimization
 
     See Also
     --------
@@ -271,7 +271,7 @@ def fit_generic_system(path_to_input: Path, path_to_output_dir: Path, generated_
 
 
 # fixed
-def fit_equation_system(input_reader: XMLReader, y0: jnp.ndarray, t_eval: np.ndarray, dataset: np.ndarray, problem_obj: CreatedClass):
+def fit_equation_system(input_reader: XMLReader, y0: jnp.ndarray, t_eval: np.ndarray, dataset: np.ndarray, problem_obj: CreatedClass)-> np.ndarray:
     """
     Fit a system of equations using a two-phase optimization approach.
 
@@ -361,7 +361,7 @@ def fit_equation_system(input_reader: XMLReader, y0: jnp.ndarray, t_eval: np.nda
 
     return unscaled_best_position_tuned
 
-def optimize_function(fit_obj: FitParamsPSO, input_reader: XMLReader, file_obj: Path):
+def optimize_function(fit_obj: FitParamsPSO, input_reader: XMLReader, file_obj: Path)-> tuple[np.ndarray, float]:
     """
     Execute PSO optimization iterations with logging and error handling.
 

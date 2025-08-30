@@ -2,15 +2,15 @@ import numpy as np
 import pyswarms
 from lib.utils.doe_space_sampling import get_spacefilled_DoE
 import time
+from lib.utils.xmlread import XMLReader
+from lib.utils.classes import ProblemObjectBase
+from pathlib import Path
 
-
-# input_reader: xml(TBD) object, contains info about optimization (population)
-# problem_object: obj with information about the ODE/PDE, data to fit etc.
 
 
 class FitParamsPSO:
 
-    def __init__(self, input_reader, problem_object):
+    def __init__(self, input_reader: XMLReader, problem_object: ProblemObjectBase):
         """Initialize the Particle Swarm Optimization (PSO) fitting parameters.
 
         This method sets up the PSO algorithm parameters by:
@@ -30,7 +30,7 @@ class FitParamsPSO:
             - max_axis_values : List of maximum values for each axis
             - n_particles : Number of particles in the swarm
             - n_iters_pop : Number of iterations for population-based search
-        problem_object : object
+        problem_object : ProblemObjectBase
             Object containing problem-specific information:
             - compute_all_losses : Method to compute loss values for all particles
 
@@ -126,7 +126,7 @@ class FitParamsPSO:
 
         self.initialize_swarm()
 
-    def initialize_swarm(self):
+    def initialize_swarm(self)-> None:
         """Initialize the particle swarm optimization (PSO) algorithm.
 
         This method sets up the PSO algorithm by:
@@ -185,7 +185,7 @@ class FitParamsPSO:
             clamp=self.vel_clamp,
         )
 
-        # TODO edit doe axis limit input
+        
         doe_axis_lims = []
         for i_axis in range(self.input_reader.n_search_axes):
 
@@ -215,15 +215,15 @@ class FitParamsPSO:
         # declare array for unscaled position
         self.unscaled_position = np.zeros_like(self.swarm_obj.position)
 
-    def scale_value(self, val, min_val, max_val):
+    def scale_value(self, val: float, min_val: float, max_val: float)-> float:
 
         return 2 * (val - min_val) / (max_val - min_val) - 1
 
-    def unscale_value(self, val, min_val, max_val):
+    def unscale_value(self, val: float, min_val: float, max_val: float):
 
         return (1 + val) * (max_val - min_val) / 2 + min_val
 
-    def unscale_design_point(self, position):
+    def unscale_design_point(self, position: np.ndarray)-> np.ndarray:
 
         if not isinstance(position, np.ndarray):
             raise ValueError("Query point to unscale_design_point must be a np array")
@@ -250,14 +250,14 @@ class FitParamsPSO:
 
         return unscaled_position
 
-    def compute_losses(self):
+    def compute_losses(self)-> np.ndarray:
 
         #all_losses=np.zeros(self.swarm_obj.position.shape[0])
 
         all_losses = self.problem_obj.compute_all_losses(self.swarm_obj.position)
         return all_losses
 
-    def search_iteration(self, iter_no, file_obj):
+    def search_iteration(self, iter_no: int, file_obj: Path)-> None:
         """Perform a single iteration of the particle swarm optimization search.
 
         This method executes one iteration of the PSO algorithm, which includes:
@@ -297,7 +297,7 @@ class FitParamsPSO:
 
         Returns
         -------
-        None
+        numpy.ndarray: Best parameter set found during optimization
 
         See Also
         --------

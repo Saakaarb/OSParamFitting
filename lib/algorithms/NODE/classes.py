@@ -9,11 +9,12 @@ from copy import deepcopy
 import time
 from pathlib import Path
 from lib.utils.xmlread import XMLReader
+from lib.utils.classes import ProblemObjectBase
 #os.environ["EQX_ON_ERROR"]="nan"
 
 class FitParamsNODE:
 
-    def __init__(self, input_reader: XMLReader, problem_object, init_guess=None):
+    def __init__(self, input_reader: XMLReader, problem_object: ProblemObjectBase, init_guess: np.ndarray=None):
         """Initialize the Neural Ordinary Differential Equation (NODE) fitting parameters.
 
         This method sets up the NODE optimization parameters by:
@@ -182,30 +183,26 @@ class FitParamsNODE:
 
         # self.constants['']
 
-    def scale_value(self, val, min_val, max_val):
+    def scale_value(self, val: float, min_val: float, max_val: float)-> float:
 
         return scale_value(val, min_val, max_val)
 
-    def unscale_value(self, val, min_val, max_val):
+    def unscale_value(self, val: float, min_val: float, max_val: float)-> float:
 
         return unscale_value(val, min_val, max_val)
 
-    # must hook into user/LLM defined loss function
-    # TODO define order of arguments and static jit args
-    # first two arguments are going to be constants and trainable_param
-    # TODO construct infra to define N static arguments after
 
-    def compute_loss(self, trainable_params):
+    def compute_loss(self, trainable_params: np.ndarray)-> float:
 
         return self.problem_obj._compute_loss(trainable_params)
 
-    def constrain_search_vars(self):
+    def constrain_search_vars(self)-> None:
 
         self.trainable_params = jnp.clip(
             self.trainable_params, self.sc_min_search_list, self.sc_max_search_list
         )
 
-    def train_NODE(self):
+    def train_NODE(self)-> tuple[np.ndarray, float]:
         """Train the Neural Ordinary Differential Equation (NODE) model.
 
         This method performs the gradient-based optimization of the NODE model by:
@@ -217,7 +214,8 @@ class FitParamsNODE:
 
         Parameters
         ----------
-        None
+        numpy.ndarray: Best parameter set found during optimization
+        float: Best cost value found during optimization
 
         Attributes
         ----------
