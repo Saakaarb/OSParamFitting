@@ -8,11 +8,12 @@ import os
 from copy import deepcopy
 import time
 from pathlib import Path
+from lib.utils.xmlread import XMLReader
 #os.environ["EQX_ON_ERROR"]="nan"
 
 class FitParamsNODE:
 
-    def __init__(self, input_reader, problem_object, init_guess=None):
+    def __init__(self, input_reader: XMLReader, problem_object, init_guess=None):
         """Initialize the Neural Ordinary Differential Equation (NODE) fitting parameters.
 
         This method sets up the NODE optimization parameters by:
