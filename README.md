@@ -4,6 +4,21 @@
 [![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
 [![GitHub Actions](https://img.shields.io/badge/GitHub%20Actions-Documentation-blue.svg)](https://github.com/Saakaarb/OSParamFitting/actions)
 
+
+
+
+https://github.com/user-attachments/assets/c46ff6ab-75d6-4947-aac2-a1f332b31b2d
+
+
+
+https://github.com/user-attachments/assets/b0e91488-e3f4-4adf-8806-08bd6044ceae
+
+
+
+https://github.com/user-attachments/assets/f3d6be48-d1ad-479d-878a-b2ca8c9e13be
+
+
+
 <div style="display: flex; justify-content: space-between; align-items: center; margin: 20px 0;">
   <div style="flex: 1; margin: 0 10px;">
     <h4>Parameter Convergence</h4>
