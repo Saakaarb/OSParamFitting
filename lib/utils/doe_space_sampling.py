@@ -53,7 +53,7 @@ def get_spacefilled_DoE(n_samples: int, value_ranges: np.ndarray, q: int):
     # initialize
     phi_p_best = np.inf
     
-    n_trials = 20
+    n_trials = 10
     print("Note: using n_trials=",n_trials)
 
     for trial_no in range(n_trials):

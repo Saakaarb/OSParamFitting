@@ -88,4 +88,4 @@ add this line near the top of the generated script: jax.config.update("jax_enabl
 
 A VERY important thing: in the _integrate_system system, the value of max_steps in the diffrax.diffeqsolve function MUST
 be obtained from user_input.xml (given to you as input), in the GRADIENT_OPT/SETTINGS section of the XML. In the provided output_sample,
-this entry is left empty, but you MUST NOT leave it empty.
+this entry is left empty, but you MUST NOT leave it empty. It MUST be the numerical value written in the INP file; do NOT use the variable max_steps to assign this.

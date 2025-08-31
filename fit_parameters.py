@@ -6,6 +6,10 @@ import sys
 from lib.utils.helper_functions import fit_generic_system
 from lib.utils.helper_functions import get_input_reader
 from lib.utils.xmlread import XMLReader
+os.environ["XLA_FLAGS"] = '--xla_force_host_platform_device_count=8'
+import jax
+
+
 
 def run_driver(session_dir: Path,input_reader: XMLReader):
     """
@@ -34,6 +38,8 @@ def run_driver(session_dir: Path,input_reader: XMLReader):
         None: Results are written to the output directory and displayed in terminal
     """
     print("Launching driver script")
+
+    print(jax.devices("cpu"))
 
     # Use session-specific paths
     session_path = Path(session_dir)

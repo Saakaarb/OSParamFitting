@@ -80,13 +80,65 @@ class CreatedClass(ProblemObjectBase):
         This method iterates through each parameter set in the population and computes
         the corresponding loss using the JIT-compiled _compute_loss method.
         """
-        losses = []
-        for i in range(population.shape[0]):
-            loss = self._compute_loss(population[i])
+        #losses = []
+
+        # get number of visible devices
+        n_devices_total = len(jax.devices("cpu"))
+
+        all_devices = jax.devices("cpu")
+
+        user_selected_n_devices=self.input_reader.processors
+
+        if user_selected_n_devices > n_devices_total:
+            print(f"User selected {user_selected_n_devices} devices, but only {n_devices_total} are available. The code is constrained to see a maximum of 8 devices. Using all available devices.")
+            print("The hardcoded upper limit of 8 can be changed in fit_parameters.py")
+
+        used_devices = all_devices[:min(n_devices_total, user_selected_n_devices)]
+
+        n_devices = len(used_devices)
+
+        n_particles = population.shape[0]
+        # define some array splitting logic
+        local_n_particles = np.ceil(n_particles / n_devices).astype(int)
+        pad = local_n_particles * n_devices - n_particles
+        # pad to make equal-sized shards per device
+        if pad:
+            population = jnp.pad(population, ((0, pad), (0, 0)))
+
+        # reshape to [n_dev, local_n, D] for pmap
+        population_sharded = population.reshape(n_devices, local_n_particles, *population.shape[1:])
+
+        # define a shard loss function
+        @jax.jit
+        def shard_loss(shard_population: jax.Array)-> jax.Array:
+            losses = jnp.zeros(local_n_particles)
+            for i in range(shard_population.shape[0]):
+                loss = self._compute_loss(shard_population[i])
+                
+                # JAX-compatible way to handle NaN/Inf values
+                loss = jnp.where(jnp.logical_or(jnp.isnan(loss), jnp.isinf(loss)), 1e10, loss)
+                losses = losses.at[i].set(loss)
+            return losses
+
+        # create a pmap with the number of devices
+        # pmap over devices; broadcast data (in_axes=None)
+        p_shard_loss = jax.pmap(shard_loss, in_axes=(0),devices=used_devices)
+        shard_losses = p_shard_loss(population_sharded)   
+
+        # flatten back and drop padding
+        losses = shard_losses.reshape(-1)[:n_particles]
+
+
+        # TODO replace with jax pmap
+        #losses = jax.pmap(self._compute_loss, in_axes=(0,))(population)
+        #losses = jax.pmap(self._compute_loss, in_axes=(0,))(population)
+        # for i in range(population.shape[0]):
+        #     loss = self._compute_loss(population[i])
             
-            if np.isnan(loss) or np.isinf(loss):
-                loss=1e10
-            losses.append(loss)
+        #     if np.isnan(loss) or np.isinf(loss):
+        #         loss=1e10
+        #     losses.append(loss)
+        
         return np.array(losses)
 
     @partial(jax.jit, static_argnums=(0,))
