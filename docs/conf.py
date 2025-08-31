@@ -14,12 +14,6 @@ import os
 import sys
 sys.path.insert(0, os.path.abspath('..'))
 
-# -- Project information -----------------------------------------------------
-
-project = 'OSParamFitting'
-copyright = '2024'
-author = 'OSParamFitting'
-release = '1.0.0'
 
 # -- General configuration ---------------------------------------------------
 
@@ -60,7 +54,6 @@ html_theme_options = {
     'sticky_navigation': True,
     'includehidden': True,
     'titles_only': False,
-    'github_url': 'https://github.com/yourusername/OSParamFitting',
 }
 
 # -- Options for autodoc ----------------------------------------------------
@@ -90,5 +83,4 @@ intersphinx_mapping = {
 
 # -- GitHub Pages -----------------------------------------------------------
 
-# GitHub Pages configuration
-html_baseurl = 'https://yourusername.github.io/OSParamFitting/'
+
