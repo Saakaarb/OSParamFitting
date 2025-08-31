@@ -8,3 +8,7 @@ optax
 pandas
 pyswarms
 python-dotenv
+sphinx
+sphinx-rtd-theme
+sphinx-autodoc-typehints
+myst-parser

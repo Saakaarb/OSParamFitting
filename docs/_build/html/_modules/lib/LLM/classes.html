@@ -1,0 +1,586 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>lib.LLM.classes &mdash; OSParamFitting 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
+
+  
+    <link rel="canonical" href="https://yourusername.github.io/OSParamFitting/_modules/lib/LLM/classes.html" />
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=8d563738"></script>
+      <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            OSParamFitting
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#module-create_user_model">Main Scripts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api.html#create_user_model.create_user_model"><code class="docutils literal notranslate"><span class="pre">create_user_model()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api.html#check_user_input.check_input"><code class="docutils literal notranslate"><span class="pre">check_input()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api.html#fit_parameters.run_driver"><code class="docutils literal notranslate"><span class="pre">run_driver()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#module-lib.utils.classes">Core Classes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api.html#lib.utils.classes.ProblemObjectBase"><code class="docutils literal notranslate"><span class="pre">ProblemObjectBase</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.utils.classes.ProblemObjectBase.params_to_fit_names"><code class="docutils literal notranslate"><span class="pre">ProblemObjectBase.params_to_fit_names</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.utils.classes.ProblemObjectBase.y0"><code class="docutils literal notranslate"><span class="pre">ProblemObjectBase.y0</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.utils.classes.ProblemObjectBase.t_eval"><code class="docutils literal notranslate"><span class="pre">ProblemObjectBase.t_eval</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.utils.classes.ProblemObjectBase.dataset"><code class="docutils literal notranslate"><span class="pre">ProblemObjectBase.dataset</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.utils.classes.ProblemObjectBase.num_columns_to_fit"><code class="docutils literal notranslate"><span class="pre">ProblemObjectBase.num_columns_to_fit</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.utils.classes.ProblemObjectBase.fixed_params_names"><code class="docutils literal notranslate"><span class="pre">ProblemObjectBase.fixed_params_names</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.utils.classes.ProblemObjectBase.fixed_param_values"><code class="docutils literal notranslate"><span class="pre">ProblemObjectBase.fixed_param_values</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.utils.classes.ProblemObjectBase.__init__"><code class="docutils literal notranslate"><span class="pre">ProblemObjectBase.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.utils.classes.ProblemObjectBase.compute_all_losses"><code class="docutils literal notranslate"><span class="pre">ProblemObjectBase.compute_all_losses()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.utils.classes.ProblemObjectBase.compute_loss"><code class="docutils literal notranslate"><span class="pre">ProblemObjectBase.compute_loss()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.utils.classes.ProblemObjectBase.integrate_system"><code class="docutils literal notranslate"><span class="pre">ProblemObjectBase.integrate_system()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.utils.classes.ProblemObjectBase.plot_result"><code class="docutils literal notranslate"><span class="pre">ProblemObjectBase.plot_result()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api.html#lib.utils.helper_functions.CreatedClass"><code class="docutils literal notranslate"><span class="pre">CreatedClass</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.utils.helper_functions.CreatedClass.__init__"><code class="docutils literal notranslate"><span class="pre">CreatedClass.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.utils.helper_functions.CreatedClass._compute_all_losses"><code class="docutils literal notranslate"><span class="pre">CreatedClass._compute_all_losses()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.utils.helper_functions.CreatedClass._compute_loss"><code class="docutils literal notranslate"><span class="pre">CreatedClass._compute_loss()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.utils.helper_functions.CreatedClass.set_is_logscale"><code class="docutils literal notranslate"><span class="pre">CreatedClass.set_is_logscale()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.utils.helper_functions.CreatedClass.set_max_limit"><code class="docutils literal notranslate"><span class="pre">CreatedClass.set_max_limit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.utils.helper_functions.CreatedClass.set_min_limit"><code class="docutils literal notranslate"><span class="pre">CreatedClass.set_min_limit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.utils.helper_functions.CreatedClass.write_problem_result"><code class="docutils literal notranslate"><span class="pre">CreatedClass.write_problem_result()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api.html#lib.utils.helper_functions.fit_equation_system"><code class="docutils literal notranslate"><span class="pre">fit_equation_system()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api.html#lib.utils.helper_functions.fit_generic_system"><code class="docutils literal notranslate"><span class="pre">fit_generic_system()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api.html#lib.utils.helper_functions.get_input_reader"><code class="docutils literal notranslate"><span class="pre">get_input_reader()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api.html#lib.utils.helper_functions.optimize_function"><code class="docutils literal notranslate"><span class="pre">optimize_function()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#module-lib.LLM.classes">LLM Integration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api.html#lib.LLM.classes.LLMBase"><code class="docutils literal notranslate"><span class="pre">LLMBase</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.LLM.classes.LLMBase.name"><code class="docutils literal notranslate"><span class="pre">LLMBase.name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.LLM.classes.LLMBase.vendor"><code class="docutils literal notranslate"><span class="pre">LLMBase.vendor</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.LLM.classes.LLMBase.model"><code class="docutils literal notranslate"><span class="pre">LLMBase.model</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.LLM.classes.LLMBase.API_key"><code class="docutils literal notranslate"><span class="pre">LLMBase.API_key</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.LLM.classes.LLMBase.client"><code class="docutils literal notranslate"><span class="pre">LLMBase.client</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.LLM.classes.LLMBase.check_generated_files"><code class="docutils literal notranslate"><span class="pre">LLMBase.check_generated_files()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.LLM.classes.LLMBase.check_model_output_inputcheck"><code class="docutils literal notranslate"><span class="pre">LLMBase.check_model_output_inputcheck()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.LLM.classes.LLMBase.generate_system"><code class="docutils literal notranslate"><span class="pre">LLMBase.generate_system()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.LLM.classes.LLMBase.generate_user_model"><code class="docutils literal notranslate"><span class="pre">LLMBase.generate_user_model()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.LLM.classes.LLMBase.init_client"><code class="docutils literal notranslate"><span class="pre">LLMBase.init_client()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.LLM.classes.LLMBase.set_API_key"><code class="docutils literal notranslate"><span class="pre">LLMBase.set_API_key()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api.html#lib.LLM.classes.OpenAI_model"><code class="docutils literal notranslate"><span class="pre">OpenAI_model</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.LLM.classes.OpenAI_model.input_file_path"><code class="docutils literal notranslate"><span class="pre">OpenAI_model.input_file_path</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.LLM.classes.OpenAI_model.reference_file_paths"><code class="docutils literal notranslate"><span class="pre">OpenAI_model.reference_file_paths</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.LLM.classes.OpenAI_model.api_key_string"><code class="docutils literal notranslate"><span class="pre">OpenAI_model.api_key_string</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.LLM.classes.OpenAI_model.dev_instr_filename"><code class="docutils literal notranslate"><span class="pre">OpenAI_model.dev_instr_filename</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.LLM.classes.OpenAI_model.role"><code class="docutils literal notranslate"><span class="pre">OpenAI_model.role</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.LLM.classes.OpenAI_model.vendor"><code class="docutils literal notranslate"><span class="pre">OpenAI_model.vendor</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.LLM.classes.OpenAI_model.model"><code class="docutils literal notranslate"><span class="pre">OpenAI_model.model</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.LLM.classes.OpenAI_model.vector_store_ids"><code class="docutils literal notranslate"><span class="pre">OpenAI_model.vector_store_ids</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.LLM.classes.OpenAI_model.dev_instructions_filename"><code class="docutils literal notranslate"><span class="pre">OpenAI_model.dev_instructions_filename</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.LLM.classes.OpenAI_model.dev_instr"><code class="docutils literal notranslate"><span class="pre">OpenAI_model.dev_instr</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.LLM.classes.OpenAI_model.client"><code class="docutils literal notranslate"><span class="pre">OpenAI_model.client</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.LLM.classes.OpenAI_model.__init__"><code class="docutils literal notranslate"><span class="pre">OpenAI_model.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.LLM.classes.OpenAI_model._check_generated_files"><code class="docutils literal notranslate"><span class="pre">OpenAI_model._check_generated_files()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.LLM.classes.OpenAI_model._check_model_output_inputcheck"><code class="docutils literal notranslate"><span class="pre">OpenAI_model._check_model_output_inputcheck()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.LLM.classes.OpenAI_model._generate_system"><code class="docutils literal notranslate"><span class="pre">OpenAI_model._generate_system()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.LLM.classes.OpenAI_model._generate_user_model"><code class="docutils literal notranslate"><span class="pre">OpenAI_model._generate_user_model()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.LLM.classes.OpenAI_model._set_developer_instructions"><code class="docutils literal notranslate"><span class="pre">OpenAI_model._set_developer_instructions()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">OSParamFitting</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">lib.LLM.classes</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for lib.LLM.classes</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">openai</span><span class="w"> </span><span class="kn">import</span> <span class="n">OpenAI</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+
+<span class="c1"># Base Class for LLM interfacing</span>
+
+<div class="viewcode-block" id="LLMBase">
+<a class="viewcode-back" href="../../../api.html#lib.LLM.classes.LLMBase">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">LLMBase</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Base class for Large Language Model (LLM) interfacing in the OSParamFitting framework.</span>
+
+<span class="sd">    This abstract base class provides a common interface for different LLM vendors and models.</span>
+<span class="sd">    It defines the basic structure for API key management, client initialization, and core</span>
+<span class="sd">    LLM operations like code generation, system checking, and user model creation.</span>
+
+<span class="sd">    The class serves as a foundation for vendor-specific implementations (e.g., OpenAI)</span>
+<span class="sd">    and ensures consistent behavior across different LLM providers.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        name (str, optional): Problem name identifier</span>
+<span class="sd">        vendor (str, optional): Model vendor/provider name</span>
+<span class="sd">        model (str, optional): Specific model identifier</span>
+<span class="sd">        API_key (str, optional): API key for authentication</span>
+<span class="sd">        client: LLM client instance for making API calls</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="o">=</span><span class="kc">None</span> <span class="c1"># problem name</span>
+
+        <span class="c1"># Vendor and model info</span>
+        <span class="c1">#---------------------------</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">vendor</span><span class="o">=</span><span class="kc">None</span> <span class="c1"># model vendor</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">=</span><span class="kc">None</span> <span class="c1"># model number</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">API_key</span><span class="o">=</span><span class="kc">None</span> <span class="c1"># env API key name </span>
+        <span class="c1">#---------------------------</span>
+
+        <span class="c1"># input eq system information</span>
+
+        <span class="c1"># client setup</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">=</span><span class="kc">None</span>
+
+
+<div class="viewcode-block" id="LLMBase.set_API_key">
+<a class="viewcode-back" href="../../../api.html#lib.LLM.classes.LLMBase.set_API_key">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_API_key</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">API_key_string</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span><span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Note: Set the env key as an environemtn variable&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">API_key</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="n">API_key_string</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="LLMBase.init_client">
+<a class="viewcode-back" href="../../../api.html#lib.LLM.classes.LLMBase.init_client">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">init_client</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">-&gt;</span> <span class="n">OpenAI</span><span class="p">:</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_init_client</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="LLMBase.generate_user_model">
+<a class="viewcode-back" href="../../../api.html#lib.LLM.classes.LLMBase.generate_user_model">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">generate_user_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">input_file_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span><span class="n">input_sample_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span><span class="n">user_model_sample_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span><span class="n">user_model_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span><span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_generate_user_model</span><span class="p">(</span><span class="n">input_file_path</span><span class="p">,</span><span class="n">input_sample_path</span><span class="p">,</span><span class="n">user_model_sample_path</span><span class="p">,</span><span class="n">user_model_path</span><span class="p">)</span></div>
+
+
+    <span class="c1"># Provide path to created file and generate system</span>
+<div class="viewcode-block" id="LLMBase.generate_system">
+<a class="viewcode-back" href="../../../api.html#lib.LLM.classes.LLMBase.generate_system">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">generate_system</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">system_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span><span class="n">output_file_path</span><span class="p">:</span> <span class="n">Path</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span><span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_generate_system</span><span class="p">(</span><span class="n">system_path</span><span class="p">,</span><span class="n">output_file_path</span><span class="p">)</span></div>
+
+    <span class="c1"># check the user input for errors</span>
+<div class="viewcode-block" id="LLMBase.check_generated_files">
+<a class="viewcode-back" href="../../../api.html#lib.LLM.classes.LLMBase.check_generated_files">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">check_generated_files</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">output_file_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span><span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_check_generated_files</span><span class="p">(</span><span class="n">output_file_path</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="LLMBase.check_model_output_inputcheck">
+<a class="viewcode-back" href="../../../api.html#lib.LLM.classes.LLMBase.check_model_output_inputcheck">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">check_model_output_inputcheck</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">output_file_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span><span class="n">num_iterations</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_check_model_output_inputcheck</span><span class="p">(</span><span class="n">output_file_path</span><span class="p">,</span><span class="n">num_iterations</span><span class="p">)</span></div>
+</div>
+
+
+<div class="viewcode-block" id="OpenAI_model">
+<a class="viewcode-back" href="../../../api.html#lib.LLM.classes.OpenAI_model">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">OpenAI_model</span><span class="p">(</span><span class="n">LLMBase</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Concrete implementation of LLMBase for OpenAI&#39;s GPT models.</span>
+
+<span class="sd">    This class provides OpenAI-specific functionality for the OSParamFitting framework,</span>
+<span class="sd">    including GPT-4 integration for code generation, error checking, and user model</span>
+<span class="sd">    creation. It handles API authentication, client setup, and OpenAI-specific API calls.</span>
+
+<span class="sd">    The class is designed to work with OpenAI&#39;s GPT-4.1 model and provides methods</span>
+<span class="sd">    for generating Python code, checking user inputs, and creating model skeletons</span>
+<span class="sd">    based on XML configuration files.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        input_file_path (Path): Path to the input XML configuration file</span>
+<span class="sd">        reference_file_paths (list[Path]): List of reference files for context</span>
+<span class="sd">        api_key_string (str): Environment variable name containing the API key</span>
+<span class="sd">        dev_instr_filename (Path): Path to developer instructions file</span>
+<span class="sd">        role (str): Role identifier for the LLM model</span>
+<span class="sd">        vendor (str): Set to &quot;openai&quot; for this implementation</span>
+<span class="sd">        model (str): Set to &quot;gpt-4.1&quot; for this implementation</span>
+<span class="sd">        vector_store_ids (list): Vector store identifiers (currently unused)</span>
+<span class="sd">        dev_instructions_filename (str, optional): Developer instructions filename</span>
+<span class="sd">        dev_instr (str): Content of developer instructions</span>
+<span class="sd">        client (OpenAI): OpenAI client instance</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Sets API key and initializes client</span>
+<div class="viewcode-block" id="OpenAI_model.__init__">
+<a class="viewcode-back" href="../../../api.html#lib.LLM.classes.OpenAI_model.__init__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_file_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">reference_file_paths</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Path</span><span class="p">],</span> <span class="n">api_key_string</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">dev_instr_filename</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">role</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize the OpenAI_model instance with configuration and API setup.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            input_file_path (Path): Path to the input XML configuration file</span>
+<span class="sd">            reference_file_paths (list[Path]): List of reference files for context</span>
+<span class="sd">            api_key_string (str): Environment variable name containing the OpenAI API key</span>
+<span class="sd">            dev_instr_filename (Path): Path to developer instructions file</span>
+<span class="sd">            role (str): Role identifier for the LLM model</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            ValueError: If the API key is not found in the specified environment variable</span>
+
+<span class="sd">        The constructor sets up the OpenAI client, validates the API key, and configures</span>
+<span class="sd">        the model for GPT-4.1 usage. It also initializes the developer instructions.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">input_file_path</span> <span class="o">=</span> <span class="n">input_file_path</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reference_file_paths</span> <span class="o">=</span> <span class="n">reference_file_paths</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">api_key_string</span> <span class="o">=</span> <span class="n">api_key_string</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dev_instr_filename</span> <span class="o">=</span> <span class="n">dev_instr_filename</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">role</span> <span class="o">=</span> <span class="n">role</span>
+        
+        <span class="c1"># Get API key from environment</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">API_key</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="n">api_key_string</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">API_key</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;API key not found in environment variable </span><span class="si">{</span><span class="n">api_key_string</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="c1">#TODO move this s.t it is user specified at input</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;WARNING: hardcoded model name and vendor&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">vendor</span><span class="o">=</span><span class="s2">&quot;openai&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">=</span><span class="s2">&quot;gpt-4.1&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">vector_store_ids</span><span class="o">=</span><span class="p">[</span><span class="kc">None</span><span class="p">]</span> 
+
+        <span class="c1"># instructions input (dev and user instructions)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dev_instructions_filename</span><span class="o">=</span><span class="kc">None</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">_init_client</span><span class="p">()</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_init_client</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">client</span> <span class="o">=</span> <span class="n">OpenAI</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">API_key</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="OpenAI_model._set_developer_instructions">
+<a class="viewcode-back" href="../../../api.html#lib.LLM.classes.OpenAI_model._set_developer_instructions">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_set_developer_instructions</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Load and set developer instructions from the specified file.</span>
+
+<span class="sd">        Reads the developer instructions file and stores its content in the dev_instr</span>
+<span class="sd">        attribute. These instructions guide the LLM&#39;s behavior during code generation</span>
+<span class="sd">        and validation tasks.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dev_instr_filename</span><span class="p">,</span><span class="s2">&quot;r&quot;</span><span class="p">,</span><span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf=8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">dev_instr</span><span class="o">=</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_set_user_instructions</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+
+            <span class="k">raise</span> <span class="ne">NotImplementedError</span>
+
+    <span class="c1"># query the model to generate the required diffeq system</span>
+<div class="viewcode-block" id="OpenAI_model._generate_system">
+<a class="viewcode-back" href="../../../api.html#lib.LLM.classes.OpenAI_model._generate_system">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_generate_system</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">system_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span><span class="n">output_file_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span><span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Generate system code using OpenAI&#39;s GPT-4.1 model.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            system_path (Path): Path to the system definition file</span>
+<span class="sd">            output_file_path (Path): Path where the generated system code will be written</span>
+
+<span class="sd">        This method uses GPT-4.1 to analyze the system definition, XML configuration,</span>
+<span class="sd">        and output sample to generate appropriate system code. The generated code is</span>
+<span class="sd">        written to the specified output file.</span>
+
+<span class="sd">        The process involves:</span>
+<span class="sd">        1. Loading developer instructions</span>
+<span class="sd">        2. Reading system, XML, and sample files</span>
+<span class="sd">        3. Sending a structured prompt to GPT-4.1</span>
+<span class="sd">        4. Writing the generated response to the output file</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Starting code generation&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_set_developer_instructions</span><span class="p">()</span>
+
+        <span class="c1"># setup vector store</span>
+        <span class="c1">#file_path_list=self.reference_file_paths+[system_path]</span>
+
+        <span class="c1"># load xml as text</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">input_file_path</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">xml_content</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">system_path</span><span class="p">,</span><span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">system_content</span><span class="o">=</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">reference_file_paths</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">output_sample_content</span><span class="o">=</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+        <span class="n">response</span><span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">responses</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+                    <span class="n">model</span><span class="o">=</span><span class="s2">&quot;gpt-4.1&quot;</span><span class="p">,</span>
+                    <span class="n">instructions</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dev_instr</span><span class="p">,</span>
+                    <span class="nb">input</span><span class="o">=</span> <span class="p">[{</span>
+                            <span class="s2">&quot;role&quot;</span><span class="p">:</span><span class="s2">&quot;user&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;content&quot;</span><span class="p">:[</span>
+                                <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;input_text&quot;</span><span class="p">,</span> <span class="s2">&quot;text&quot;</span><span class="p">:</span><span class="sa">f</span><span class="s2">&quot;Given to you is the .py corresponding to the problem system: </span><span class="si">{</span><span class="n">system_content</span><span class="si">}</span><span class="s2">. Further, the user has input settings in the form of an XML, here it is: </span><span class="si">{</span><span class="n">xml_content</span><span class="si">}</span><span class="s2">. Here is an example of the output of the system: </span><span class="si">{</span><span class="n">output_sample_content</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">},</span>
+
+                    <span class="p">],</span>
+                    <span class="p">}],</span>
+                    <span class="p">)</span>
+        
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">output_file_path</span><span class="p">,</span><span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">output_text</span><span class="p">)</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Finished writing code&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="OpenAI_model._check_generated_files">
+<a class="viewcode-back" href="../../../api.html#lib.LLM.classes.OpenAI_model._check_generated_files">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_check_generated_files</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">output_file_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span><span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Check generated files for errors using OpenAI&#39;s GPT-4.1 model.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            output_file_path (Path): Path where the validation report will be written</span>
+
+<span class="sd">        This method uses GPT-4.1 to analyze user-uploaded Python code against the</span>
+<span class="sd">        XML configuration context to identify errors and provide a comprehensive</span>
+<span class="sd">        validation report.</span>
+
+<span class="sd">        The process involves:</span>
+<span class="sd">        1. Loading developer instructions</span>
+<span class="sd">        2. Reading the XML configuration and user code</span>
+<span class="sd">        3. Sending an analysis prompt to GPT-4.1</span>
+<span class="sd">        4. Writing the validation report to the output file</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Checking user inputs.....&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_set_developer_instructions</span><span class="p">()</span>
+        
+        <span class="c1"># in this case, contains just 1 .py file</span>
+        <span class="n">file_path_list</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">reference_file_paths</span>
+
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">input_file_path</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">xml_content</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path_list</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">user_code</span><span class="o">=</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Checking user uploads&quot;</span><span class="p">)</span>
+        <span class="n">response</span><span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">responses</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+                    <span class="n">model</span><span class="o">=</span><span class="s2">&quot;gpt-4.1&quot;</span><span class="p">,</span>
+                    <span class="n">instructions</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dev_instr</span><span class="p">,</span>
+                    <span class="nb">input</span><span class="o">=</span> <span class="p">[{</span>
+                            <span class="s2">&quot;role&quot;</span><span class="p">:</span><span class="s2">&quot;user&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;content&quot;</span><span class="p">:[</span>
+                                <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;input_text&quot;</span><span class="p">,</span>
+                                  <span class="s2">&quot;text&quot;</span><span class="p">:</span><span class="sa">f</span><span class="s2">&quot;Analyze the given .py file for errors and provide a report on the issues found, with respect to the XML context provided, here is the XML context: </span><span class="si">{</span><span class="n">xml_content</span><span class="si">}</span><span class="s2">, and here is the .py file: </span><span class="si">{</span><span class="n">user_code</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">},</span>
+
+
+                    <span class="p">],</span>
+                    <span class="p">}],</span>
+                    <span class="p">)</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">output_file_path</span><span class="p">,</span><span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">output_text</span><span class="p">)</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Finished checking user input&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="OpenAI_model._check_model_output_inputcheck">
+<a class="viewcode-back" href="../../../api.html#lib.LLM.classes.OpenAI_model._check_model_output_inputcheck">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_check_model_output_inputcheck</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">output_file_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span><span class="n">num_iterations</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Check and refine model output through iterative validation using GPT-4.1.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            output_file_path (Path): Path where the refined output will be written</span>
+<span class="sd">            num_iterations (int, optional): Number of refinement iterations. Defaults to 1.</span>
+
+<span class="sd">        This method performs iterative refinement of model outputs using GPT-4.1.</span>
+<span class="sd">        It can run multiple iterations to improve the quality and clarity of the</span>
+<span class="sd">        generated reports or outputs.</span>
+
+<span class="sd">        The process involves:</span>
+<span class="sd">        1. Loading developer instructions</span>
+<span class="sd">        2. Reading the current model output</span>
+<span class="sd">        3. Running multiple refinement iterations (if specified)</span>
+<span class="sd">        4. Writing the final refined output to the output file</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Checking model report.....&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_set_developer_instructions</span><span class="p">()</span>
+
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">input_file_path</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">model_writeout_content</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+        
+        
+        <span class="k">for</span> <span class="n">i_iter</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_iterations</span><span class="p">):</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Checking user uploads: Iteration </span><span class="si">{</span><span class="n">i_iter</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2"> of </span><span class="si">{</span><span class="n">num_iterations</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            
+            <span class="n">response</span><span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">responses</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+                        <span class="n">model</span><span class="o">=</span><span class="s2">&quot;gpt-4.1&quot;</span><span class="p">,</span>
+                        <span class="n">instructions</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dev_instr</span><span class="p">,</span>
+                        <span class="nb">input</span><span class="o">=</span> <span class="p">[{</span>
+                                <span class="s2">&quot;role&quot;</span><span class="p">:</span><span class="s2">&quot;user&quot;</span><span class="p">,</span>
+                                <span class="s2">&quot;content&quot;</span><span class="p">:[</span>
+                                    <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;input_text&quot;</span><span class="p">,</span>
+                                    <span class="s2">&quot;text&quot;</span><span class="p">:</span><span class="sa">f</span><span class="s2">&quot;Analyze the given report containing a list of critical errors and warnings, and re write the report based on the instructions provided. Here is the report:</span><span class="si">{</span><span class="n">model_writeout_content</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">},</span>
+                        <span class="p">],</span>
+                        <span class="p">}],</span>
+                        <span class="p">)</span>
+            <span class="n">model_writeout_content</span><span class="o">=</span><span class="n">response</span><span class="o">.</span><span class="n">output_text</span>
+
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">output_file_path</span><span class="p">,</span><span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">output_text</span><span class="p">)</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="OpenAI_model._generate_user_model">
+<a class="viewcode-back" href="../../../api.html#lib.LLM.classes.OpenAI_model._generate_user_model">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_generate_user_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">input_file_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span><span class="n">input_sample_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span><span class="n">user_model_sample_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span><span class="n">user_model_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span><span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Generate a user model skeleton using OpenAI&#39;s GPT-4.1 model.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            input_file_path (Path): Path to the input XML configuration file</span>
+<span class="sd">            input_sample_path (Path): Path to a sample input file for reference</span>
+<span class="sd">            user_model_sample_path (Path): Path to a sample user model for reference</span>
+<span class="sd">            user_model_path (Path): Path where the generated user model will be written</span>
+
+<span class="sd">        This method uses GPT-4.1 to generate a user model skeleton based on the XML</span>
+<span class="sd">        configuration and sample files. It analyzes the context and creates appropriate</span>
+<span class="sd">        Python code templates that users can populate with their specific problem definitions.</span>
+
+<span class="sd">        The process involves:</span>
+<span class="sd">        1. Loading developer instructions</span>
+<span class="sd">        2. Reading XML configuration and sample files</span>
+<span class="sd">        3. Sending a generation prompt to GPT-4.1</span>
+<span class="sd">        4. Overwriting any existing user model file</span>
+<span class="sd">        5. Writing the generated skeleton to the output file</span>
+
+<span class="sd">        Note:</span>
+<span class="sd">            If a user model already exists at the target path, it will be overwritten.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Generating user model....&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_set_developer_instructions</span><span class="p">()</span>
+
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">input_file_path</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">xml_content</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">user_model_sample_path</span><span class="p">,</span><span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">user_model_sample_content</span><span class="o">=</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">input_sample_path</span><span class="p">,</span><span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">input_sample_content</span><span class="o">=</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Checking user uploads&quot;</span><span class="p">)</span>
+        <span class="n">response</span><span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">responses</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+                    <span class="n">model</span><span class="o">=</span><span class="s2">&quot;gpt-4.1&quot;</span><span class="p">,</span>
+                    <span class="n">instructions</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dev_instr</span><span class="p">,</span>
+                    <span class="nb">input</span><span class="o">=</span> <span class="p">[{</span>
+                            <span class="s2">&quot;role&quot;</span><span class="p">:</span><span class="s2">&quot;user&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;content&quot;</span><span class="p">:[</span>
+                                <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;input_text&quot;</span><span class="p">,</span>
+                                  <span class="s2">&quot;text&quot;</span><span class="p">:</span><span class="sa">f</span><span class="s2">&quot;Analyze the given XML context: </span><span class="si">{</span><span class="n">xml_content</span><span class="si">}</span><span class="s2">, and generate a user model skeleton based on the context. Here is a sample user model skeleton generated for the robertson equation system: </span><span class="si">{</span><span class="n">user_model_sample_content</span><span class="si">}</span><span class="s2">. Here is the corresponding sample input file: </span><span class="si">{</span><span class="n">input_sample_content</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">},</span>
+                    <span class="p">],</span>
+                    <span class="p">}],</span>
+                    <span class="p">)</span>
+        
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">user_model_path</span><span class="p">):</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Overwriting existing user model at </span><span class="si">{</span><span class="n">user_model_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">user_model_path</span><span class="p">)</span>
+
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">user_model_path</span><span class="p">,</span><span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">output_text</span><span class="p">)</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Finished generating user model skeleton&quot;</span><span class="p">)</span></div>
+</div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

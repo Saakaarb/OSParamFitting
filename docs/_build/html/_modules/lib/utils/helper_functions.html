@@ -1,0 +1,696 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>lib.utils.helper_functions &mdash; OSParamFitting 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
+
+  
+    <link rel="canonical" href="https://yourusername.github.io/OSParamFitting/_modules/lib/utils/helper_functions.html" />
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=8d563738"></script>
+      <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            OSParamFitting
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#module-create_user_model">Main Scripts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api.html#create_user_model.create_user_model"><code class="docutils literal notranslate"><span class="pre">create_user_model()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api.html#check_user_input.check_input"><code class="docutils literal notranslate"><span class="pre">check_input()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api.html#fit_parameters.run_driver"><code class="docutils literal notranslate"><span class="pre">run_driver()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#module-lib.utils.classes">Core Classes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api.html#lib.utils.classes.ProblemObjectBase"><code class="docutils literal notranslate"><span class="pre">ProblemObjectBase</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.utils.classes.ProblemObjectBase.params_to_fit_names"><code class="docutils literal notranslate"><span class="pre">ProblemObjectBase.params_to_fit_names</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.utils.classes.ProblemObjectBase.y0"><code class="docutils literal notranslate"><span class="pre">ProblemObjectBase.y0</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.utils.classes.ProblemObjectBase.t_eval"><code class="docutils literal notranslate"><span class="pre">ProblemObjectBase.t_eval</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.utils.classes.ProblemObjectBase.dataset"><code class="docutils literal notranslate"><span class="pre">ProblemObjectBase.dataset</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.utils.classes.ProblemObjectBase.num_columns_to_fit"><code class="docutils literal notranslate"><span class="pre">ProblemObjectBase.num_columns_to_fit</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.utils.classes.ProblemObjectBase.fixed_params_names"><code class="docutils literal notranslate"><span class="pre">ProblemObjectBase.fixed_params_names</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.utils.classes.ProblemObjectBase.fixed_param_values"><code class="docutils literal notranslate"><span class="pre">ProblemObjectBase.fixed_param_values</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.utils.classes.ProblemObjectBase.__init__"><code class="docutils literal notranslate"><span class="pre">ProblemObjectBase.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.utils.classes.ProblemObjectBase.compute_all_losses"><code class="docutils literal notranslate"><span class="pre">ProblemObjectBase.compute_all_losses()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.utils.classes.ProblemObjectBase.compute_loss"><code class="docutils literal notranslate"><span class="pre">ProblemObjectBase.compute_loss()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.utils.classes.ProblemObjectBase.integrate_system"><code class="docutils literal notranslate"><span class="pre">ProblemObjectBase.integrate_system()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.utils.classes.ProblemObjectBase.plot_result"><code class="docutils literal notranslate"><span class="pre">ProblemObjectBase.plot_result()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api.html#lib.utils.helper_functions.CreatedClass"><code class="docutils literal notranslate"><span class="pre">CreatedClass</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.utils.helper_functions.CreatedClass.__init__"><code class="docutils literal notranslate"><span class="pre">CreatedClass.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.utils.helper_functions.CreatedClass._compute_all_losses"><code class="docutils literal notranslate"><span class="pre">CreatedClass._compute_all_losses()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.utils.helper_functions.CreatedClass._compute_loss"><code class="docutils literal notranslate"><span class="pre">CreatedClass._compute_loss()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.utils.helper_functions.CreatedClass.set_is_logscale"><code class="docutils literal notranslate"><span class="pre">CreatedClass.set_is_logscale()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.utils.helper_functions.CreatedClass.set_max_limit"><code class="docutils literal notranslate"><span class="pre">CreatedClass.set_max_limit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.utils.helper_functions.CreatedClass.set_min_limit"><code class="docutils literal notranslate"><span class="pre">CreatedClass.set_min_limit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.utils.helper_functions.CreatedClass.write_problem_result"><code class="docutils literal notranslate"><span class="pre">CreatedClass.write_problem_result()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api.html#lib.utils.helper_functions.fit_equation_system"><code class="docutils literal notranslate"><span class="pre">fit_equation_system()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api.html#lib.utils.helper_functions.fit_generic_system"><code class="docutils literal notranslate"><span class="pre">fit_generic_system()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api.html#lib.utils.helper_functions.get_input_reader"><code class="docutils literal notranslate"><span class="pre">get_input_reader()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api.html#lib.utils.helper_functions.optimize_function"><code class="docutils literal notranslate"><span class="pre">optimize_function()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#module-lib.LLM.classes">LLM Integration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api.html#lib.LLM.classes.LLMBase"><code class="docutils literal notranslate"><span class="pre">LLMBase</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.LLM.classes.LLMBase.name"><code class="docutils literal notranslate"><span class="pre">LLMBase.name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.LLM.classes.LLMBase.vendor"><code class="docutils literal notranslate"><span class="pre">LLMBase.vendor</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.LLM.classes.LLMBase.model"><code class="docutils literal notranslate"><span class="pre">LLMBase.model</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.LLM.classes.LLMBase.API_key"><code class="docutils literal notranslate"><span class="pre">LLMBase.API_key</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.LLM.classes.LLMBase.client"><code class="docutils literal notranslate"><span class="pre">LLMBase.client</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.LLM.classes.LLMBase.check_generated_files"><code class="docutils literal notranslate"><span class="pre">LLMBase.check_generated_files()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.LLM.classes.LLMBase.check_model_output_inputcheck"><code class="docutils literal notranslate"><span class="pre">LLMBase.check_model_output_inputcheck()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.LLM.classes.LLMBase.generate_system"><code class="docutils literal notranslate"><span class="pre">LLMBase.generate_system()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.LLM.classes.LLMBase.generate_user_model"><code class="docutils literal notranslate"><span class="pre">LLMBase.generate_user_model()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.LLM.classes.LLMBase.init_client"><code class="docutils literal notranslate"><span class="pre">LLMBase.init_client()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.LLM.classes.LLMBase.set_API_key"><code class="docutils literal notranslate"><span class="pre">LLMBase.set_API_key()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api.html#lib.LLM.classes.OpenAI_model"><code class="docutils literal notranslate"><span class="pre">OpenAI_model</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.LLM.classes.OpenAI_model.input_file_path"><code class="docutils literal notranslate"><span class="pre">OpenAI_model.input_file_path</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.LLM.classes.OpenAI_model.reference_file_paths"><code class="docutils literal notranslate"><span class="pre">OpenAI_model.reference_file_paths</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.LLM.classes.OpenAI_model.api_key_string"><code class="docutils literal notranslate"><span class="pre">OpenAI_model.api_key_string</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.LLM.classes.OpenAI_model.dev_instr_filename"><code class="docutils literal notranslate"><span class="pre">OpenAI_model.dev_instr_filename</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.LLM.classes.OpenAI_model.role"><code class="docutils literal notranslate"><span class="pre">OpenAI_model.role</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.LLM.classes.OpenAI_model.vendor"><code class="docutils literal notranslate"><span class="pre">OpenAI_model.vendor</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.LLM.classes.OpenAI_model.model"><code class="docutils literal notranslate"><span class="pre">OpenAI_model.model</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.LLM.classes.OpenAI_model.vector_store_ids"><code class="docutils literal notranslate"><span class="pre">OpenAI_model.vector_store_ids</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.LLM.classes.OpenAI_model.dev_instructions_filename"><code class="docutils literal notranslate"><span class="pre">OpenAI_model.dev_instructions_filename</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.LLM.classes.OpenAI_model.dev_instr"><code class="docutils literal notranslate"><span class="pre">OpenAI_model.dev_instr</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.LLM.classes.OpenAI_model.client"><code class="docutils literal notranslate"><span class="pre">OpenAI_model.client</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.LLM.classes.OpenAI_model.__init__"><code class="docutils literal notranslate"><span class="pre">OpenAI_model.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.LLM.classes.OpenAI_model._check_generated_files"><code class="docutils literal notranslate"><span class="pre">OpenAI_model._check_generated_files()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.LLM.classes.OpenAI_model._check_model_output_inputcheck"><code class="docutils literal notranslate"><span class="pre">OpenAI_model._check_model_output_inputcheck()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.LLM.classes.OpenAI_model._generate_system"><code class="docutils literal notranslate"><span class="pre">OpenAI_model._generate_system()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.LLM.classes.OpenAI_model._generate_user_model"><code class="docutils literal notranslate"><span class="pre">OpenAI_model._generate_user_model()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.LLM.classes.OpenAI_model._set_developer_instructions"><code class="docutils literal notranslate"><span class="pre">OpenAI_model._set_developer_instructions()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">OSParamFitting</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">lib.utils.helper_functions</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for lib.utils.helper_functions</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">jax</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">jax.numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">jnp</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">lib.utils.classes</span><span class="w"> </span><span class="kn">import</span> <span class="n">ProblemObjectBase</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">functools</span><span class="w"> </span><span class="kn">import</span> <span class="n">partial</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">lib.algorithms.PSO.classes</span><span class="w"> </span><span class="kn">import</span> <span class="n">FitParamsPSO</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">lib.algorithms.NODE.classes</span><span class="w"> </span><span class="kn">import</span> <span class="n">FitParamsNODE</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">xml.etree.ElementTree</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ET</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">lib.utils.xmlread</span><span class="w"> </span><span class="kn">import</span> <span class="n">XMLReader</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">importlib.util</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+
+<span class="n">jax</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="s2">&quot;jax_enable_x64&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+
+<div class="viewcode-block" id="CreatedClass">
+<a class="viewcode-back" href="../../../api.html#lib.utils.helper_functions.CreatedClass">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">CreatedClass</span><span class="p">(</span><span class="n">ProblemObjectBase</span><span class="p">):</span>
+<div class="viewcode-block" id="CreatedClass.__init__">
+<a class="viewcode-back" href="../../../api.html#lib.utils.helper_functions.CreatedClass.__init__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataset</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">t_eval</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">y0</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">input_reader</span><span class="p">:</span> <span class="n">XMLReader</span><span class="p">,</span> <span class="n">compute_loss_problem</span><span class="p">,</span> <span class="n">write_problem_result</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize the CreatedClass instance with problem configuration.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            dataset (numpy.ndarray): Experimental data array with shape (time_steps, variables)</span>
+<span class="sd">            t_eval (numpy.ndarray): Time points for solution evaluation</span>
+<span class="sd">            y0 (jax.numpy.ndarray): Initial conditions for the ODE system</span>
+<span class="sd">            input_reader (XMLReader): Configuration reader containing all problem parameters</span>
+<span class="sd">            compute_loss_problem (callable): Function to compute loss for given parameters</span>
+<span class="sd">            write_problem_result (callable): Function to write problem results</span>
+
+<span class="sd">        The constructor sets up the complete problem environment including:</span>
+<span class="sd">        - Parameter management (trainable vs fixed)</span>
+<span class="sd">        - Integration settings (tolerance, step size, max steps)</span>
+<span class="sd">        - Time domain configuration</span>
+<span class="sd">        - Loss computation and result writing functions</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y0</span> <span class="o">=</span> <span class="n">y0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">input_reader</span> <span class="o">=</span> <span class="n">input_reader</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">t_eval</span> <span class="o">=</span> <span class="n">t_eval</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dataset</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_columns_to_fit</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">params_to_fit_names</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_reader</span><span class="o">.</span><span class="n">trainable_parameter_names</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fixed_param_names</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_reader</span><span class="o">.</span><span class="n">fixed_parameter_names</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fixed_param_values</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_reader</span><span class="o">.</span><span class="n">fixed_parameter_values</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fixed_val_dict</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">input_reader</span><span class="o">.</span><span class="n">fixed_parameter_names</span><span class="p">)):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">fixed_val_dict</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">fixed_param_names</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fixed_param_values</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">constants</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;dataset&quot;</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="p">),</span>
+            <span class="s2">&quot;t_eval&quot;</span><span class="p">:</span> <span class="n">t_eval</span><span class="p">,</span>
+            <span class="s2">&quot;init_cond&quot;</span><span class="p">:</span> <span class="n">y0</span><span class="p">,</span>
+        <span class="p">}</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;NOTE: currently, only simulations till the same final time are supported&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">constants</span><span class="p">[</span><span class="s2">&quot;num_steps&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_reader</span><span class="o">.</span><span class="n">init_time</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">constants</span><span class="p">[</span><span class="s2">&quot;init_time&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">t_eval</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">constants</span><span class="p">[</span><span class="s2">&quot;init_time&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_reader</span><span class="o">.</span><span class="n">init_time</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">constants</span><span class="p">[</span><span class="s2">&quot;final_time&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">t_eval</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">constants</span><span class="p">[</span><span class="s1">&#39;stepsize_rtol&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">input_reader</span><span class="o">.</span><span class="n">stepsize_rtol</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">constants</span><span class="p">[</span><span class="s1">&#39;stepsize_atol&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">input_reader</span><span class="o">.</span><span class="n">stepsize_atol</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">constants</span><span class="p">[</span><span class="s1">&#39;init_timestep&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_reader</span><span class="o">.</span><span class="n">init_timestep</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">constants</span><span class="p">[</span><span class="s1">&#39;max_steps&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_reader</span><span class="o">.</span><span class="n">max_steps</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">constants</span><span class="p">[</span><span class="s1">&#39;fixed_parameters&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fixed_val_dict</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">constants</span><span class="p">[</span><span class="s1">&#39;error_loss&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_reader</span><span class="o">.</span><span class="n">error_loss</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_compute_loss_problem</span> <span class="o">=</span> <span class="n">compute_loss_problem</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_write_problem_result</span> <span class="o">=</span> <span class="n">write_problem_result</span></div>
+
+
+<div class="viewcode-block" id="CreatedClass._compute_all_losses">
+<a class="viewcode-back" href="../../../api.html#lib.utils.helper_functions.CreatedClass._compute_all_losses">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_compute_all_losses</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">population</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span><span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Compute losses for an entire population of parameter sets.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            population (numpy.ndarray): Array of parameter sets, shape (n_individuals, n_parameters)</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            numpy.ndarray: Array of loss values for each parameter set, with NaN/Inf values</span>
+<span class="sd">                        replaced by 1e10 to prevent optimization issues</span>
+
+<span class="sd">        This method iterates through each parameter set in the population and computes</span>
+<span class="sd">        the corresponding loss using the JIT-compiled _compute_loss method.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">losses</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">population</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+            <span class="n">loss</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compute_loss</span><span class="p">(</span><span class="n">population</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+            
+            <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">loss</span><span class="p">)</span> <span class="ow">or</span> <span class="n">np</span><span class="o">.</span><span class="n">isinf</span><span class="p">(</span><span class="n">loss</span><span class="p">):</span>
+                <span class="n">loss</span><span class="o">=</span><span class="mf">1e10</span>
+            <span class="n">losses</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">loss</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">losses</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="CreatedClass._compute_loss">
+<a class="viewcode-back" href="../../../api.html#lib.utils.helper_functions.CreatedClass._compute_loss">[docs]</a>
+    <span class="nd">@partial</span><span class="p">(</span><span class="n">jax</span><span class="o">.</span><span class="n">jit</span><span class="p">,</span> <span class="n">static_argnums</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,))</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_compute_loss</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">design_pt</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span><span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Compute loss for a single parameter set using JIT compilation.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            design_pt (jax.numpy.ndarray): Single parameter set to evaluate</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            float: Computed loss value for the given parameters</span>
+
+<span class="sd">        This method is JIT-compiled for performance and calls the user-defined</span>
+<span class="sd">        loss computation function with the problem constants and parameters.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compute_loss_problem</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">constants</span><span class="p">,</span> <span class="n">jnp</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">design_pt</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="CreatedClass.set_min_limit">
+<a class="viewcode-back" href="../../../api.html#lib.utils.helper_functions.CreatedClass.set_min_limit">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_min_limit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">min_lim</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">])</span><span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Set minimum bounds for parameter search space.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            min_lim (numpy.ndarray): Array of minimum values for each parameter</span>
+
+<span class="sd">        The limits are stored in the constants dictionary and used by the</span>
+<span class="sd">        optimization algorithms to constrain the search space.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">constants</span><span class="p">[</span><span class="s2">&quot;min_limits&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">min_lim</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="CreatedClass.set_max_limit">
+<a class="viewcode-back" href="../../../api.html#lib.utils.helper_functions.CreatedClass.set_max_limit">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_max_limit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">max_lim</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">])</span><span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Set maximum bounds for parameter search space.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            max_lim (numpy.ndarray): Array of maximum values for each parameter</span>
+
+<span class="sd">        The limits are stored in the constants dictionary and used by the</span>
+<span class="sd">        optimization algorithms to constrain the search space.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">constants</span><span class="p">[</span><span class="s2">&quot;max_limits&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">max_lim</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="CreatedClass.set_is_logscale">
+<a class="viewcode-back" href="../../../api.html#lib.utils.helper_functions.CreatedClass.set_is_logscale">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_is_logscale</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">is_logscale</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">bool</span><span class="p">])</span><span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Set log-scale flag for parameter axes.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            is_logscale (numpy.ndarray): Boolean array indicating which parameters</span>
+<span class="sd">                                        should use log-scale transformation</span>
+
+<span class="sd">        This affects how the optimization algorithms handle parameter scaling</span>
+<span class="sd">        and search space exploration.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">constants</span><span class="p">[</span><span class="s2">&quot;is_logscale&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">is_logscale</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="CreatedClass.write_problem_result">
+<a class="viewcode-back" href="../../../api.html#lib.utils.helper_functions.CreatedClass.write_problem_result">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">write_problem_result</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">design_point</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">input_reader</span><span class="p">:</span> <span class="n">XMLReader</span><span class="p">,</span> <span class="n">label</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s2">&quot;default&quot;</span><span class="p">)</span><span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Write problem solution results to CSV files.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            design_point (numpy.ndarray): Parameter set that produced the solution</span>
+<span class="sd">            input_reader (XMLReader): Configuration reader containing output directory info</span>
+<span class="sd">            label (str, optional): Label for the output file. Defaults to &quot;default&quot;</span>
+
+<span class="sd">        The method calls the user-defined result writing function and saves the</span>
+<span class="sd">        output to a CSV file in the format &quot;{label}_solution.csv&quot;.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">writeout_array</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_write_problem_result</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">constants</span><span class="p">,</span> <span class="n">jnp</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">design_point</span><span class="p">))</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">savetxt</span><span class="p">(</span><span class="n">input_reader</span><span class="o">.</span><span class="n">output_dir</span><span class="o">/</span><span class="n">Path</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="s2">_solution.csv&quot;</span><span class="p">),</span> <span class="n">writeout_array</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">)</span></div>
+</div>
+
+      
+
+
+<div class="viewcode-block" id="get_input_reader">
+<a class="viewcode-back" href="../../../api.html#lib.utils.helper_functions.get_input_reader">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_input_reader</span><span class="p">(</span><span class="n">path_to_input</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span><span class="o">-&gt;</span> <span class="n">XMLReader</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Parse XML input file and create an XMLReader instance.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        path_to_input (Path): Path to the XML configuration file</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        XMLReader: Configured reader instance containing all problem parameters</span>
+
+<span class="sd">    This function parses the XML file using ElementTree and initializes</span>
+<span class="sd">    an XMLReader object with the parsed configuration data.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">tree</span> <span class="o">=</span> <span class="n">ET</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">path_to_input</span><span class="p">)</span>
+    <span class="n">root</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">getroot</span><span class="p">()</span>
+
+    <span class="n">input_reader</span><span class="o">=</span><span class="n">XMLReader</span><span class="p">()</span>
+    <span class="n">input_reader</span><span class="o">.</span><span class="n">read_XML</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">input_reader</span></div>
+
+
+
+<div class="viewcode-block" id="fit_generic_system">
+<a class="viewcode-back" href="../../../api.html#lib.utils.helper_functions.fit_generic_system">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">fit_generic_system</span><span class="p">(</span><span class="n">path_to_input</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">path_to_output_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">generated_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span><span class="n">session_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span><span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Fit a generic system using a two-phase optimization approach.</span>
+
+<span class="sd">    This function performs parameter fitting using a combination of:</span>
+<span class="sd">    1. Population-based optimization (PSO) for global search</span>
+<span class="sd">    2. Gradient-based optimization (NODE) for local refinement</span>
+
+<span class="sd">    The process includes:</span>
+<span class="sd">    1. Reading input parameters from XML</span>
+<span class="sd">    2. Running PSO to find initial parameter estimates</span>
+<span class="sd">    3. Using PSO results as initial guess for NODE</span>
+<span class="sd">    4. Running NODE to refine the parameters</span>
+<span class="sd">    5. Writing results to output directory</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    path_to_input : str or Path</span>
+<span class="sd">        Path to the input XML file containing optimization parameters</span>
+<span class="sd">    path_to_output_dir : str or Path</span>
+<span class="sd">        Directory where output files will be written</span>
+<span class="sd">    generated_dir : str or Path</span>
+<span class="sd">        Directory containing generated files (user_model.py, etc.)</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    - PSO is used first to explore the parameter space globally</span>
+<span class="sd">    - NODE uses the best PSO result as its initial guess</span>
+<span class="sd">    - Results are written to the output directory:</span>
+<span class="sd">        - final_design_point.csv : Best parameters found</span>
+<span class="sd">        - result_solution.csv : Solution trajectory</span>
+<span class="sd">        - fitting_error.txt : Error messages if any</span>
+<span class="sd">    - Progress is logged to the output directory</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    numpy.ndarray: Best parameter set found during optimization</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    FitParamsPSO : Class for PSO optimization parameters</span>
+<span class="sd">    FitParamsNODE : Class for NODE optimization parameters</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># Dynamically import generated_script.py from the session&#39;s generated_dir</span>
+        <span class="n">generated_script_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">generated_dir</span><span class="p">)</span> <span class="o">/</span> <span class="s2">&quot;generated_script.py&quot;</span>
+        <span class="n">spec</span> <span class="o">=</span> <span class="n">importlib</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">spec_from_file_location</span><span class="p">(</span><span class="s2">&quot;generated_script&quot;</span><span class="p">,</span> <span class="n">generated_script_path</span><span class="p">)</span>
+        <span class="n">generated_script</span> <span class="o">=</span> <span class="n">importlib</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">module_from_spec</span><span class="p">(</span><span class="n">spec</span><span class="p">)</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="s2">&quot;generated_script&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">generated_script</span>
+        <span class="n">spec</span><span class="o">.</span><span class="n">loader</span><span class="o">.</span><span class="n">exec_module</span><span class="p">(</span><span class="n">generated_script</span><span class="p">)</span>
+
+        <span class="n">input_reader</span><span class="o">=</span><span class="n">get_input_reader</span><span class="p">(</span><span class="n">path_to_input</span><span class="p">)</span>
+
+        <span class="c1"># variable and parameter name uniqueness </span>
+        <span class="n">input_reader</span><span class="o">.</span><span class="n">check_name_uniqueness</span><span class="p">()</span>
+
+        <span class="c1"># assign output dir</span>
+        <span class="n">input_reader</span><span class="o">.</span><span class="n">output_dir</span><span class="o">=</span><span class="n">path_to_output_dir</span>
+
+        <span class="n">y0</span><span class="o">=</span><span class="n">jnp</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">input_reader</span><span class="o">.</span><span class="n">integrated_variable_init_values</span><span class="p">)</span>
+
+        <span class="c1"># load dataset</span>
+        <span class="n">dataset_path</span> <span class="o">=</span> <span class="n">session_path</span> <span class="o">/</span> <span class="n">Path</span><span class="p">(</span><span class="n">input_reader</span><span class="o">.</span><span class="n">user_input_dirname</span><span class="p">)</span> <span class="o">/</span> <span class="n">Path</span><span class="p">(</span><span class="n">input_reader</span><span class="o">.</span><span class="n">filename_data</span><span class="p">)</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">dataset_path</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8-sig&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">all_data</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">genfromtxt</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+        <span class="c1"># split into time and data</span>
+        <span class="n">t_eval</span><span class="o">=</span><span class="n">all_data</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">dataset</span><span class="o">=</span><span class="n">all_data</span><span class="p">[:,</span><span class="mi">1</span><span class="p">:]</span>
+        <span class="c1"># Run a test fitting</span>
+        <span class="n">problem_obj</span> <span class="o">=</span> <span class="n">CreatedClass</span><span class="p">(</span><span class="n">dataset</span><span class="o">=</span><span class="n">dataset</span><span class="p">,</span> <span class="n">t_eval</span><span class="o">=</span><span class="n">t_eval</span><span class="p">,</span> <span class="n">y0</span><span class="o">=</span><span class="n">y0</span><span class="p">,</span> <span class="n">input_reader</span><span class="o">=</span><span class="n">input_reader</span><span class="p">,</span>
+                                  <span class="n">compute_loss_problem</span><span class="o">=</span><span class="n">generated_script</span><span class="o">.</span><span class="n">_compute_loss_problem</span><span class="p">,</span>
+                                  <span class="n">write_problem_result</span><span class="o">=</span><span class="n">generated_script</span><span class="o">.</span><span class="n">_write_problem_result</span><span class="p">)</span>
+
+        <span class="n">final_ans</span> <span class="o">=</span> <span class="n">fit_equation_system</span><span class="p">(</span><span class="n">input_reader</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">t_eval</span><span class="p">,</span> <span class="n">dataset</span><span class="p">,</span> <span class="n">problem_obj</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">final_ans</span>
+        
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">error_message</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Fitting process failed with error: </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">error_message</span><span class="p">)</span>
+        
+        <span class="c1"># Write error to file</span>
+        <span class="n">error_file</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">path_to_output_dir</span><span class="p">)</span> <span class="o">/</span> <span class="s2">&quot;fitting_error.txt&quot;</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">error_file</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">error_message</span><span class="p">)</span>
+        
+        <span class="c1"># Re-raise the exception to ensure the process exits with error code</span>
+        <span class="k">raise</span> <span class="n">e</span></div>
+
+
+
+<span class="c1"># fixed</span>
+<div class="viewcode-block" id="fit_equation_system">
+<a class="viewcode-back" href="../../../api.html#lib.utils.helper_functions.fit_equation_system">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">fit_equation_system</span><span class="p">(</span><span class="n">input_reader</span><span class="p">:</span> <span class="n">XMLReader</span><span class="p">,</span> <span class="n">y0</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">t_eval</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">dataset</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">problem_obj</span><span class="p">:</span> <span class="n">CreatedClass</span><span class="p">)</span><span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Fit a system of equations using a two-phase optimization approach.</span>
+
+<span class="sd">    This function performs parameter fitting for a system of equations using:</span>
+<span class="sd">    1. Population-based optimization (PSO) for global search</span>
+<span class="sd">    2. Gradient-based optimization (NODE) for local refinement</span>
+
+<span class="sd">    The process includes:</span>
+<span class="sd">    1. Running PSO to find initial parameter estimates</span>
+<span class="sd">    2. Using PSO results as initial guess for NODE</span>
+<span class="sd">    3. Running NODE to refine the parameters</span>
+<span class="sd">    4. Writing results to output directory</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        input_reader (XMLReader): Reader object containing optimization parameters from XML</span>
+<span class="sd">        y0 (jax.numpy.ndarray): Initial conditions for the system of equations</span>
+<span class="sd">        t_eval (numpy.ndarray): Time points at which to evaluate the solution</span>
+<span class="sd">        dataset (numpy.ndarray): Experimental data to fit against</span>
+<span class="sd">        problem_obj (CreatedClass): Problem object containing loss computation and result writing methods</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        numpy.ndarray: Best parameter set found during optimization</span>
+
+<span class="sd">    Notes:</span>
+<span class="sd">        - PSO is used first to explore the parameter space globally</span>
+<span class="sd">        - NODE uses the best PSO result as its initial guess</span>
+<span class="sd">        - Results are written to the output directory specified in input_reader</span>
+<span class="sd">        - Progress is logged to the output directory</span>
+<span class="sd">        - Final parameters are saved to final_design_point.csv</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1">## create fit object code</span>
+    <span class="c1"># make sure this can be any algorithm</span>
+    <span class="nb">print</span><span class="p">(</span>
+        <span class="s2">&quot;TODO replace with a function that takes the algorithm name as a string input&quot;</span>
+    <span class="p">)</span>
+
+    <span class="n">fit_obj_PSO</span> <span class="o">=</span> <span class="n">FitParamsPSO</span><span class="p">(</span><span class="n">input_reader</span><span class="p">,</span> <span class="n">problem_obj</span><span class="p">)</span>
+
+    <span class="c1"># save axis limit info in problem_obj. The limits have already</span>
+    <span class="c1"># been scaled depending on axis_logscale in fit_obj_PSO</span>
+    <span class="n">problem_obj</span><span class="o">.</span><span class="n">set_min_limit</span><span class="p">(</span><span class="n">fit_obj_PSO</span><span class="o">.</span><span class="n">min_search_axis</span><span class="p">)</span>
+    <span class="n">problem_obj</span><span class="o">.</span><span class="n">set_max_limit</span><span class="p">(</span><span class="n">fit_obj_PSO</span><span class="o">.</span><span class="n">max_search_axis</span><span class="p">)</span>
+    <span class="n">problem_obj</span><span class="o">.</span><span class="n">set_is_logscale</span><span class="p">(</span><span class="n">input_reader</span><span class="o">.</span><span class="n">axis_logscale</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Writing pso log file&quot;</span><span class="p">)</span>
+    <span class="n">log_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">input_reader</span><span class="o">.</span><span class="n">output_dir</span><span class="p">)</span> <span class="o">/</span> <span class="s2">&quot;pso_fitting.log&quot;</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">log_path</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">log_file</span><span class="p">:</span>
+        <span class="n">log_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Total number of PSO iterations: </span><span class="si">{</span><span class="n">input_reader</span><span class="o">.</span><span class="n">n_iters_pop</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">log_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">50</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="n">best_position</span><span class="p">,</span><span class="n">best_cost</span> <span class="o">=</span> <span class="n">optimize_function</span><span class="p">(</span><span class="n">fit_obj_PSO</span><span class="p">,</span> <span class="n">input_reader</span><span class="p">,</span> <span class="n">log_path</span><span class="p">)</span>
+
+    <span class="n">unscaled_best_position</span> <span class="o">=</span> <span class="n">fit_obj_PSO</span><span class="o">.</span><span class="n">unscale_design_point</span><span class="p">(</span><span class="n">best_position</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Best Position from PSO:&quot;</span><span class="p">,</span> <span class="n">unscaled_best_position</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Best cost from PSO:&quot;</span><span class="p">,</span><span class="n">best_cost</span><span class="p">)</span>
+
+    <span class="c1">#problem_obj.plot_problem_result(best_position, label=&quot;PSO&quot;)</span>
+
+    <span class="c1"># fine tuning using NODE</span>
+
+    <span class="n">fit_obj_NODE</span> <span class="o">=</span> <span class="n">FitParamsNODE</span><span class="p">(</span>
+        <span class="n">input_reader</span><span class="p">,</span> <span class="n">problem_obj</span><span class="p">,</span> <span class="n">init_guess</span><span class="o">=</span><span class="n">unscaled_best_position</span>
+    <span class="p">)</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">tuned_best_position</span><span class="p">,</span> <span class="n">tuned_best_loss</span> <span class="o">=</span> <span class="n">fit_obj_NODE</span><span class="o">.</span><span class="n">train_NODE</span><span class="p">()</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error in NODE training: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">, stopping&quot;</span><span class="p">)</span>
+        <span class="n">tuned_best_position</span> <span class="o">=</span> <span class="n">best_position</span>
+        <span class="n">tuned_best_loss</span> <span class="o">=</span> <span class="mf">1e10</span> <span class="c1">#problem_obj._compute_loss(unscaled_best_position)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Tuned position from NODE(scaled):&quot;</span><span class="p">,</span> <span class="n">tuned_best_position</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Tuned best loss:&quot;</span><span class="p">,</span><span class="n">tuned_best_loss</span><span class="p">)</span>
+
+    <span class="n">unscaled_best_position_tuned</span> <span class="o">=</span> <span class="n">fit_obj_PSO</span><span class="o">.</span><span class="n">unscale_design_point</span><span class="p">(</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">tuned_best_position</span><span class="p">)</span>
+    <span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Final best position:&quot;</span><span class="p">,</span> <span class="n">unscaled_best_position_tuned</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">input_reader</span><span class="o">.</span><span class="n">write_results</span><span class="p">:</span>
+        <span class="n">problem_obj</span><span class="o">.</span><span class="n">write_problem_result</span><span class="p">(</span><span class="n">tuned_best_position</span><span class="p">,</span> <span class="n">input_reader</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;result&quot;</span><span class="p">)</span>
+
+    <span class="c1"># save design point to file</span>
+    <span class="n">unscaled_best_position_tuned_np</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">unscaled_best_position_tuned</span><span class="p">)</span>
+    <span class="c1">#TODO edit this to save the number obtained with the name of each parameter</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">savetxt</span><span class="p">(</span><span class="n">input_reader</span><span class="o">.</span><span class="n">output_dir</span><span class="o">/</span><span class="n">Path</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;final_design_point.csv&quot;</span><span class="p">),</span><span class="n">unscaled_best_position_tuned_np</span><span class="p">,</span><span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">unscaled_best_position_tuned</span></div>
+
+
+<div class="viewcode-block" id="optimize_function">
+<a class="viewcode-back" href="../../../api.html#lib.utils.helper_functions.optimize_function">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">optimize_function</span><span class="p">(</span><span class="n">fit_obj</span><span class="p">:</span> <span class="n">FitParamsPSO</span><span class="p">,</span> <span class="n">input_reader</span><span class="p">:</span> <span class="n">XMLReader</span><span class="p">,</span> <span class="n">file_obj</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span><span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="nb">float</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Execute PSO optimization iterations with logging and error handling.</span>
+
+<span class="sd">    This function runs the PSO optimization algorithm for the specified number</span>
+<span class="sd">    of iterations, logging progress and handling any errors that occur during</span>
+<span class="sd">    the optimization process.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        fit_obj (FitParamsPSO): PSO optimization object configured with problem parameters</span>
+<span class="sd">        input_reader (XMLReader): Configuration reader containing iteration count and output directory</span>
+<span class="sd">        file_obj (Path): Path to the log file for writing optimization progress</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        tuple: (best_position, best_cost) - Best parameter set found and its corresponding cost</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        Exception: If optimization fails, with error details written to fitting_error.txt</span>
+
+<span class="sd">    Notes:</span>
+<span class="sd">        - The function checks for a stop_fitting.flag file to allow early termination</span>
+<span class="sd">        - Progress is logged to the specified log file</span>
+<span class="sd">        - Errors are captured and written to fitting_error.txt in the output directory</span>
+<span class="sd">        - If optimization fails, the current best position is returned if available</span>
+<span class="sd">    &quot;&quot;&quot;</span>  
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Starting Search Iterations&quot;</span><span class="p">)</span>
+    <span class="c1"># Iterations</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">iter_no</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">input_reader</span><span class="o">.</span><span class="n">n_iters_pop</span><span class="p">):</span>
+            
+            <span class="c1"># Check for stop flag</span>
+            <span class="n">stop_flag</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">input_reader</span><span class="o">.</span><span class="n">output_dir</span><span class="p">)</span> <span class="o">/</span> <span class="s2">&quot;stop_fitting.flag&quot;</span>
+            <span class="k">if</span> <span class="n">stop_flag</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Stop flag detected, stopping PSO optimization&quot;</span><span class="p">)</span>
+                <span class="k">break</span>
+
+            <span class="n">fit_obj</span><span class="o">.</span><span class="n">search_iteration</span><span class="p">(</span><span class="n">iter_no</span><span class="p">,</span> <span class="n">file_obj</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">error_message</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;PSO optimization failed at iteration </span><span class="si">{</span><span class="n">iter_no</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">error_message</span><span class="p">)</span>
+        
+        <span class="c1"># Write error to file</span>
+        <span class="n">error_file</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">input_reader</span><span class="o">.</span><span class="n">output_dir</span><span class="p">)</span> <span class="o">/</span> <span class="s2">&quot;fitting_error.txt&quot;</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">error_file</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">error_message</span><span class="p">)</span>
+        
+        <span class="c1"># Return current best position if available, otherwise raise</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">fit_obj</span><span class="p">,</span> <span class="s1">&#39;best_pos&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">fit_obj</span><span class="o">.</span><span class="n">best_pos</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">fit_obj</span><span class="o">.</span><span class="n">best_pos</span><span class="p">,</span> <span class="n">fit_obj</span><span class="o">.</span><span class="n">swarm_obj</span><span class="o">.</span><span class="n">best_cost</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">e</span>
+
+    <span class="k">return</span> <span class="n">fit_obj</span><span class="o">.</span><span class="n">best_pos</span><span class="p">,</span><span class="n">fit_obj</span><span class="o">.</span><span class="n">swarm_obj</span><span class="o">.</span><span class="n">best_cost</span></div>
+
+
+
+<span class="c1"># class CreatedClass(ProblemObjectBase):</span>
+<span class="c1">#     def __init__(self, dataset, t_eval, y0, input_reader, compute_loss_problem, write_problem_result):</span>
+<span class="c1">#         super().__init__()</span>
+<span class="c1">#         self.y0 = y0</span>
+<span class="c1">#         self.input_reader = input_reader</span>
+<span class="c1">#         self.t_eval = t_eval</span>
+<span class="c1">#         self.dataset = np.array(dataset)</span>
+<span class="c1">#         self.num_columns_to_fit = self.dataset.shape[1]</span>
+<span class="c1">#         self.params_to_fit_names = self.input_reader.trainable_parameter_names</span>
+<span class="c1">#         self.fixed_param_names = self.input_reader.fixed_parameter_names</span>
+<span class="c1">#         self.fixed_param_values = self.input_reader.fixed_parameter_values</span>
+<span class="c1">#         self.fixed_val_dict = {}</span>
+<span class="c1">#         for i in range(len(self.input_reader.fixed_parameter_names)):</span>
+<span class="c1">#             self.fixed_val_dict[self.fixed_param_names[i]] = self.fixed_param_values[i]</span>
+<span class="c1">#         self.constants = {</span>
+<span class="c1">#             &quot;dataset&quot;: jnp.array(self.dataset),</span>
+<span class="c1">#             &quot;t_eval&quot;: t_eval,</span>
+<span class="c1">#             &quot;init_cond&quot;: y0,</span>
+<span class="c1">#         }</span>
+<span class="c1">#         print(&quot;NOTE: currently, only simulations till the same final time are supported&quot;)</span>
+<span class="c1">#         self.constants[&quot;num_steps&quot;] = self.dataset.shape[0]</span>
+<span class="c1">#         if self.input_reader.init_time is None:</span>
+<span class="c1">#             self.constants[&quot;init_time&quot;] = self.t_eval[0]</span>
+<span class="c1">#         else:</span>
+<span class="c1">#             self.constants[&quot;init_time&quot;] = self.input_reader.init_time</span>
+<span class="c1">#         self.constants[&quot;final_time&quot;] = self.t_eval[-1]</span>
+<span class="c1">#         self.constants[&#39;stepsize_rtol&#39;] = np.array(self.input_reader.stepsize_rtol)</span>
+<span class="c1">#         self.constants[&#39;stepsize_atol&#39;] = np.array(self.input_reader.stepsize_atol)</span>
+<span class="c1">#         self.constants[&#39;init_timestep&#39;] = self.input_reader.init_timestep</span>
+<span class="c1">#         self.constants[&#39;max_steps&#39;] = self.input_reader.max_steps</span>
+<span class="c1">#         self.constants[&#39;fixed_parameters&#39;] = self.fixed_val_dict</span>
+<span class="c1">#         self.constants[&#39;error_loss&#39;] = self.input_reader.error_loss</span>
+<span class="c1">#         self._compute_loss_problem = compute_loss_problem</span>
+<span class="c1">#         self._write_problem_result = write_problem_result</span>
+
+<span class="c1">#     def _compute_all_losses(self, population):</span>
+<span class="c1">#         losses = []</span>
+<span class="c1">#         for i in range(population.shape[0]):</span>
+<span class="c1">#             loss = self._compute_loss(population[i])</span>
+            
+<span class="c1">#             if np.isnan(loss) or np.isinf(loss):</span>
+<span class="c1">#                 loss=1e10</span>
+<span class="c1">#             losses.append(loss)</span>
+<span class="c1">#         return np.array(losses)</span>
+
+<span class="c1">#     @partial(jax.jit, static_argnums=(0,))</span>
+<span class="c1">#     def _compute_loss(self, design_pt):</span>
+<span class="c1">#         return self._compute_loss_problem(self.constants, jnp.array(design_pt))</span>
+
+<span class="c1">#     def set_min_limit(self, min_lim):</span>
+<span class="c1">#         self.constants[&quot;min_limits&quot;] = jnp.array(min_lim)</span>
+
+<span class="c1">#     def set_max_limit(self, max_lim):</span>
+<span class="c1">#         self.constants[&quot;max_limits&quot;] = jnp.array(max_lim)</span>
+
+<span class="c1">#     def set_is_logscale(self, is_logscale):</span>
+<span class="c1">#         self.constants[&quot;is_logscale&quot;] = jnp.array(is_logscale)</span>
+
+<span class="c1">#     def write_problem_result(self, design_point, input_reader, label=&quot;default&quot;):</span>
+<span class="c1">#         writeout_array = self._write_problem_result(self.constants, jnp.array(design_point))</span>
+<span class="c1">#         np.savetxt(input_reader.output_dir/Path(f&quot;{label}_solution.csv&quot;), writeout_array, delimiter=&quot;,&quot;)</span>
+        
+        
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

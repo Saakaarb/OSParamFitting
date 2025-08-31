@@ -1,0 +1,330 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>lib.utils.classes &mdash; OSParamFitting 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
+
+  
+    <link rel="canonical" href="https://yourusername.github.io/OSParamFitting/_modules/lib/utils/classes.html" />
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=8d563738"></script>
+      <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            OSParamFitting
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#module-create_user_model">Main Scripts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api.html#create_user_model.create_user_model"><code class="docutils literal notranslate"><span class="pre">create_user_model()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api.html#check_user_input.check_input"><code class="docutils literal notranslate"><span class="pre">check_input()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api.html#fit_parameters.run_driver"><code class="docutils literal notranslate"><span class="pre">run_driver()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#module-lib.utils.classes">Core Classes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api.html#lib.utils.classes.ProblemObjectBase"><code class="docutils literal notranslate"><span class="pre">ProblemObjectBase</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.utils.classes.ProblemObjectBase.params_to_fit_names"><code class="docutils literal notranslate"><span class="pre">ProblemObjectBase.params_to_fit_names</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.utils.classes.ProblemObjectBase.y0"><code class="docutils literal notranslate"><span class="pre">ProblemObjectBase.y0</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.utils.classes.ProblemObjectBase.t_eval"><code class="docutils literal notranslate"><span class="pre">ProblemObjectBase.t_eval</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.utils.classes.ProblemObjectBase.dataset"><code class="docutils literal notranslate"><span class="pre">ProblemObjectBase.dataset</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.utils.classes.ProblemObjectBase.num_columns_to_fit"><code class="docutils literal notranslate"><span class="pre">ProblemObjectBase.num_columns_to_fit</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.utils.classes.ProblemObjectBase.fixed_params_names"><code class="docutils literal notranslate"><span class="pre">ProblemObjectBase.fixed_params_names</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.utils.classes.ProblemObjectBase.fixed_param_values"><code class="docutils literal notranslate"><span class="pre">ProblemObjectBase.fixed_param_values</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.utils.classes.ProblemObjectBase.__init__"><code class="docutils literal notranslate"><span class="pre">ProblemObjectBase.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.utils.classes.ProblemObjectBase.compute_all_losses"><code class="docutils literal notranslate"><span class="pre">ProblemObjectBase.compute_all_losses()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.utils.classes.ProblemObjectBase.compute_loss"><code class="docutils literal notranslate"><span class="pre">ProblemObjectBase.compute_loss()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.utils.classes.ProblemObjectBase.integrate_system"><code class="docutils literal notranslate"><span class="pre">ProblemObjectBase.integrate_system()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.utils.classes.ProblemObjectBase.plot_result"><code class="docutils literal notranslate"><span class="pre">ProblemObjectBase.plot_result()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api.html#lib.utils.helper_functions.CreatedClass"><code class="docutils literal notranslate"><span class="pre">CreatedClass</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.utils.helper_functions.CreatedClass.__init__"><code class="docutils literal notranslate"><span class="pre">CreatedClass.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.utils.helper_functions.CreatedClass._compute_all_losses"><code class="docutils literal notranslate"><span class="pre">CreatedClass._compute_all_losses()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.utils.helper_functions.CreatedClass._compute_loss"><code class="docutils literal notranslate"><span class="pre">CreatedClass._compute_loss()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.utils.helper_functions.CreatedClass.set_is_logscale"><code class="docutils literal notranslate"><span class="pre">CreatedClass.set_is_logscale()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.utils.helper_functions.CreatedClass.set_max_limit"><code class="docutils literal notranslate"><span class="pre">CreatedClass.set_max_limit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.utils.helper_functions.CreatedClass.set_min_limit"><code class="docutils literal notranslate"><span class="pre">CreatedClass.set_min_limit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.utils.helper_functions.CreatedClass.write_problem_result"><code class="docutils literal notranslate"><span class="pre">CreatedClass.write_problem_result()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api.html#lib.utils.helper_functions.fit_equation_system"><code class="docutils literal notranslate"><span class="pre">fit_equation_system()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api.html#lib.utils.helper_functions.fit_generic_system"><code class="docutils literal notranslate"><span class="pre">fit_generic_system()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api.html#lib.utils.helper_functions.get_input_reader"><code class="docutils literal notranslate"><span class="pre">get_input_reader()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api.html#lib.utils.helper_functions.optimize_function"><code class="docutils literal notranslate"><span class="pre">optimize_function()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#module-lib.LLM.classes">LLM Integration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api.html#lib.LLM.classes.LLMBase"><code class="docutils literal notranslate"><span class="pre">LLMBase</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.LLM.classes.LLMBase.name"><code class="docutils literal notranslate"><span class="pre">LLMBase.name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.LLM.classes.LLMBase.vendor"><code class="docutils literal notranslate"><span class="pre">LLMBase.vendor</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.LLM.classes.LLMBase.model"><code class="docutils literal notranslate"><span class="pre">LLMBase.model</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.LLM.classes.LLMBase.API_key"><code class="docutils literal notranslate"><span class="pre">LLMBase.API_key</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.LLM.classes.LLMBase.client"><code class="docutils literal notranslate"><span class="pre">LLMBase.client</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.LLM.classes.LLMBase.check_generated_files"><code class="docutils literal notranslate"><span class="pre">LLMBase.check_generated_files()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.LLM.classes.LLMBase.check_model_output_inputcheck"><code class="docutils literal notranslate"><span class="pre">LLMBase.check_model_output_inputcheck()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.LLM.classes.LLMBase.generate_system"><code class="docutils literal notranslate"><span class="pre">LLMBase.generate_system()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.LLM.classes.LLMBase.generate_user_model"><code class="docutils literal notranslate"><span class="pre">LLMBase.generate_user_model()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.LLM.classes.LLMBase.init_client"><code class="docutils literal notranslate"><span class="pre">LLMBase.init_client()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.LLM.classes.LLMBase.set_API_key"><code class="docutils literal notranslate"><span class="pre">LLMBase.set_API_key()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api.html#lib.LLM.classes.OpenAI_model"><code class="docutils literal notranslate"><span class="pre">OpenAI_model</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.LLM.classes.OpenAI_model.input_file_path"><code class="docutils literal notranslate"><span class="pre">OpenAI_model.input_file_path</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.LLM.classes.OpenAI_model.reference_file_paths"><code class="docutils literal notranslate"><span class="pre">OpenAI_model.reference_file_paths</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.LLM.classes.OpenAI_model.api_key_string"><code class="docutils literal notranslate"><span class="pre">OpenAI_model.api_key_string</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.LLM.classes.OpenAI_model.dev_instr_filename"><code class="docutils literal notranslate"><span class="pre">OpenAI_model.dev_instr_filename</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.LLM.classes.OpenAI_model.role"><code class="docutils literal notranslate"><span class="pre">OpenAI_model.role</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.LLM.classes.OpenAI_model.vendor"><code class="docutils literal notranslate"><span class="pre">OpenAI_model.vendor</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.LLM.classes.OpenAI_model.model"><code class="docutils literal notranslate"><span class="pre">OpenAI_model.model</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.LLM.classes.OpenAI_model.vector_store_ids"><code class="docutils literal notranslate"><span class="pre">OpenAI_model.vector_store_ids</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.LLM.classes.OpenAI_model.dev_instructions_filename"><code class="docutils literal notranslate"><span class="pre">OpenAI_model.dev_instructions_filename</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.LLM.classes.OpenAI_model.dev_instr"><code class="docutils literal notranslate"><span class="pre">OpenAI_model.dev_instr</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.LLM.classes.OpenAI_model.client"><code class="docutils literal notranslate"><span class="pre">OpenAI_model.client</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.LLM.classes.OpenAI_model.__init__"><code class="docutils literal notranslate"><span class="pre">OpenAI_model.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.LLM.classes.OpenAI_model._check_generated_files"><code class="docutils literal notranslate"><span class="pre">OpenAI_model._check_generated_files()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.LLM.classes.OpenAI_model._check_model_output_inputcheck"><code class="docutils literal notranslate"><span class="pre">OpenAI_model._check_model_output_inputcheck()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.LLM.classes.OpenAI_model._generate_system"><code class="docutils literal notranslate"><span class="pre">OpenAI_model._generate_system()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.LLM.classes.OpenAI_model._generate_user_model"><code class="docutils literal notranslate"><span class="pre">OpenAI_model._generate_user_model()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api.html#lib.LLM.classes.OpenAI_model._set_developer_instructions"><code class="docutils literal notranslate"><span class="pre">OpenAI_model._set_developer_instructions()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">OSParamFitting</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">lib.utils.classes</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for lib.utils.classes</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">xml.etree.ElementTree</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ET</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">lib.utils.xmlread</span><span class="w"> </span><span class="kn">import</span> <span class="n">XMLReader</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">functools</span><span class="w"> </span><span class="kn">import</span> <span class="n">partial</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">jax</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">jax.numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">jnp</span>
+<span class="c1"># Base class for any problem defined</span>
+
+
+<div class="viewcode-block" id="ProblemObjectBase">
+<a class="viewcode-back" href="../../../api.html#lib.utils.classes.ProblemObjectBase">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">ProblemObjectBase</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Abstract base class for defining optimization problems in the OSParamFitting framework.</span>
+<span class="sd">    </span>
+<span class="sd">    This class provides a common interface for all problem types, including ODE systems,</span>
+<span class="sd">    parameter estimation problems, and other optimization tasks. It defines the basic</span>
+<span class="sd">    structure and methods that concrete problem implementations must provide.</span>
+<span class="sd">    </span>
+<span class="sd">    The base class handles common attributes like parameter names, initial conditions,</span>
+<span class="sd">    time evaluation points, and dataset information. Concrete implementations should</span>
+<span class="sd">    override the abstract methods to provide specific problem-solving logic.</span>
+<span class="sd">    </span>
+<span class="sd">    Attributes:</span>
+<span class="sd">        params_to_fit_names (dict): Dictionary mapping parameter names to their indices</span>
+<span class="sd">        y0 (numpy.ndarray, optional): Initial conditions for unsteady problems</span>
+<span class="sd">        t_eval (numpy.ndarray, optional): Time points for solution evaluation</span>
+<span class="sd">        dataset (numpy.ndarray, optional): Experimental or reference data to fit against</span>
+<span class="sd">        num_columns_to_fit (int, optional): Number of data columns to fit</span>
+<span class="sd">        fixed_params_names (list, optional): Names of parameters that are held constant</span>
+<span class="sd">        fixed_param_values (list, optional): Values of the fixed parameters</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+<div class="viewcode-block" id="ProblemObjectBase.__init__">
+<a class="viewcode-back" href="../../../api.html#lib.utils.classes.ProblemObjectBase.__init__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize the ProblemObjectBase with default attribute values.</span>
+<span class="sd">        </span>
+<span class="sd">        Sets up the basic structure for problem objects with empty or None values</span>
+<span class="sd">        that should be populated by concrete implementations or external configuration.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">params_to_fit_names</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="c1"># unsteady problems</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y0</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">t_eval</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dataset</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_columns_to_fit</span><span class="o">=</span><span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">params_to_fit_names</span><span class="o">=</span><span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fixed_params_names</span><span class="o">=</span><span class="kc">None</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">fixed_param_values</span><span class="o">=</span><span class="kc">None</span></div>
+
+
+<div class="viewcode-block" id="ProblemObjectBase.integrate_system">
+<a class="viewcode-back" href="../../../api.html#lib.utils.classes.ProblemObjectBase.integrate_system">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">integrate_system</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Integrate the system for given parameters and return the solution.</span>
+<span class="sd">        </span>
+<span class="sd">        This is a public interface method that delegates to the concrete</span>
+<span class="sd">        implementation&#39;s _integrate_system method.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            *args: Variable arguments passed to the concrete integration method</span>
+<span class="sd">            </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            The result of the system integration (typically solution trajectories)</span>
+<span class="sd">            </span>
+<span class="sd">        Note:</span>
+<span class="sd">            Concrete implementations must override _integrate_system to provide</span>
+<span class="sd">            actual integration logic.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_integrate_system</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span></div>
+
+
+    <span class="c1">#@partial(jax.jit,static_argnums=(0,))</span>
+<div class="viewcode-block" id="ProblemObjectBase.compute_loss">
+<a class="viewcode-back" href="../../../api.html#lib.utils.classes.ProblemObjectBase.compute_loss">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">compute_loss</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Compute the loss/objective function value for given parameters.</span>
+<span class="sd">        </span>
+<span class="sd">        This is a public interface method that delegates to the concrete</span>
+<span class="sd">        implementation&#39;s _compute_loss method. The loss function quantifies</span>
+<span class="sd">        how well the model fits the experimental data.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            *args: Variable arguments (typically parameter values) passed to the loss computation</span>
+<span class="sd">            </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            float: The computed loss value (lower values indicate better fits)</span>
+<span class="sd">            </span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compute_loss</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ProblemObjectBase.compute_all_losses">
+<a class="viewcode-back" href="../../../api.html#lib.utils.classes.ProblemObjectBase.compute_all_losses">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">compute_all_losses</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">population_points</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Compute loss values for an entire population of parameter sets.</span>
+<span class="sd">        </span>
+<span class="sd">        This method evaluates the loss function for multiple parameter combinations,</span>
+<span class="sd">        which is useful for population-based optimization algorithms like PSO.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            population_points (numpy.ndarray): Array of parameter sets with shape</span>
+<span class="sd">                                            (n_individuals, n_parameters)</span>
+<span class="sd">            </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            numpy.ndarray: Array of loss values for each parameter set</span>
+<span class="sd">            </span>
+<span class="sd">        Note:</span>
+<span class="sd">            Concrete implementations must override _compute_all_losses to provide</span>
+<span class="sd">            efficient batch loss computation logic.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compute_all_losses</span><span class="p">(</span><span class="n">population_points</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ProblemObjectBase.plot_result">
+<a class="viewcode-back" href="../../../api.html#lib.utils.classes.ProblemObjectBase.plot_result">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">plot_result</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">design_point</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">label</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s2">&quot;default&quot;</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Plot the result for a given parameter set.</span>
+<span class="sd">        </span>
+<span class="sd">        This method provides visualization capabilities for the problem results,</span>
+<span class="sd">        allowing users to inspect the quality of fits and parameter estimates.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            design_point (numpy.ndarray): Parameter set to visualize</span>
+<span class="sd">            label (str, optional): Label for the plot. Defaults to &quot;default&quot;</span>
+<span class="sd">            </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            The result of the plotting operation (typically matplotlib figure or None)</span>
+<span class="sd">            </span>
+<span class="sd">        Note:</span>
+<span class="sd">            Concrete implementations must override _plot_result to provide</span>
+<span class="sd">            actual plotting logic. This method is useful for debugging and</span>
+<span class="sd">            result analysis.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_plot_result</span><span class="p">(</span><span class="n">design_point</span><span class="p">,</span> <span class="n">label</span><span class="p">)</span></div>
+</div>
+
+
+
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

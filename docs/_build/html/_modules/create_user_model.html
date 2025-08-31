@@ -1,0 +1,283 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>create_user_model &mdash; OSParamFitting 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+    <link rel="canonical" href="https://yourusername.github.io/OSParamFitting/_modules/create_user_model.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=8d563738"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            OSParamFitting
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-create_user_model">Main Scripts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api.html#create_user_model.create_user_model"><code class="docutils literal notranslate"><span class="pre">create_user_model()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api.html#check_user_input.check_input"><code class="docutils literal notranslate"><span class="pre">check_input()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api.html#fit_parameters.run_driver"><code class="docutils literal notranslate"><span class="pre">run_driver()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-lib.utils.classes">Core Classes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api.html#lib.utils.classes.ProblemObjectBase"><code class="docutils literal notranslate"><span class="pre">ProblemObjectBase</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../api.html#lib.utils.classes.ProblemObjectBase.params_to_fit_names"><code class="docutils literal notranslate"><span class="pre">ProblemObjectBase.params_to_fit_names</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api.html#lib.utils.classes.ProblemObjectBase.y0"><code class="docutils literal notranslate"><span class="pre">ProblemObjectBase.y0</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api.html#lib.utils.classes.ProblemObjectBase.t_eval"><code class="docutils literal notranslate"><span class="pre">ProblemObjectBase.t_eval</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api.html#lib.utils.classes.ProblemObjectBase.dataset"><code class="docutils literal notranslate"><span class="pre">ProblemObjectBase.dataset</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api.html#lib.utils.classes.ProblemObjectBase.num_columns_to_fit"><code class="docutils literal notranslate"><span class="pre">ProblemObjectBase.num_columns_to_fit</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api.html#lib.utils.classes.ProblemObjectBase.fixed_params_names"><code class="docutils literal notranslate"><span class="pre">ProblemObjectBase.fixed_params_names</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api.html#lib.utils.classes.ProblemObjectBase.fixed_param_values"><code class="docutils literal notranslate"><span class="pre">ProblemObjectBase.fixed_param_values</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api.html#lib.utils.classes.ProblemObjectBase.__init__"><code class="docutils literal notranslate"><span class="pre">ProblemObjectBase.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api.html#lib.utils.classes.ProblemObjectBase.compute_all_losses"><code class="docutils literal notranslate"><span class="pre">ProblemObjectBase.compute_all_losses()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api.html#lib.utils.classes.ProblemObjectBase.compute_loss"><code class="docutils literal notranslate"><span class="pre">ProblemObjectBase.compute_loss()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api.html#lib.utils.classes.ProblemObjectBase.integrate_system"><code class="docutils literal notranslate"><span class="pre">ProblemObjectBase.integrate_system()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api.html#lib.utils.classes.ProblemObjectBase.plot_result"><code class="docutils literal notranslate"><span class="pre">ProblemObjectBase.plot_result()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../api.html#lib.utils.helper_functions.CreatedClass"><code class="docutils literal notranslate"><span class="pre">CreatedClass</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../api.html#lib.utils.helper_functions.CreatedClass.__init__"><code class="docutils literal notranslate"><span class="pre">CreatedClass.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api.html#lib.utils.helper_functions.CreatedClass._compute_all_losses"><code class="docutils literal notranslate"><span class="pre">CreatedClass._compute_all_losses()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api.html#lib.utils.helper_functions.CreatedClass._compute_loss"><code class="docutils literal notranslate"><span class="pre">CreatedClass._compute_loss()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api.html#lib.utils.helper_functions.CreatedClass.set_is_logscale"><code class="docutils literal notranslate"><span class="pre">CreatedClass.set_is_logscale()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api.html#lib.utils.helper_functions.CreatedClass.set_max_limit"><code class="docutils literal notranslate"><span class="pre">CreatedClass.set_max_limit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api.html#lib.utils.helper_functions.CreatedClass.set_min_limit"><code class="docutils literal notranslate"><span class="pre">CreatedClass.set_min_limit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api.html#lib.utils.helper_functions.CreatedClass.write_problem_result"><code class="docutils literal notranslate"><span class="pre">CreatedClass.write_problem_result()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../api.html#lib.utils.helper_functions.fit_equation_system"><code class="docutils literal notranslate"><span class="pre">fit_equation_system()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api.html#lib.utils.helper_functions.fit_generic_system"><code class="docutils literal notranslate"><span class="pre">fit_generic_system()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api.html#lib.utils.helper_functions.get_input_reader"><code class="docutils literal notranslate"><span class="pre">get_input_reader()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api.html#lib.utils.helper_functions.optimize_function"><code class="docutils literal notranslate"><span class="pre">optimize_function()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-lib.LLM.classes">LLM Integration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api.html#lib.LLM.classes.LLMBase"><code class="docutils literal notranslate"><span class="pre">LLMBase</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../api.html#lib.LLM.classes.LLMBase.name"><code class="docutils literal notranslate"><span class="pre">LLMBase.name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api.html#lib.LLM.classes.LLMBase.vendor"><code class="docutils literal notranslate"><span class="pre">LLMBase.vendor</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api.html#lib.LLM.classes.LLMBase.model"><code class="docutils literal notranslate"><span class="pre">LLMBase.model</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api.html#lib.LLM.classes.LLMBase.API_key"><code class="docutils literal notranslate"><span class="pre">LLMBase.API_key</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api.html#lib.LLM.classes.LLMBase.client"><code class="docutils literal notranslate"><span class="pre">LLMBase.client</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api.html#lib.LLM.classes.LLMBase.check_generated_files"><code class="docutils literal notranslate"><span class="pre">LLMBase.check_generated_files()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api.html#lib.LLM.classes.LLMBase.check_model_output_inputcheck"><code class="docutils literal notranslate"><span class="pre">LLMBase.check_model_output_inputcheck()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api.html#lib.LLM.classes.LLMBase.generate_system"><code class="docutils literal notranslate"><span class="pre">LLMBase.generate_system()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api.html#lib.LLM.classes.LLMBase.generate_user_model"><code class="docutils literal notranslate"><span class="pre">LLMBase.generate_user_model()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api.html#lib.LLM.classes.LLMBase.init_client"><code class="docutils literal notranslate"><span class="pre">LLMBase.init_client()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api.html#lib.LLM.classes.LLMBase.set_API_key"><code class="docutils literal notranslate"><span class="pre">LLMBase.set_API_key()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../api.html#lib.LLM.classes.OpenAI_model"><code class="docutils literal notranslate"><span class="pre">OpenAI_model</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../api.html#lib.LLM.classes.OpenAI_model.input_file_path"><code class="docutils literal notranslate"><span class="pre">OpenAI_model.input_file_path</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api.html#lib.LLM.classes.OpenAI_model.reference_file_paths"><code class="docutils literal notranslate"><span class="pre">OpenAI_model.reference_file_paths</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api.html#lib.LLM.classes.OpenAI_model.api_key_string"><code class="docutils literal notranslate"><span class="pre">OpenAI_model.api_key_string</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api.html#lib.LLM.classes.OpenAI_model.dev_instr_filename"><code class="docutils literal notranslate"><span class="pre">OpenAI_model.dev_instr_filename</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api.html#lib.LLM.classes.OpenAI_model.role"><code class="docutils literal notranslate"><span class="pre">OpenAI_model.role</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api.html#lib.LLM.classes.OpenAI_model.vendor"><code class="docutils literal notranslate"><span class="pre">OpenAI_model.vendor</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api.html#lib.LLM.classes.OpenAI_model.model"><code class="docutils literal notranslate"><span class="pre">OpenAI_model.model</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api.html#lib.LLM.classes.OpenAI_model.vector_store_ids"><code class="docutils literal notranslate"><span class="pre">OpenAI_model.vector_store_ids</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api.html#lib.LLM.classes.OpenAI_model.dev_instructions_filename"><code class="docutils literal notranslate"><span class="pre">OpenAI_model.dev_instructions_filename</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api.html#lib.LLM.classes.OpenAI_model.dev_instr"><code class="docutils literal notranslate"><span class="pre">OpenAI_model.dev_instr</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api.html#lib.LLM.classes.OpenAI_model.client"><code class="docutils literal notranslate"><span class="pre">OpenAI_model.client</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api.html#lib.LLM.classes.OpenAI_model.__init__"><code class="docutils literal notranslate"><span class="pre">OpenAI_model.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api.html#lib.LLM.classes.OpenAI_model._check_generated_files"><code class="docutils literal notranslate"><span class="pre">OpenAI_model._check_generated_files()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api.html#lib.LLM.classes.OpenAI_model._check_model_output_inputcheck"><code class="docutils literal notranslate"><span class="pre">OpenAI_model._check_model_output_inputcheck()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api.html#lib.LLM.classes.OpenAI_model._generate_system"><code class="docutils literal notranslate"><span class="pre">OpenAI_model._generate_system()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api.html#lib.LLM.classes.OpenAI_model._generate_user_model"><code class="docutils literal notranslate"><span class="pre">OpenAI_model._generate_user_model()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api.html#lib.LLM.classes.OpenAI_model._set_developer_instructions"><code class="docutils literal notranslate"><span class="pre">OpenAI_model._set_developer_instructions()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">OSParamFitting</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Module code</a></li>
+      <li class="breadcrumb-item active">create_user_model</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for create_user_model</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">lib.LLM.classes</span><span class="w"> </span><span class="kn">import</span> <span class="n">OpenAI_model</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">lib.utils.helper_functions</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_input_reader</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">lib.utils.xmlread</span><span class="w"> </span><span class="kn">import</span> <span class="n">XMLReader</span>
+
+<div class="viewcode-block" id="create_user_model">
+<a class="viewcode-back" href="../api.html#create_user_model.create_user_model">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">create_user_model</span><span class="p">(</span><span class="n">session_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span><span class="n">input_reader</span><span class="p">:</span> <span class="n">XMLReader</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Generate a user model skeleton from XML input configuration.</span>
+
+<span class="sd">    This function creates a Python code skeleton (user_model.py) that the user</span>
+<span class="sd">    can populate with their specific ODE system definitions. It uses an LLM-based</span>
+<span class="sd">    agent to analyze the XML configuration and generate appropriate Python code</span>
+<span class="sd">    templates that follow the framework&#39;s requirements.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        session_dir (Path): Path to the session directory where the user model</span>
+<span class="sd">                        will be generated</span>
+<span class="sd">        input_reader (XMLReader): XMLReader instance containing configuration</span>
+<span class="sd">                                information about directory names and file paths</span>
+
+<span class="sd">    The function performs the following operations:</span>
+<span class="sd">    1. Creates necessary directories if they don&#39;t exist</span>
+<span class="sd">    2. Reads the user_input.xml configuration file</span>
+<span class="sd">    3. Uses an LLM agent to generate a Python code skeleton based on the XML</span>
+<span class="sd">    4. Writes the generated user_model.py to the session&#39;s generated directory</span>
+<span class="sd">    5. Provides instructions for the user to populate the generated functions</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        None: The user model skeleton is written to the generated directory</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Launching script to create user model&quot;</span><span class="p">)</span>
+
+    <span class="c1"># check if necessary dirs exist in session_dir</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">session_dir</span> <span class="o">/</span> <span class="n">input_reader</span><span class="o">.</span><span class="n">user_input_dirname</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;User input directory </span><span class="si">{</span><span class="n">session_dir</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">input_reader</span><span class="o">.</span><span class="n">user_input_dirname</span><span class="si">}</span><span class="s2"> does not exist, making it...&quot;</span><span class="p">)</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">session_dir</span> <span class="o">/</span> <span class="n">input_reader</span><span class="o">.</span><span class="n">user_input_dirname</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">session_dir</span> <span class="o">/</span> <span class="n">input_reader</span><span class="o">.</span><span class="n">generated_dirname</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Generated directory </span><span class="si">{</span><span class="n">session_dir</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">input_reader</span><span class="o">.</span><span class="n">generated_dirname</span><span class="si">}</span><span class="s2"> does not exist, making it...&quot;</span><span class="p">)</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">session_dir</span> <span class="o">/</span> <span class="n">input_reader</span><span class="o">.</span><span class="n">generated_dirname</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">session_dir</span> <span class="o">/</span> <span class="n">input_reader</span><span class="o">.</span><span class="n">output_dirname</span> <span class="o">/</span> <span class="s2">&quot;inputs&quot;</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Output directory </span><span class="si">{</span><span class="n">session_dir</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">input_reader</span><span class="o">.</span><span class="n">output_dirname</span><span class="w"> </span><span class="si">}</span><span class="s2"> does not exist, making it...&quot;</span><span class="p">)</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">session_dir</span> <span class="o">/</span> <span class="n">input_reader</span><span class="o">.</span><span class="n">output_dirname</span><span class="p">)</span>
+
+    <span class="n">session_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">session_dir</span><span class="p">)</span>
+    <span class="n">path_to_input</span> <span class="o">=</span> <span class="n">session_path</span> <span class="o">/</span> <span class="n">input_reader</span><span class="o">.</span><span class="n">user_input_dirname</span> <span class="o">/</span> <span class="s2">&quot;user_input.xml&quot;</span>
+    <span class="n">path_to_user_model</span> <span class="o">=</span> <span class="n">session_path</span> <span class="o">/</span> <span class="n">input_reader</span><span class="o">.</span><span class="n">generated_dirname</span> <span class="o">/</span> <span class="s2">&quot;user_model.py&quot;</span>
+
+    <span class="n">path_to_user_input_sample</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">())</span> <span class="o">/</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;lib/utils/user_input_sample.xml&quot;</span><span class="p">)</span>
+    <span class="n">path_to_user_model_sample</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">())</span> <span class="o">/</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;lib/utils/user_model_sample_unpopulated.py&quot;</span><span class="p">)</span>
+
+
+    <span class="n">dev_instr_filename</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">())</span> <span class="o">/</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;lib/LLM/user_model_generation_instructions.txt&quot;</span><span class="p">)</span>
+
+    <span class="n">reference_file_paths</span> <span class="o">=</span> <span class="p">[]</span>
+    
+
+    <span class="n">user_model_generator</span> <span class="o">=</span> <span class="n">OpenAI_model</span><span class="p">(</span>
+        <span class="n">path_to_input</span><span class="p">,</span>
+        <span class="n">reference_file_paths</span><span class="p">,</span>
+        <span class="n">api_key_string</span><span class="o">=</span><span class="s2">&quot;OPENAI_ENV_KEY&quot;</span><span class="p">,</span>
+        <span class="n">dev_instr_filename</span><span class="o">=</span><span class="n">dev_instr_filename</span><span class="p">,</span>
+        <span class="n">role</span><span class="o">=</span><span class="s2">&quot;user_model_generator&quot;</span>
+    <span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Generating user model....&quot;</span><span class="p">)</span>
+    <span class="n">user_model_generator</span><span class="o">.</span><span class="n">generate_user_model</span><span class="p">(</span><span class="n">path_to_input</span><span class="p">,</span><span class="n">path_to_user_input_sample</span><span class="p">,</span><span class="n">path_to_user_model_sample</span><span class="p">,</span><span class="n">path_to_user_model</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Written user model skeleton to </span><span class="si">{</span><span class="n">path_to_user_model</span><span class="si">}</span><span class="s2"> using </span><span class="si">{</span><span class="n">path_to_input</span><span class="si">}</span><span class="s2">,</span><span class="se">\</span>
+<span class="s2">           now you can write the python code for the user model in the file&quot;</span><span class="p">)</span></div>
+
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">api_key</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;OPENAI_ENV_KEY&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="s2">&quot;sessions&quot;</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;No sessions directory found. Please create a sessions directory and make a subdir structure as shown in the README.md file&quot;</span><span class="p">)</span>
+
+    <span class="n">sessions_root</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;sessions&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="n">session_dir</span> <span class="o">=</span> <span class="n">sessions_root</span> <span class="o">/</span> <span class="n">Path</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">session_dir</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Session directory </span><span class="si">{</span><span class="n">session_dir</span><span class="si">}</span><span class="s2"> does not exist&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+
+        <span class="n">session_dirs</span> <span class="o">=</span> <span class="p">[</span><span class="n">d</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">sessions_root</span><span class="o">.</span><span class="n">iterdir</span><span class="p">()</span> <span class="k">if</span> <span class="n">d</span><span class="o">.</span><span class="n">is_dir</span><span class="p">()]</span>
+        
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">session_dirs</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;No session directories found in ./sessions.&quot;</span><span class="p">)</span>
+            <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="c1"># Sort by modification time, descending</span>
+        <span class="n">session_dirs</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="n">d</span><span class="o">.</span><span class="n">stat</span><span class="p">()</span><span class="o">.</span><span class="n">st_mtime</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">session_dir</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">session_dirs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;No session_dir provided. Using most recent session: </span><span class="si">{</span><span class="n">session_dir</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="c1"># Pass the API key to check_input via environment or directly if needed</span>
+    <span class="n">input_file_path</span> <span class="o">=</span> <span class="n">session_dir</span> <span class="o">/</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;inputs&quot;</span><span class="p">)</span> <span class="o">/</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;user_input.xml&quot;</span><span class="p">)</span>
+    <span class="n">input_reader</span> <span class="o">=</span> <span class="n">get_input_reader</span><span class="p">(</span><span class="n">input_file_path</span><span class="p">)</span>
+    <span class="n">create_user_model</span><span class="p">(</span><span class="n">session_dir</span><span class="p">,</span><span class="n">input_reader</span><span class="p">)</span>
+
+        
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

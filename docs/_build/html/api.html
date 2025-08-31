@@ -1,0 +1,1245 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>API Reference &mdash; OSParamFitting 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+    <link rel="canonical" href="https://yourusername.github.io/OSParamFitting/api.html" />
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=8d563738"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="OSParamFitting API Documentation" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            OSParamFitting
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-create_user_model">Main Scripts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#create_user_model.create_user_model"><code class="docutils literal notranslate"><span class="pre">create_user_model()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#check_user_input.check_input"><code class="docutils literal notranslate"><span class="pre">check_input()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fit_parameters.run_driver"><code class="docutils literal notranslate"><span class="pre">run_driver()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-lib.utils.classes">Core Classes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#lib.utils.classes.ProblemObjectBase"><code class="docutils literal notranslate"><span class="pre">ProblemObjectBase</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#lib.utils.classes.ProblemObjectBase.params_to_fit_names"><code class="docutils literal notranslate"><span class="pre">ProblemObjectBase.params_to_fit_names</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lib.utils.classes.ProblemObjectBase.y0"><code class="docutils literal notranslate"><span class="pre">ProblemObjectBase.y0</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lib.utils.classes.ProblemObjectBase.t_eval"><code class="docutils literal notranslate"><span class="pre">ProblemObjectBase.t_eval</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lib.utils.classes.ProblemObjectBase.dataset"><code class="docutils literal notranslate"><span class="pre">ProblemObjectBase.dataset</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lib.utils.classes.ProblemObjectBase.num_columns_to_fit"><code class="docutils literal notranslate"><span class="pre">ProblemObjectBase.num_columns_to_fit</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lib.utils.classes.ProblemObjectBase.fixed_params_names"><code class="docutils literal notranslate"><span class="pre">ProblemObjectBase.fixed_params_names</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lib.utils.classes.ProblemObjectBase.fixed_param_values"><code class="docutils literal notranslate"><span class="pre">ProblemObjectBase.fixed_param_values</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lib.utils.classes.ProblemObjectBase.__init__"><code class="docutils literal notranslate"><span class="pre">ProblemObjectBase.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lib.utils.classes.ProblemObjectBase.compute_all_losses"><code class="docutils literal notranslate"><span class="pre">ProblemObjectBase.compute_all_losses()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lib.utils.classes.ProblemObjectBase.compute_loss"><code class="docutils literal notranslate"><span class="pre">ProblemObjectBase.compute_loss()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lib.utils.classes.ProblemObjectBase.integrate_system"><code class="docutils literal notranslate"><span class="pre">ProblemObjectBase.integrate_system()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lib.utils.classes.ProblemObjectBase.plot_result"><code class="docutils literal notranslate"><span class="pre">ProblemObjectBase.plot_result()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#lib.utils.helper_functions.CreatedClass"><code class="docutils literal notranslate"><span class="pre">CreatedClass</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#lib.utils.helper_functions.CreatedClass.__init__"><code class="docutils literal notranslate"><span class="pre">CreatedClass.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lib.utils.helper_functions.CreatedClass._compute_all_losses"><code class="docutils literal notranslate"><span class="pre">CreatedClass._compute_all_losses()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lib.utils.helper_functions.CreatedClass._compute_loss"><code class="docutils literal notranslate"><span class="pre">CreatedClass._compute_loss()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lib.utils.helper_functions.CreatedClass.set_is_logscale"><code class="docutils literal notranslate"><span class="pre">CreatedClass.set_is_logscale()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lib.utils.helper_functions.CreatedClass.set_max_limit"><code class="docutils literal notranslate"><span class="pre">CreatedClass.set_max_limit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lib.utils.helper_functions.CreatedClass.set_min_limit"><code class="docutils literal notranslate"><span class="pre">CreatedClass.set_min_limit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lib.utils.helper_functions.CreatedClass.write_problem_result"><code class="docutils literal notranslate"><span class="pre">CreatedClass.write_problem_result()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#lib.utils.helper_functions.fit_equation_system"><code class="docutils literal notranslate"><span class="pre">fit_equation_system()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#lib.utils.helper_functions.fit_generic_system"><code class="docutils literal notranslate"><span class="pre">fit_generic_system()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#lib.utils.helper_functions.get_input_reader"><code class="docutils literal notranslate"><span class="pre">get_input_reader()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#lib.utils.helper_functions.optimize_function"><code class="docutils literal notranslate"><span class="pre">optimize_function()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-lib.LLM.classes">LLM Integration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#lib.LLM.classes.LLMBase"><code class="docutils literal notranslate"><span class="pre">LLMBase</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#lib.LLM.classes.LLMBase.name"><code class="docutils literal notranslate"><span class="pre">LLMBase.name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lib.LLM.classes.LLMBase.vendor"><code class="docutils literal notranslate"><span class="pre">LLMBase.vendor</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lib.LLM.classes.LLMBase.model"><code class="docutils literal notranslate"><span class="pre">LLMBase.model</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lib.LLM.classes.LLMBase.API_key"><code class="docutils literal notranslate"><span class="pre">LLMBase.API_key</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lib.LLM.classes.LLMBase.client"><code class="docutils literal notranslate"><span class="pre">LLMBase.client</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lib.LLM.classes.LLMBase.check_generated_files"><code class="docutils literal notranslate"><span class="pre">LLMBase.check_generated_files()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lib.LLM.classes.LLMBase.check_model_output_inputcheck"><code class="docutils literal notranslate"><span class="pre">LLMBase.check_model_output_inputcheck()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lib.LLM.classes.LLMBase.generate_system"><code class="docutils literal notranslate"><span class="pre">LLMBase.generate_system()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lib.LLM.classes.LLMBase.generate_user_model"><code class="docutils literal notranslate"><span class="pre">LLMBase.generate_user_model()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lib.LLM.classes.LLMBase.init_client"><code class="docutils literal notranslate"><span class="pre">LLMBase.init_client()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lib.LLM.classes.LLMBase.set_API_key"><code class="docutils literal notranslate"><span class="pre">LLMBase.set_API_key()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#lib.LLM.classes.OpenAI_model"><code class="docutils literal notranslate"><span class="pre">OpenAI_model</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#lib.LLM.classes.OpenAI_model.input_file_path"><code class="docutils literal notranslate"><span class="pre">OpenAI_model.input_file_path</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lib.LLM.classes.OpenAI_model.reference_file_paths"><code class="docutils literal notranslate"><span class="pre">OpenAI_model.reference_file_paths</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lib.LLM.classes.OpenAI_model.api_key_string"><code class="docutils literal notranslate"><span class="pre">OpenAI_model.api_key_string</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lib.LLM.classes.OpenAI_model.dev_instr_filename"><code class="docutils literal notranslate"><span class="pre">OpenAI_model.dev_instr_filename</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lib.LLM.classes.OpenAI_model.role"><code class="docutils literal notranslate"><span class="pre">OpenAI_model.role</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lib.LLM.classes.OpenAI_model.vendor"><code class="docutils literal notranslate"><span class="pre">OpenAI_model.vendor</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lib.LLM.classes.OpenAI_model.model"><code class="docutils literal notranslate"><span class="pre">OpenAI_model.model</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lib.LLM.classes.OpenAI_model.vector_store_ids"><code class="docutils literal notranslate"><span class="pre">OpenAI_model.vector_store_ids</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lib.LLM.classes.OpenAI_model.dev_instructions_filename"><code class="docutils literal notranslate"><span class="pre">OpenAI_model.dev_instructions_filename</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lib.LLM.classes.OpenAI_model.dev_instr"><code class="docutils literal notranslate"><span class="pre">OpenAI_model.dev_instr</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lib.LLM.classes.OpenAI_model.client"><code class="docutils literal notranslate"><span class="pre">OpenAI_model.client</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lib.LLM.classes.OpenAI_model.__init__"><code class="docutils literal notranslate"><span class="pre">OpenAI_model.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lib.LLM.classes.OpenAI_model._check_generated_files"><code class="docutils literal notranslate"><span class="pre">OpenAI_model._check_generated_files()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lib.LLM.classes.OpenAI_model._check_model_output_inputcheck"><code class="docutils literal notranslate"><span class="pre">OpenAI_model._check_model_output_inputcheck()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lib.LLM.classes.OpenAI_model._generate_system"><code class="docutils literal notranslate"><span class="pre">OpenAI_model._generate_system()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lib.LLM.classes.OpenAI_model._generate_user_model"><code class="docutils literal notranslate"><span class="pre">OpenAI_model._generate_user_model()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lib.LLM.classes.OpenAI_model._set_developer_instructions"><code class="docutils literal notranslate"><span class="pre">OpenAI_model._set_developer_instructions()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">OSParamFitting</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">API Reference</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/api.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="api-reference">
+<h1>API Reference<a class="headerlink" href="#api-reference" title="Link to this heading"></a></h1>
+<section id="module-create_user_model">
+<span id="main-scripts"></span><h2>Main Scripts<a class="headerlink" href="#module-create_user_model" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="create_user_model.create_user_model">
+<span class="sig-prename descclassname"><span class="pre">create_user_model.</span></span><span class="sig-name descname"><span class="pre">create_user_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">session_dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_reader</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/create_user_model.html#create_user_model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#create_user_model.create_user_model" title="Link to this definition"></a></dt>
+<dd><p>Generate a user model skeleton from XML input configuration.</p>
+<p>This function creates a Python code skeleton (user_model.py) that the user
+can populate with their specific ODE system definitions. It uses an LLM-based
+agent to analyze the XML configuration and generate appropriate Python code
+templates that follow the framework’s requirements.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>session_dir</strong> (<em>Path</em>) – Path to the session directory where the user model
+will be generated</p></li>
+<li><p><strong>input_reader</strong> (<em>XMLReader</em>) – XMLReader instance containing configuration
+information about directory names and file paths</p></li>
+</ul>
+</dd>
+</dl>
+<p>The function performs the following operations:
+1. Creates necessary directories if they don’t exist
+2. Reads the user_input.xml configuration file
+3. Uses an LLM agent to generate a Python code skeleton based on the XML
+4. Writes the generated user_model.py to the session’s generated directory
+5. Provides instructions for the user to populate the generated functions</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The user model skeleton is written to the generated directory</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>session_dir</strong> (<em>Path</em>)</p></li>
+<li><p><strong>input_reader</strong> (<em>XMLReader</em>)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function" id="module-check_user_input">
+<dt class="sig sig-object py" id="check_user_input.check_input">
+<span class="sig-prename descclassname"><span class="pre">check_user_input.</span></span><span class="sig-name descname"><span class="pre">check_input</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">session_dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_reader</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/check_user_input.html#check_input"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#check_user_input.check_input" title="Link to this definition"></a></dt>
+<dd><p>”
+Check user input with session-specific paths and validate the setup.</p>
+<p>This function performs a comprehensive validation of the user’s input configuration
+by checking directory structures, XML files, and user-defined Python code. It uses
+an LLM-based agent to analyze the inputs and generate a detailed report of any
+errors or warnings that need to be addressed before proceeding to parameter fitting.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>session_dir</strong> (<em>Path</em>) – Path to the session directory containing the user’s
+input files and generated code</p></li>
+<li><p><strong>input_reader</strong> (<em>XMLReader</em>) – XMLReader instance that contains configuration
+information about directory names and file paths</p></li>
+</ul>
+</dd>
+</dl>
+<p>The function performs the following operations:
+1. Creates necessary directories if they don’t exist
+2. Validates the user_input.xml file against the user_model.py code
+3. Generates a detailed report of critical errors and warnings
+4. Refines the validation report for better readability
+5. Displays the final validation results to the terminal</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Results are written to output files and displayed in terminal</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>session_dir</strong> (<em>Path</em>)</p></li>
+<li><p><strong>input_reader</strong> (<em>XMLReader</em>)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function" id="module-fit_parameters">
+<dt class="sig sig-object py" id="fit_parameters.run_driver">
+<span class="sig-prename descclassname"><span class="pre">fit_parameters.</span></span><span class="sig-name descname"><span class="pre">run_driver</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">session_dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_reader</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/fit_parameters.html#run_driver"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fit_parameters.run_driver" title="Link to this definition"></a></dt>
+<dd><p>Execute the complete parameter fitting workflow for the user’s ODE system.</p>
+<p>This function orchestrates the entire parameter estimation process by generating
+the necessary optimization scripts and executing the fitting algorithm. It uses
+an LLM-based agent to create optimized code for the specific ODE system defined
+in the user’s configuration, then runs the parameter fitting using a two-layer
+optimization strategy.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>session_dir</strong> (<em>Path</em>) – Path to the session directory containing the user’s
+input files, generated code, and where outputs will be stored</p></li>
+<li><p><strong>input_reader</strong> (<em>XMLReader</em>) – XMLReader instance containing configuration
+information about directory names and file paths</p></li>
+</ul>
+</dd>
+</dl>
+<p>The function performs the following operations:
+1. Cleans and recreates the output directory for fresh results
+2. Uses an LLM agent to generate optimized fitting scripts based on the user’s model
+3. Executes the parameter fitting process using the generated scripts
+4. Applies a two-layer optimization strategy (population-based followed by gradient-based)
+5. Stores the fitted parameters and optimization results in the output directory</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Results are written to the output directory and displayed in terminal</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>session_dir</strong> (<em>Path</em>)</p></li>
+<li><p><strong>input_reader</strong> (<em>XMLReader</em>)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-lib.utils.classes">
+<span id="core-classes"></span><h2>Core Classes<a class="headerlink" href="#module-lib.utils.classes" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="lib.utils.classes.ProblemObjectBase">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lib.utils.classes.</span></span><span class="sig-name descname"><span class="pre">ProblemObjectBase</span></span><a class="reference internal" href="_modules/lib/utils/classes.html#ProblemObjectBase"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lib.utils.classes.ProblemObjectBase" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Abstract base class for defining optimization problems in the OSParamFitting framework.</p>
+<p>This class provides a common interface for all problem types, including ODE systems,
+parameter estimation problems, and other optimization tasks. It defines the basic
+structure and methods that concrete problem implementations must provide.</p>
+<p>The base class handles common attributes like parameter names, initial conditions,
+time evaluation points, and dataset information. Concrete implementations should
+override the abstract methods to provide specific problem-solving logic.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lib.utils.classes.ProblemObjectBase.params_to_fit_names">
+<span class="sig-name descname"><span class="pre">params_to_fit_names</span></span><a class="headerlink" href="#lib.utils.classes.ProblemObjectBase.params_to_fit_names" title="Link to this definition"></a></dt>
+<dd><p>Dictionary mapping parameter names to their indices</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lib.utils.classes.ProblemObjectBase.y0">
+<span class="sig-name descname"><span class="pre">y0</span></span><a class="headerlink" href="#lib.utils.classes.ProblemObjectBase.y0" title="Link to this definition"></a></dt>
+<dd><p>Initial conditions for unsteady problems</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.ndarray, optional</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lib.utils.classes.ProblemObjectBase.t_eval">
+<span class="sig-name descname"><span class="pre">t_eval</span></span><a class="headerlink" href="#lib.utils.classes.ProblemObjectBase.t_eval" title="Link to this definition"></a></dt>
+<dd><p>Time points for solution evaluation</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.ndarray, optional</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lib.utils.classes.ProblemObjectBase.dataset">
+<span class="sig-name descname"><span class="pre">dataset</span></span><a class="headerlink" href="#lib.utils.classes.ProblemObjectBase.dataset" title="Link to this definition"></a></dt>
+<dd><p>Experimental or reference data to fit against</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.ndarray, optional</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lib.utils.classes.ProblemObjectBase.num_columns_to_fit">
+<span class="sig-name descname"><span class="pre">num_columns_to_fit</span></span><a class="headerlink" href="#lib.utils.classes.ProblemObjectBase.num_columns_to_fit" title="Link to this definition"></a></dt>
+<dd><p>Number of data columns to fit</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int, optional</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lib.utils.classes.ProblemObjectBase.fixed_params_names">
+<span class="sig-name descname"><span class="pre">fixed_params_names</span></span><a class="headerlink" href="#lib.utils.classes.ProblemObjectBase.fixed_params_names" title="Link to this definition"></a></dt>
+<dd><p>Names of parameters that are held constant</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list, optional</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lib.utils.classes.ProblemObjectBase.fixed_param_values">
+<span class="sig-name descname"><span class="pre">fixed_param_values</span></span><a class="headerlink" href="#lib.utils.classes.ProblemObjectBase.fixed_param_values" title="Link to this definition"></a></dt>
+<dd><p>Values of the fixed parameters</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list, optional</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lib.utils.classes.ProblemObjectBase.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/lib/utils/classes.html#ProblemObjectBase.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lib.utils.classes.ProblemObjectBase.__init__" title="Link to this definition"></a></dt>
+<dd><p>Initialize the ProblemObjectBase with default attribute values.</p>
+<p>Sets up the basic structure for problem objects with empty or None values
+that should be populated by concrete implementations or external configuration.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lib.utils.classes.ProblemObjectBase.compute_all_losses">
+<span class="sig-name descname"><span class="pre">compute_all_losses</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">population_points</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lib/utils/classes.html#ProblemObjectBase.compute_all_losses"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lib.utils.classes.ProblemObjectBase.compute_all_losses" title="Link to this definition"></a></dt>
+<dd><p>Compute loss values for an entire population of parameter sets.</p>
+<p>This method evaluates the loss function for multiple parameter combinations,
+which is useful for population-based optimization algorithms like PSO.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>population_points</strong> (<em>numpy.ndarray</em>) – Array of parameter sets with shape
+(n_individuals, n_parameters)</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Array of loss values for each parameter set</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Concrete implementations must override _compute_all_losses to provide
+efficient batch loss computation logic.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lib.utils.classes.ProblemObjectBase.compute_loss">
+<span class="sig-name descname"><span class="pre">compute_loss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lib/utils/classes.html#ProblemObjectBase.compute_loss"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lib.utils.classes.ProblemObjectBase.compute_loss" title="Link to this definition"></a></dt>
+<dd><p>Compute the loss/objective function value for given parameters.</p>
+<p>This is a public interface method that delegates to the concrete
+implementation’s _compute_loss method. The loss function quantifies
+how well the model fits the experimental data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>*args</strong> – Variable arguments (typically parameter values) passed to the loss computation</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The computed loss value (lower values indicate better fits)</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lib.utils.classes.ProblemObjectBase.integrate_system">
+<span class="sig-name descname"><span class="pre">integrate_system</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lib/utils/classes.html#ProblemObjectBase.integrate_system"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lib.utils.classes.ProblemObjectBase.integrate_system" title="Link to this definition"></a></dt>
+<dd><p>Integrate the system for given parameters and return the solution.</p>
+<p>This is a public interface method that delegates to the concrete
+implementation’s _integrate_system method.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>*args</strong> – Variable arguments passed to the concrete integration method</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The result of the system integration (typically solution trajectories)</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Concrete implementations must override _integrate_system to provide
+actual integration logic.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lib.utils.classes.ProblemObjectBase.plot_result">
+<span class="sig-name descname"><span class="pre">plot_result</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">design_point</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'default'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lib/utils/classes.html#ProblemObjectBase.plot_result"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lib.utils.classes.ProblemObjectBase.plot_result" title="Link to this definition"></a></dt>
+<dd><p>Plot the result for a given parameter set.</p>
+<p>This method provides visualization capabilities for the problem results,
+allowing users to inspect the quality of fits and parameter estimates.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>design_point</strong> (<em>numpy.ndarray</em>) – Parameter set to visualize</p></li>
+<li><p><strong>label</strong> (<em>str</em><em>, </em><em>optional</em>) – Label for the plot. Defaults to “default”</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The result of the plotting operation (typically matplotlib figure or None)</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Concrete implementations must override _plot_result to provide
+actual plotting logic. This method is useful for debugging and
+result analysis.</p>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class" id="module-lib.utils.helper_functions">
+<dt class="sig sig-object py" id="lib.utils.helper_functions.CreatedClass">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lib.utils.helper_functions.</span></span><span class="sig-name descname"><span class="pre">CreatedClass</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t_eval</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_reader</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">compute_loss_problem</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">write_problem_result</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lib/utils/helper_functions.html#CreatedClass"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lib.utils.helper_functions.CreatedClass" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#lib.utils.classes.ProblemObjectBase" title="lib.utils.classes.ProblemObjectBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">ProblemObjectBase</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataset</strong> (<em>ndarray</em>)</p></li>
+<li><p><strong>t_eval</strong> (<em>ndarray</em>)</p></li>
+<li><p><strong>y0</strong> (<em>Array</em>)</p></li>
+<li><p><strong>input_reader</strong> (<em>XMLReader</em>)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="lib.utils.helper_functions.CreatedClass.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t_eval</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_reader</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">compute_loss_problem</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">write_problem_result</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lib/utils/helper_functions.html#CreatedClass.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lib.utils.helper_functions.CreatedClass.__init__" title="Link to this definition"></a></dt>
+<dd><p>Initialize the CreatedClass instance with problem configuration.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataset</strong> (<em>numpy.ndarray</em>) – Experimental data array with shape (time_steps, variables)</p></li>
+<li><p><strong>t_eval</strong> (<em>numpy.ndarray</em>) – Time points for solution evaluation</p></li>
+<li><p><strong>y0</strong> (<em>jax.numpy.ndarray</em>) – Initial conditions for the ODE system</p></li>
+<li><p><strong>input_reader</strong> (<em>XMLReader</em>) – Configuration reader containing all problem parameters</p></li>
+<li><p><strong>compute_loss_problem</strong> (<em>callable</em>) – Function to compute loss for given parameters</p></li>
+<li><p><strong>write_problem_result</strong> (<em>callable</em>) – Function to write problem results</p></li>
+</ul>
+</dd>
+</dl>
+<p>The constructor sets up the complete problem environment including:
+- Parameter management (trainable vs fixed)
+- Integration settings (tolerance, step size, max steps)
+- Time domain configuration
+- Loss computation and result writing functions</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lib.utils.helper_functions.CreatedClass._compute_all_losses">
+<span class="sig-name descname"><span class="pre">_compute_all_losses</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">population</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lib/utils/helper_functions.html#CreatedClass._compute_all_losses"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lib.utils.helper_functions.CreatedClass._compute_all_losses" title="Link to this definition"></a></dt>
+<dd><p>Compute losses for an entire population of parameter sets.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>population</strong> (<em>numpy.ndarray</em>) – Array of parameter sets, shape (n_individuals, n_parameters)</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>Array of loss values for each parameter set, with NaN/Inf values</dt><dd><p>replaced by 1e10 to prevent optimization issues</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+<p>This method iterates through each parameter set in the population and computes
+the corresponding loss using the JIT-compiled _compute_loss method.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lib.utils.helper_functions.CreatedClass._compute_loss">
+<span class="sig-name descname"><span class="pre">_compute_loss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">design_pt</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lib/utils/helper_functions.html#CreatedClass._compute_loss"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lib.utils.helper_functions.CreatedClass._compute_loss" title="Link to this definition"></a></dt>
+<dd><p>Compute loss for a single parameter set using JIT compilation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>design_pt</strong> (<em>jax.numpy.ndarray</em>) – Single parameter set to evaluate</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Computed loss value for the given parameters</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+<p>This method is JIT-compiled for performance and calls the user-defined
+loss computation function with the problem constants and parameters.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lib.utils.helper_functions.CreatedClass.set_is_logscale">
+<span class="sig-name descname"><span class="pre">set_is_logscale</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">is_logscale</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lib/utils/helper_functions.html#CreatedClass.set_is_logscale"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lib.utils.helper_functions.CreatedClass.set_is_logscale" title="Link to this definition"></a></dt>
+<dd><p>Set log-scale flag for parameter axes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>is_logscale</strong> (<em>numpy.ndarray</em>) – Boolean array indicating which parameters
+should use log-scale transformation</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+<p>This affects how the optimization algorithms handle parameter scaling
+and search space exploration.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lib.utils.helper_functions.CreatedClass.set_max_limit">
+<span class="sig-name descname"><span class="pre">set_max_limit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">max_lim</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lib/utils/helper_functions.html#CreatedClass.set_max_limit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lib.utils.helper_functions.CreatedClass.set_max_limit" title="Link to this definition"></a></dt>
+<dd><p>Set maximum bounds for parameter search space.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>max_lim</strong> (<em>numpy.ndarray</em>) – Array of maximum values for each parameter</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+<p>The limits are stored in the constants dictionary and used by the
+optimization algorithms to constrain the search space.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lib.utils.helper_functions.CreatedClass.set_min_limit">
+<span class="sig-name descname"><span class="pre">set_min_limit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">min_lim</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lib/utils/helper_functions.html#CreatedClass.set_min_limit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lib.utils.helper_functions.CreatedClass.set_min_limit" title="Link to this definition"></a></dt>
+<dd><p>Set minimum bounds for parameter search space.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>min_lim</strong> (<em>numpy.ndarray</em>) – Array of minimum values for each parameter</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+<p>The limits are stored in the constants dictionary and used by the
+optimization algorithms to constrain the search space.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lib.utils.helper_functions.CreatedClass.write_problem_result">
+<span class="sig-name descname"><span class="pre">write_problem_result</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">design_point</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_reader</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'default'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lib/utils/helper_functions.html#CreatedClass.write_problem_result"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lib.utils.helper_functions.CreatedClass.write_problem_result" title="Link to this definition"></a></dt>
+<dd><p>Write problem solution results to CSV files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>design_point</strong> (<em>numpy.ndarray</em>) – Parameter set that produced the solution</p></li>
+<li><p><strong>input_reader</strong> (<em>XMLReader</em>) – Configuration reader containing output directory info</p></li>
+<li><p><strong>label</strong> (<em>str</em><em>, </em><em>optional</em>) – Label for the output file. Defaults to “default”</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+<p>The method calls the user-defined result writing function and saves the
+output to a CSV file in the format “{label}_solution.csv”.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lib.utils.helper_functions.fit_equation_system">
+<span class="sig-prename descclassname"><span class="pre">lib.utils.helper_functions.</span></span><span class="sig-name descname"><span class="pre">fit_equation_system</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_reader</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t_eval</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">problem_obj</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lib/utils/helper_functions.html#fit_equation_system"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lib.utils.helper_functions.fit_equation_system" title="Link to this definition"></a></dt>
+<dd><p>Fit a system of equations using a two-phase optimization approach.</p>
+<p>This function performs parameter fitting for a system of equations using:
+1. Population-based optimization (PSO) for global search
+2. Gradient-based optimization (NODE) for local refinement</p>
+<p>The process includes:
+1. Running PSO to find initial parameter estimates
+2. Using PSO results as initial guess for NODE
+3. Running NODE to refine the parameters
+4. Writing results to output directory</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input_reader</strong> (<em>XMLReader</em>) – Reader object containing optimization parameters from XML</p></li>
+<li><p><strong>y0</strong> (<em>jax.numpy.ndarray</em>) – Initial conditions for the system of equations</p></li>
+<li><p><strong>t_eval</strong> (<em>numpy.ndarray</em>) – Time points at which to evaluate the solution</p></li>
+<li><p><strong>dataset</strong> (<em>numpy.ndarray</em>) – Experimental data to fit against</p></li>
+<li><p><strong>problem_obj</strong> (<a class="reference internal" href="#lib.utils.helper_functions.CreatedClass" title="lib.utils.helper_functions.CreatedClass"><em>CreatedClass</em></a>) – Problem object containing loss computation and result writing methods</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Best parameter set found during optimization</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li><p>PSO is used first to explore the parameter space globally</p></li>
+<li><p>NODE uses the best PSO result as its initial guess</p></li>
+<li><p>Results are written to the output directory specified in input_reader</p></li>
+<li><p>Progress is logged to the output directory</p></li>
+<li><p>Final parameters are saved to final_design_point.csv</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lib.utils.helper_functions.fit_generic_system">
+<span class="sig-prename descclassname"><span class="pre">lib.utils.helper_functions.</span></span><span class="sig-name descname"><span class="pre">fit_generic_system</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path_to_input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path_to_output_dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">generated_dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">session_path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lib/utils/helper_functions.html#fit_generic_system"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lib.utils.helper_functions.fit_generic_system" title="Link to this definition"></a></dt>
+<dd><p>Fit a generic system using a two-phase optimization approach.</p>
+<p>This function performs parameter fitting using a combination of:
+1. Population-based optimization (PSO) for global search
+2. Gradient-based optimization (NODE) for local refinement</p>
+<p>The process includes:
+1. Reading input parameters from XML
+2. Running PSO to find initial parameter estimates
+3. Using PSO results as initial guess for NODE
+4. Running NODE to refine the parameters
+5. Writing results to output directory</p>
+<section id="parameters">
+<h3>Parameters<a class="headerlink" href="#parameters" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>path_to_input<span class="classifier">str or Path</span></dt><dd><p>Path to the input XML file containing optimization parameters</p>
+</dd>
+<dt>path_to_output_dir<span class="classifier">str or Path</span></dt><dd><p>Directory where output files will be written</p>
+</dd>
+<dt>generated_dir<span class="classifier">str or Path</span></dt><dd><p>Directory containing generated files (user_model.py, etc.)</p>
+</dd>
+</dl>
+</section>
+<section id="notes">
+<h3>Notes<a class="headerlink" href="#notes" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>PSO is used first to explore the parameter space globally</p></li>
+<li><p>NODE uses the best PSO result as its initial guess</p></li>
+<li><dl class="simple">
+<dt>Results are written to the output directory:</dt><dd><ul>
+<li><p>final_design_point.csv : Best parameters found</p></li>
+<li><p>result_solution.csv : Solution trajectory</p></li>
+<li><p>fitting_error.txt : Error messages if any</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Progress is logged to the output directory</p></li>
+</ul>
+</section>
+<section id="returns">
+<h3>Returns<a class="headerlink" href="#returns" title="Link to this heading"></a></h3>
+<p>numpy.ndarray: Best parameter set found during optimization</p>
+</section>
+<section id="see-also">
+<h3>See Also<a class="headerlink" href="#see-also" title="Link to this heading"></a></h3>
+<p>FitParamsPSO : Class for PSO optimization parameters
+FitParamsNODE : Class for NODE optimization parameters</p>
+</section>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path_to_input</strong> (<em>Path</em>)</p></li>
+<li><p><strong>path_to_output_dir</strong> (<em>Path</em>)</p></li>
+<li><p><strong>generated_dir</strong> (<em>Path</em>)</p></li>
+<li><p><strong>session_path</strong> (<em>Path</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>ndarray</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lib.utils.helper_functions.get_input_reader">
+<span class="sig-prename descclassname"><span class="pre">lib.utils.helper_functions.</span></span><span class="sig-name descname"><span class="pre">get_input_reader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path_to_input</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lib/utils/helper_functions.html#get_input_reader"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lib.utils.helper_functions.get_input_reader" title="Link to this definition"></a></dt>
+<dd><p>Parse XML input file and create an XMLReader instance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>path_to_input</strong> (<em>Path</em>) – Path to the XML configuration file</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Configured reader instance containing all problem parameters</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>XMLReader</p>
+</dd>
+</dl>
+<p>This function parses the XML file using ElementTree and initializes
+an XMLReader object with the parsed configuration data.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lib.utils.helper_functions.optimize_function">
+<span class="sig-prename descclassname"><span class="pre">lib.utils.helper_functions.</span></span><span class="sig-name descname"><span class="pre">optimize_function</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fit_obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_reader</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_obj</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lib/utils/helper_functions.html#optimize_function"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lib.utils.helper_functions.optimize_function" title="Link to this definition"></a></dt>
+<dd><p>Execute PSO optimization iterations with logging and error handling.</p>
+<p>This function runs the PSO optimization algorithm for the specified number
+of iterations, logging progress and handling any errors that occur during
+the optimization process.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fit_obj</strong> (<em>FitParamsPSO</em>) – PSO optimization object configured with problem parameters</p></li>
+<li><p><strong>input_reader</strong> (<em>XMLReader</em>) – Configuration reader containing iteration count and output directory</p></li>
+<li><p><strong>file_obj</strong> (<em>Path</em>) – Path to the log file for writing optimization progress</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>(best_position, best_cost) - Best parameter set found and its corresponding cost</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>Exception</strong> – If optimization fails, with error details written to fitting_error.txt</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li><p>The function checks for a stop_fitting.flag file to allow early termination</p></li>
+<li><p>Progress is logged to the specified log file</p></li>
+<li><p>Errors are captured and written to fitting_error.txt in the output directory</p></li>
+<li><p>If optimization fails, the current best position is returned if available</p></li>
+</ul>
+</dd></dl>
+
+</section>
+<section id="module-lib.LLM.classes">
+<span id="llm-integration"></span><h2>LLM Integration<a class="headerlink" href="#module-lib.LLM.classes" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="lib.LLM.classes.LLMBase">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lib.LLM.classes.</span></span><span class="sig-name descname"><span class="pre">LLMBase</span></span><a class="reference internal" href="_modules/lib/LLM/classes.html#LLMBase"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lib.LLM.classes.LLMBase" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Base class for Large Language Model (LLM) interfacing in the OSParamFitting framework.</p>
+<p>This abstract base class provides a common interface for different LLM vendors and models.
+It defines the basic structure for API key management, client initialization, and core
+LLM operations like code generation, system checking, and user model creation.</p>
+<p>The class serves as a foundation for vendor-specific implementations (e.g., OpenAI)
+and ensures consistent behavior across different LLM providers.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lib.LLM.classes.LLMBase.name">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#lib.LLM.classes.LLMBase.name" title="Link to this definition"></a></dt>
+<dd><p>Problem name identifier</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str, optional</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lib.LLM.classes.LLMBase.vendor">
+<span class="sig-name descname"><span class="pre">vendor</span></span><a class="headerlink" href="#lib.LLM.classes.LLMBase.vendor" title="Link to this definition"></a></dt>
+<dd><p>Model vendor/provider name</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str, optional</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lib.LLM.classes.LLMBase.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#lib.LLM.classes.LLMBase.model" title="Link to this definition"></a></dt>
+<dd><p>Specific model identifier</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str, optional</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lib.LLM.classes.LLMBase.API_key">
+<span class="sig-name descname"><span class="pre">API_key</span></span><a class="headerlink" href="#lib.LLM.classes.LLMBase.API_key" title="Link to this definition"></a></dt>
+<dd><p>API key for authentication</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str, optional</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lib.LLM.classes.LLMBase.client">
+<span class="sig-name descname"><span class="pre">client</span></span><a class="headerlink" href="#lib.LLM.classes.LLMBase.client" title="Link to this definition"></a></dt>
+<dd><p>LLM client instance for making API calls</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lib.LLM.classes.LLMBase.check_generated_files">
+<span class="sig-name descname"><span class="pre">check_generated_files</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output_file_path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lib/LLM/classes.html#LLMBase.check_generated_files"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lib.LLM.classes.LLMBase.check_generated_files" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>output_file_path</strong> (<em>Path</em>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lib.LLM.classes.LLMBase.check_model_output_inputcheck">
+<span class="sig-name descname"><span class="pre">check_model_output_inputcheck</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output_file_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_iterations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lib/LLM/classes.html#LLMBase.check_model_output_inputcheck"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lib.LLM.classes.LLMBase.check_model_output_inputcheck" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>output_file_path</strong> (<em>Path</em>)</p></li>
+<li><p><strong>num_iterations</strong> (<em>int</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lib.LLM.classes.LLMBase.generate_system">
+<span class="sig-name descname"><span class="pre">generate_system</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">system_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_file_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lib/LLM/classes.html#LLMBase.generate_system"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lib.LLM.classes.LLMBase.generate_system" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>system_path</strong> (<em>Path</em>)</p></li>
+<li><p><strong>output_file_path</strong> (<em>Path</em><em> | </em><em>None</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lib.LLM.classes.LLMBase.generate_user_model">
+<span class="sig-name descname"><span class="pre">generate_user_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_file_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_sample_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_model_sample_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_model_path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lib/LLM/classes.html#LLMBase.generate_user_model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lib.LLM.classes.LLMBase.generate_user_model" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input_file_path</strong> (<em>Path</em>)</p></li>
+<li><p><strong>input_sample_path</strong> (<em>Path</em>)</p></li>
+<li><p><strong>user_model_sample_path</strong> (<em>Path</em>)</p></li>
+<li><p><strong>user_model_path</strong> (<em>Path</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lib.LLM.classes.LLMBase.init_client">
+<span class="sig-name descname"><span class="pre">init_client</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/lib/LLM/classes.html#LLMBase.init_client"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lib.LLM.classes.LLMBase.init_client" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>OpenAI</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lib.LLM.classes.LLMBase.set_API_key">
+<span class="sig-name descname"><span class="pre">set_API_key</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">API_key_string</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lib/LLM/classes.html#LLMBase.set_API_key"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lib.LLM.classes.LLMBase.set_API_key" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>API_key_string</strong> (<em>str</em><em> | </em><em>None</em>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lib.LLM.classes.OpenAI_model">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lib.LLM.classes.</span></span><span class="sig-name descname"><span class="pre">OpenAI_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_file_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reference_file_paths</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">api_key_string</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dev_instr_filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">role</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lib/LLM/classes.html#OpenAI_model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lib.LLM.classes.OpenAI_model" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#lib.LLM.classes.LLMBase" title="lib.LLM.classes.LLMBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">LLMBase</span></code></a></p>
+<p>Concrete implementation of LLMBase for OpenAI’s GPT models.</p>
+<p>This class provides OpenAI-specific functionality for the OSParamFitting framework,
+including GPT-4 integration for code generation, error checking, and user model
+creation. It handles API authentication, client setup, and OpenAI-specific API calls.</p>
+<p>The class is designed to work with OpenAI’s GPT-4.1 model and provides methods
+for generating Python code, checking user inputs, and creating model skeletons
+based on XML configuration files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input_file_path</strong> (<em>Path</em>)</p></li>
+<li><p><strong>reference_file_paths</strong> (<em>list</em><em>[</em><em>Path</em><em>]</em>)</p></li>
+<li><p><strong>api_key_string</strong> (<em>str</em>)</p></li>
+<li><p><strong>dev_instr_filename</strong> (<em>Path</em>)</p></li>
+<li><p><strong>role</strong> (<em>str</em>)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lib.LLM.classes.OpenAI_model.input_file_path">
+<span class="sig-name descname"><span class="pre">input_file_path</span></span><a class="headerlink" href="#lib.LLM.classes.OpenAI_model.input_file_path" title="Link to this definition"></a></dt>
+<dd><p>Path to the input XML configuration file</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Path</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lib.LLM.classes.OpenAI_model.reference_file_paths">
+<span class="sig-name descname"><span class="pre">reference_file_paths</span></span><a class="headerlink" href="#lib.LLM.classes.OpenAI_model.reference_file_paths" title="Link to this definition"></a></dt>
+<dd><p>List of reference files for context</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[Path]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lib.LLM.classes.OpenAI_model.api_key_string">
+<span class="sig-name descname"><span class="pre">api_key_string</span></span><a class="headerlink" href="#lib.LLM.classes.OpenAI_model.api_key_string" title="Link to this definition"></a></dt>
+<dd><p>Environment variable name containing the API key</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lib.LLM.classes.OpenAI_model.dev_instr_filename">
+<span class="sig-name descname"><span class="pre">dev_instr_filename</span></span><a class="headerlink" href="#lib.LLM.classes.OpenAI_model.dev_instr_filename" title="Link to this definition"></a></dt>
+<dd><p>Path to developer instructions file</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Path</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lib.LLM.classes.OpenAI_model.role">
+<span class="sig-name descname"><span class="pre">role</span></span><a class="headerlink" href="#lib.LLM.classes.OpenAI_model.role" title="Link to this definition"></a></dt>
+<dd><p>Role identifier for the LLM model</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lib.LLM.classes.OpenAI_model.vendor">
+<span class="sig-name descname"><span class="pre">vendor</span></span><a class="headerlink" href="#lib.LLM.classes.OpenAI_model.vendor" title="Link to this definition"></a></dt>
+<dd><p>Set to “openai” for this implementation</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lib.LLM.classes.OpenAI_model.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#lib.LLM.classes.OpenAI_model.model" title="Link to this definition"></a></dt>
+<dd><p>Set to “gpt-4.1” for this implementation</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lib.LLM.classes.OpenAI_model.vector_store_ids">
+<span class="sig-name descname"><span class="pre">vector_store_ids</span></span><a class="headerlink" href="#lib.LLM.classes.OpenAI_model.vector_store_ids" title="Link to this definition"></a></dt>
+<dd><p>Vector store identifiers (currently unused)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lib.LLM.classes.OpenAI_model.dev_instructions_filename">
+<span class="sig-name descname"><span class="pre">dev_instructions_filename</span></span><a class="headerlink" href="#lib.LLM.classes.OpenAI_model.dev_instructions_filename" title="Link to this definition"></a></dt>
+<dd><p>Developer instructions filename</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str, optional</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lib.LLM.classes.OpenAI_model.dev_instr">
+<span class="sig-name descname"><span class="pre">dev_instr</span></span><a class="headerlink" href="#lib.LLM.classes.OpenAI_model.dev_instr" title="Link to this definition"></a></dt>
+<dd><p>Content of developer instructions</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lib.LLM.classes.OpenAI_model.client">
+<span class="sig-name descname"><span class="pre">client</span></span><a class="headerlink" href="#lib.LLM.classes.OpenAI_model.client" title="Link to this definition"></a></dt>
+<dd><p>OpenAI client instance</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>OpenAI</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lib.LLM.classes.OpenAI_model.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_file_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reference_file_paths</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">api_key_string</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dev_instr_filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">role</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lib/LLM/classes.html#OpenAI_model.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lib.LLM.classes.OpenAI_model.__init__" title="Link to this definition"></a></dt>
+<dd><p>Initialize the OpenAI_model instance with configuration and API setup.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input_file_path</strong> (<em>Path</em>) – Path to the input XML configuration file</p></li>
+<li><p><strong>reference_file_paths</strong> (<em>list</em><em>[</em><em>Path</em><em>]</em>) – List of reference files for context</p></li>
+<li><p><strong>api_key_string</strong> (<em>str</em>) – Environment variable name containing the OpenAI API key</p></li>
+<li><p><strong>dev_instr_filename</strong> (<em>Path</em>) – Path to developer instructions file</p></li>
+<li><p><strong>role</strong> (<em>str</em>) – Role identifier for the LLM model</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If the API key is not found in the specified environment variable</p>
+</dd>
+</dl>
+<p>The constructor sets up the OpenAI client, validates the API key, and configures
+the model for GPT-4.1 usage. It also initializes the developer instructions.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lib.LLM.classes.OpenAI_model._check_generated_files">
+<span class="sig-name descname"><span class="pre">_check_generated_files</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output_file_path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lib/LLM/classes.html#OpenAI_model._check_generated_files"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lib.LLM.classes.OpenAI_model._check_generated_files" title="Link to this definition"></a></dt>
+<dd><p>Check generated files for errors using OpenAI’s GPT-4.1 model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>output_file_path</strong> (<em>Path</em>) – Path where the validation report will be written</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+<p>This method uses GPT-4.1 to analyze user-uploaded Python code against the
+XML configuration context to identify errors and provide a comprehensive
+validation report.</p>
+<p>The process involves:
+1. Loading developer instructions
+2. Reading the XML configuration and user code
+3. Sending an analysis prompt to GPT-4.1
+4. Writing the validation report to the output file</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lib.LLM.classes.OpenAI_model._check_model_output_inputcheck">
+<span class="sig-name descname"><span class="pre">_check_model_output_inputcheck</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output_file_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_iterations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lib/LLM/classes.html#OpenAI_model._check_model_output_inputcheck"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lib.LLM.classes.OpenAI_model._check_model_output_inputcheck" title="Link to this definition"></a></dt>
+<dd><p>Check and refine model output through iterative validation using GPT-4.1.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>output_file_path</strong> (<em>Path</em>) – Path where the refined output will be written</p></li>
+<li><p><strong>num_iterations</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of refinement iterations. Defaults to 1.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+<p>This method performs iterative refinement of model outputs using GPT-4.1.
+It can run multiple iterations to improve the quality and clarity of the
+generated reports or outputs.</p>
+<p>The process involves:
+1. Loading developer instructions
+2. Reading the current model output
+3. Running multiple refinement iterations (if specified)
+4. Writing the final refined output to the output file</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lib.LLM.classes.OpenAI_model._generate_system">
+<span class="sig-name descname"><span class="pre">_generate_system</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">system_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_file_path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lib/LLM/classes.html#OpenAI_model._generate_system"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lib.LLM.classes.OpenAI_model._generate_system" title="Link to this definition"></a></dt>
+<dd><p>Generate system code using OpenAI’s GPT-4.1 model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>system_path</strong> (<em>Path</em>) – Path to the system definition file</p></li>
+<li><p><strong>output_file_path</strong> (<em>Path</em>) – Path where the generated system code will be written</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+<p>This method uses GPT-4.1 to analyze the system definition, XML configuration,
+and output sample to generate appropriate system code. The generated code is
+written to the specified output file.</p>
+<p>The process involves:
+1. Loading developer instructions
+2. Reading system, XML, and sample files
+3. Sending a structured prompt to GPT-4.1
+4. Writing the generated response to the output file</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lib.LLM.classes.OpenAI_model._generate_user_model">
+<span class="sig-name descname"><span class="pre">_generate_user_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_file_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_sample_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_model_sample_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_model_path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lib/LLM/classes.html#OpenAI_model._generate_user_model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lib.LLM.classes.OpenAI_model._generate_user_model" title="Link to this definition"></a></dt>
+<dd><p>Generate a user model skeleton using OpenAI’s GPT-4.1 model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input_file_path</strong> (<em>Path</em>) – Path to the input XML configuration file</p></li>
+<li><p><strong>input_sample_path</strong> (<em>Path</em>) – Path to a sample input file for reference</p></li>
+<li><p><strong>user_model_sample_path</strong> (<em>Path</em>) – Path to a sample user model for reference</p></li>
+<li><p><strong>user_model_path</strong> (<em>Path</em>) – Path where the generated user model will be written</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+<p>This method uses GPT-4.1 to generate a user model skeleton based on the XML
+configuration and sample files. It analyzes the context and creates appropriate
+Python code templates that users can populate with their specific problem definitions.</p>
+<p>The process involves:
+1. Loading developer instructions
+2. Reading XML configuration and sample files
+3. Sending a generation prompt to GPT-4.1
+4. Overwriting any existing user model file
+5. Writing the generated skeleton to the output file</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If a user model already exists at the target path, it will be overwritten.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lib.LLM.classes.OpenAI_model._set_developer_instructions">
+<span class="sig-name descname"><span class="pre">_set_developer_instructions</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/lib/LLM/classes.html#OpenAI_model._set_developer_instructions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lib.LLM.classes.OpenAI_model._set_developer_instructions" title="Link to this definition"></a></dt>
+<dd><p>Load and set developer instructions from the specified file.</p>
+<p>Reads the developer instructions file and stores its content in the dev_instr
+attribute. These instructions guide the LLM’s behavior during code generation
+and validation tasks.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="OSParamFitting API Documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
