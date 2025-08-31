@@ -1,5 +1,9 @@
 # OSParamFitting
 
+[![License: CC BY-NC 4.0](https://img.shields.io/badge/License-CC%20BY--NC%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc/4.0/)
+[![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
+[![GitHub Actions](https://img.shields.io/badge/GitHub%20Actions-Documentation-blue.svg)](https://github.com/Saakaarb/OSParamFitting/actions)
+
 <div style="display: flex; justify-content: space-between; align-items: center; margin: 20px 0;">
   <div style="flex: 1; margin: 0 10px;">
     <h4>Parameter Convergence</h4>

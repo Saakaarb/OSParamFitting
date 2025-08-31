@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+  - family-names: "Bhatnagar"
+    given-names: "Saakaar"
+    email: "saakaar28@gmail.com"
+title: "OSParamFitting: An Agentic AI Framework for ODE Parameter Estimation"
+version: "0.1.0"
+date-released: 2025-08-30
+repository-code: "https://github.com/Saakaarb/OSParamFitting"
+license: "CC-BY-NC-4.0"
+keywords:
+  - "ODE parameter estimation"
+  - "differential equations"
+  - "optimization"
+  - "machine learning"
+  - "JAX"
+  - "artificial intelligence"
+abstract: "OSParamFitting is an Agentic AI framework that simplifies parameter estimation for complex ODE systems. It combines population-based and gradient-based optimization methods with LLM-guided code generation, requiring minimal user expertise while providing robust parameter identification capabilities."

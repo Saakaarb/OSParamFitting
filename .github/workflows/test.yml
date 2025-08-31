@@ -27,7 +27,6 @@ jobs:
 
     - name: Run test_framework.py
       env:
-        EQX_ON_ERROR: "nan"
         OPENAI_ENV_KEY: ${{ secrets.OPENAI_ENV_KEY }}
       run: |
         pytest tests/test_framework.py

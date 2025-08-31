@@ -8,7 +8,7 @@ jax.config.update("jax_enable_x64", True)
 @jax.jit
 def unscale_value(val, min_val, max_val, is_logscale):
     lin_unscaled = ((val + 1.0) / 2.0) * (max_val - min_val) + min_val
-    unscaled = jnp.where(is_logscale, 10.0 ** lin_unscaled, lin_unscaled)
+    unscaled = jnp.where(is_logscale, 10.0**lin_unscaled, lin_unscaled)
     return unscaled
 
 @jax.jit
@@ -28,38 +28,18 @@ def user_defined_system(t, y, other_args):
     max_val = constants["max_limits"]
     is_logscale = constants["is_logscale"]
 
-    # ['c2', 'Dk', 'Dc']
-    c2, Dk, Dc = unscale_value(trainable_variables, min_val, max_val, is_logscale)
-    # fixed ['m1','m2','vf']
-    m1 = fixed_parameters["m1"]
-    m2 = fixed_parameters["m2"]
-    vf = fixed_parameters["vf"]
+    # Trainable parameter ordering (trainable_variables): mu
+    mu, = unscale_value(trainable_variables, min_val, max_val, is_logscale)
 
-    # y ordering: ['x1', 'x2', 'v1', 'v2', 'k', 'c1']
+    # Ny=2 (from XML): y = [x1, x2]
     x1 = y[0]
     x2 = y[1]
-    v1 = y[2]
-    v2 = y[3]
-    k = y[4]
-    c1 = y[5]
 
-    def F1(Fs, c1, v1):
-        return Fs - c1 * jnp.abs(v1) * jnp.sign(v1)
+    dx1dt = mu * (x2 - ((1.0 / 3.0) * x1 ** 3 - x1))
+    dx2dt = -1.0 / mu * x1
 
-    def F2(Fs, c2, v2):
-        cond = jnp.logical_and(jnp.abs(Fs) < c2, jnp.abs(v2) < vf)
-        return jnp.where(cond, 0.0, Fs - c2 * jnp.sign(v2))
-
-    Fs = k * (x2 - x1)
-    dx1_dt = v1
-    dx2_dt = v2
-    dv1_dt = (1.0 / m1) * F1(Fs, c1, v1)
-    dv2_dt = (1.0 / m2) * F2(-1.0 * Fs, c2, v2)
-    P = jnp.abs(m1 * v1 * dv1_dt)
-    dk_dt = Dk * P
-    dc1_dt = Dc * P
-
-    return jnp.array([dx1_dt, dx2_dt, dv1_dt, dv2_dt, dk_dt, dc1_dt])
+    derivatives = jnp.array([dx1dt, dx2dt])
+    return derivatives
 
 @jax.jit
 def _integrate_system(constants, trainable_variables):
@@ -68,9 +48,9 @@ def _integrate_system(constants, trainable_variables):
     t_eval = constants["t_eval"]
     init_cond = constants["init_cond"]
     init_time = constants["init_time"]
-    dataset = constants["dataset"]
     saveat = diffrax.SaveAt(ts=t_eval)
     other_args = {"constants": constants, "trainable_variables": trainable_variables}
+
     sol = diffrax.diffeqsolve(
         term,
         solver,
@@ -82,10 +62,7 @@ def _integrate_system(constants, trainable_variables):
         args=other_args,
         saveat=saveat,
         throw=False,
-        stepsize_controller=diffrax.PIDController(
-            rtol=constants['stepsize_rtol'],
-            atol=constants['stepsize_atol']
-        ),
+        stepsize_controller=diffrax.PIDController(rtol=constants['stepsize_rtol'], atol=constants['stepsize_atol']),
     )
     return sol.ts, sol.ys, sol.result
 
@@ -95,9 +72,13 @@ def _compute_loss_problem(constants, trainable_variables):
     solution_time, solution, result = _integrate_system(constants, trainable_variables)
     failed = jnp.logical_or(result == RESULTS.max_steps_reached, result == RESULTS.singular)
 
-    # Columns 2:4 => v1, v2
-    max_cols = jnp.max(jnp.abs(dataset[:, 2:4]), axis=0)
-    loss_value = jnp.sqrt(jnp.mean(jnp.square((solution[:, 2:4] - dataset[:, 2:4]) / max_cols)))
+    # Trainable parameter ordering: mu
+    # Loss calculation
+    # dataset shape [Nts, N_col], solution shape [Nts, Ny]
+    # dataset omits time column --> [Nts, Ny]
+    # max_col of dataset (axis=0)
+    max_col = jnp.max(jnp.abs(dataset), axis=0)
+    loss_value = jnp.sqrt(jnp.mean(jnp.square(jnp.divide(solution - dataset, max_col))))
 
     loss = jnp.where(failed, constants["error_loss"], loss_value)
     return loss
@@ -106,9 +87,12 @@ def _write_problem_result(constants, trainable_variables):
     dataset = constants["dataset"]
     solution_time, solution, result = _integrate_system(constants, trainable_variables)
 
-    Nts = solution_time.shape[0]
-    writeout_array = jnp.zeros([Nts, 9])
+    # Writeout array: shape [Nts, 5]
+    # Column 0: solution_time
+    # Columns 1,2: dataset
+    # Columns 3,4: solution
+    writeout_array = jnp.zeros((solution_time.shape[0], 5), dtype=solution.dtype)
     writeout_array = writeout_array.at[:, 0].set(solution_time)
-    writeout_array = writeout_array.at[:, 1:5].set(dataset)
-    writeout_array = writeout_array.at[:, 5:9].set(solution[:, 0:4])
+    writeout_array = writeout_array.at[:, 1:3].set(dataset)
+    writeout_array = writeout_array.at[:, 3:5].set(solution)
     return writeout_array

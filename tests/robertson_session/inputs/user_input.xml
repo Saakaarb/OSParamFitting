@@ -2,9 +2,16 @@
 <FIT>
     <EXPERIMENT>
         <FILENAME>
-            <E> FILENAME_DATA = tests/robertson_fitting/inputs/robertson_data.csv </E>
+            <E> FILENAME_DATA = robertson_data.csv </E>
         </FILENAME>
     </EXPERIMENT>
+
+    <PATH>
+        <E> USER_INPUT_DIR = inputs </E>
+        <E> GENERATED_DIR = generated </E>
+        <E> OUTPUT_DIR = outputs </E>
+    </PATH>
+
     <MODEL>
         <TRAINABLE_PARAMETERS>
             <P> N_TRAINABLE_PARAMETERS = 3 </P>
@@ -53,15 +60,15 @@
     <POPULATION_OPT>
         <SETTINGS>
             <P> NUM_PARTICLES = 100 </P>
-            <P> NUM_ITERS = 10 </P>
+            <P> NUM_ITERS = 20 </P>
             <P> PROCESSORS = 8 </P>
         </SETTINGS>
     </POPULATION_OPT>
     <GRADIENT_OPT>
         <SETTINGS>
             <P> NUM_ITERS = 10 </P>
-            <P> STEPSIZE_RTOL = 1e-7 </P>
-            <P> STEPSIZE_ATOL = 1e-9 </P>
+            <P> STEPSIZE_RTOL = 1e-7,1e-7,1e-7 </P>
+            <P> STEPSIZE_ATOL = 1e-9,1e-9,1e-9 </P>
             <P> INITIAL_TIMESTEP = 1e-6 </P>
             <P> MAX_STEPS = 10000 </P>
             <P> INIT_VALUE_LR = 1e-4 </P>
