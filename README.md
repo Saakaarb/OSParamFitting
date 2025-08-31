@@ -4,31 +4,20 @@
 [![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
 [![GitHub Actions](https://img.shields.io/badge/GitHub%20Actions-Documentation-blue.svg)](https://github.com/Saakaarb/OSParamFitting/actions)
 
-<div style="display: flex; justify-content: space-between; align-items: center; margin: 20px 0;">
-  <div style="flex: 1; margin: 0 10px;">
-    <h4>Parameter Convergence</h4>
-    <video width="100%" controls>
-      <source src="img/param_convergence_vid.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-  </div>
-  
-  <div style="flex: 1; margin: 0 10px;">
-    <h4>Fitting Process</h4>
-    <video width="100%" controls>
-      <source src="img/fit_vid.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-  </div>
-  
-  <div style="flex: 1; margin: 0 10px;">
-    <h4>Loss Plot</h4>
-    <video width="100%" controls>
-      <source src="img/loss_plot_vid.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-  </div>
-</div>
+<table>
+  <tr>
+    <td>
+      <video src="https://github.com/user-attachments/assets/b0e91488-e3f4-4adf-8806-08bd6044ceae" width="33%" controls></video>
+    </td>
+    <td>
+      <video src="https://github.com/user-attachments/assets/f3d6be48-d1ad-479d-878a-b2ca8c9e13be" width="33%" controls></video>
+    </td>
+    <td>
+      <video src="https://github.com/user-attachments/assets/c46ff6ab-75d6-4947-aac2-a1f332b31b2d" width="33%" controls></video>
+    </td>
+  </tr>
+</table>
+
 
 This repository implements an Agentic AI framework for parameter estimation/identification of complex ODE systems. The workflow is designed to be greatly simplified such that no expertise in numerical optimization, machine learning or even programming is required to efficiently fit user-defined ODE models to time-series data, experimental or simulated. After filling out a simple XML file and a couple of simple python functions that describe the problem, the framework automatically sets up and solves the estimation problem, returning the identified parameters to the user and abstracting away complex processes like:
 
