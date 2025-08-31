@@ -1,0 +1,157 @@
+Getting Started
+==============
+
+This guide walks you through setting up and running your first ODE parameter fitting problem using OSParamFitting. We'll use the Robertson system as an example - a classical stiff ODE system that demonstrates the framework's capabilities.
+
+Prerequisites
+------------
+
+Before starting, ensure you have:
+- OSParamFitting installed (see :doc:`introduction` above)
+- OpenAI API key set as environment variable: ``export OPENAI_ENV_KEY="your-api-key"``
+- Basic understanding of ODE systems
+- Your experimental or simulated time-series data
+
+Quick Start: Robertson System Example
+------------------------------------
+
+1. Create Session Structure
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Set up the required directory structure for your fitting session:
+
+.. code-block:: bash
+
+   # Create the main sessions directory
+   mkdir sessions
+
+   # Create a session for the Robertson system
+   cd sessions
+   mkdir robertson_session
+   cd robertson_session
+
+   # Create the inputs directory
+   mkdir inputs
+
+Your directory structure should look like:
+
+.. code-block:: text
+
+   sessions/
+   └── robertson_session/
+       └── inputs/
+
+2. Prepare Input Files
+~~~~~~~~~~~~~~~~~~~~~~
+
+Copy the example files to get started quickly:
+
+.. code-block:: bash
+
+   # Copy the example XML configuration
+   cp ../../examples/robertson_example/inputs/user_input.xml inputs/
+
+   # Copy the example data file
+   cp ../../examples/robertson_example/inputs/robertson_data.csv inputs/
+
+3. Run the Three-Stage Workflow
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+OSParamFitting uses an intelligent, three-stage approach to parameter estimation:
+
+Stage 1: Generate Code Skeleton
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The AI agent analyzes your XML configuration and creates a Python template:
+
+.. code-block:: bash
+
+   python create_user_model.py robertson_session
+
+This generates ``generated/user_model.py`` with functions you need to implement:
+- ``_compute_loss_problem``: Define how to compute the loss between model and data
+- ``_write_problem_result``: Define how to write results to files
+
+Stage 2: Validate Your Setup
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Check for errors and warnings in your configuration:
+
+.. code-block:: bash
+
+   python check_user_input.py robertson_session
+
+The agent will:
+- Analyze your XML and Python code
+- Identify critical errors and warnings
+- Provide actionable feedback
+- Ensure your setup is ready for optimization
+
+Stage 3: Parameter Estimation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Run the actual parameter fitting process:
+
+.. code-block:: bash
+
+   python fit_parameters.py robertson_session
+
+This stage implements a sophisticated two-layer optimization strategy:
+1. **Population-based search** (PSO) explores the parameter space globally
+2. **Gradient-based refinement** (NODE) fine-tunes the best results
+3. **Automatic convergence** ensures robust parameter estimates
+
+Expected Results
+---------------
+
+After successful completion, you'll find in your output directory:
+- ``final_design_point.csv``: Best parameter values found
+- ``result_solution.csv``: Solution trajectory with fitted parameters  
+- ``pso_fitting.log``: Detailed optimization log
+- ``fitting_error.txt``: Any errors encountered (if applicable)
+
+Customizing for Your Problem
+----------------------------
+
+To adapt this workflow for your own ODE system:
+
+1. **Modify the XML configuration**:
+   - Update parameter names and bounds
+   - Adjust optimization settings
+   - Specify your data file name
+
+2. **Implement the required functions**:
+   - ``_compute_loss_problem``: Return scalar loss value
+   - ``_write_problem_result``: Return solution array
+
+3. **Prepare your data**:
+   - CSV format with time in first column
+   - Data columns matching your ODE variables
+   - Consistent time points
+
+Troubleshooting
+--------------
+
+Common Issues
+~~~~~~~~~~~~
+
+* **Directory errors**: Ensure you're in the base directory and sessions structure is correct
+* **API key errors**: Verify ``OPENAI_ENV_KEY`` environment variable is set
+* **Convergence issues**: Adjust parameter bounds or optimization settings in XML
+
+Getting Help
+~~~~~~~~~~~
+
+If you encounter issues:
+1. Check error messages in ``fitting_error.txt``
+2. Review the PSO log file for optimization details
+3. Verify your XML configuration syntax
+4. Ensure your data format matches expectations
+
+Next Steps
+----------
+
+- Explore the :doc:`api` for detailed API reference
+- Check the examples directory for more complex use cases
+- Experiment with different optimization settings
+- Apply this workflow to your own research problems
