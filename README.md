@@ -19,6 +19,7 @@
 </table>
 
 
+
 This repository implements an Agentic AI framework for parameter estimation/identification of complex ODE systems. The workflow is designed to be greatly simplified such that no expertise in numerical optimization, machine learning or even programming is required to efficiently fit user-defined ODE models to time-series data, experimental or simulated. After filling out a simple XML file and a couple of simple python functions that describe the problem, the framework automatically sets up and solves the estimation problem, returning the identified parameters to the user and abstracting away complex processes like:
 
 1. Setting up a constrained optimization problem
