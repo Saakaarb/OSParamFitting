@@ -52,6 +52,22 @@ pip install -r requirements.txt
 
 # Directory Structure
 
+```
+OSParamFitting/
+├── lib/
+│   ├── LLM/
+│   ├── algorithms/
+│   └── utils/
+├── docs/
+├── examples/
+│   └── robertson_example/
+│       └── inputs/
+├── tests/
+│   ├── robertson_session/
+│   └── vanderpol_session/
+├── sessions/
+└── img/
+```
 
 # Getting Started
 

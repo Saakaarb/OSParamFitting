@@ -3,7 +3,7 @@ name: Build and Deploy Documentation
 on:
   push:
     branches: [ master ]
-    # Only trigger on commits with "docs-update" in the message
+    # Only trigger on commits with "[docs-update]" in the message
   pull_request:
     branches: [ master ]
   workflow_dispatch:
@@ -20,7 +20,7 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    if: contains(github.event.head_commit.message, 'docs-update')
+    if: contains(github.event.head_commit.message, '[docs-update]')
     steps:
     - name: Checkout
       uses: actions/checkout@v4
