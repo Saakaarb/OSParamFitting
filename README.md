@@ -61,7 +61,7 @@ This guide walks you through setting up and running your first ODE parameter fit
 
 Before starting, ensure you have:
 - OSParamFitting installed (see [Installation](#installation) above)
-- OpenAI API key set as environment variable: `export OPENAI_ENV_KEY="your-api-key"`
+- a .env file in the base directory with the OpenAI API key-value pair: `OPENAI_ENV_KEY`= key
 - Basic understanding of ODE systems
 - Your experimental or simulated time-series data
 
@@ -174,7 +174,7 @@ To adapt this workflow for your own ODE system:
 
 **Common Issues:**
 - **Directory errors**: Ensure you're in the base directory and sessions structure is correct
-- **API key errors**: Verify `OPENAI_ENV_KEY` environment variable is set
+- **API key errors**: Verify `OPENAI_ENV_KEY` is present in the .env
 - **Convergence issues**: Adjust parameter bounds or optimization settings in XML
 
 **Getting Help:**

@@ -8,7 +8,7 @@ Prerequisites
 
 Before starting, ensure you have:
 - OSParamFitting installed (see :doc:`introduction` above)
-- OpenAI API key set as environment variable: ``export OPENAI_ENV_KEY="your-api-key"``
+- OpenAI API key set as environment variable in the .env file: ``OPENAI_ENV_KEY``= key
 - Basic understanding of ODE systems
 - Your experimental or simulated time-series data
 
@@ -136,7 +136,7 @@ Common Issues
 ~~~~~~~~~~~~
 
 * **Directory errors**: Ensure you're in the base directory and sessions structure is correct
-* **API key errors**: Verify ``OPENAI_ENV_KEY`` environment variable is set
+* **API key errors**: Verify ``OPENAI_ENV_KEY`` is present in the .env file
 * **Convergence issues**: Adjust parameter bounds or optimization settings in XML
 
 Getting Help

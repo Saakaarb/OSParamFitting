@@ -42,14 +42,9 @@ Installation
       source venv/bin/activate  # On Windows: venv\Scripts\activate
       pip install -r requirements.txt
 
-2. Set your OpenAI API key as an environment variable:
+2. Set your OpenAI API key in a .env file in the base directory:
 
    .. code-block:: bash
 
-      export OPENAI_ENV_KEY="your-api-key-here"
+      OPENAI_ENV_KEY=your-api-key-here
 
-   On Windows:
-
-   .. code-block:: cmd
-
-      set OPENAI_ENV_KEY=your-api-key-here
